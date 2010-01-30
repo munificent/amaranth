@@ -1,0 +1,70 @@
+﻿// Wands are multi-charged items that target something in the dungeon.
+
+:: wand
+    glyph    = -
+    category = Wand
+    usage    = multi
+    charges  = 12t10
+    target  = tile
+      
+// bolts and beams
+
+Wand[s] of Brilliance :: wand
+    color   = Yellow
+    attack  = 10t5 light
+    use     = Beam("the beam of light")
+    price   = 300
+
+Wand[s] of Frost Bolts :: wand
+    color   = LightBlue
+    attack  = 15t5 cold
+    use     = Bolt("the frost bolt")
+    price   = 400
+
+Wand[s] of Fire Bolts :: wand
+    color   = Orange
+    attack  = 25t5 fire
+    use     = Bolt("the fire bolt")
+    price   = 600
+
+Wand[s] of Death Bolts :: wand
+    color   = DarkGray
+    attack  = 300 death
+    use     = Bolt("the death bolt")
+    price   = 4000
+
+// weather cones
+
+Wand[s] of Winds :: wand
+    color   = White
+    attack  = 30t10 air
+    use     = Cone("the gust", 10)
+    price   = 1200
+ 
+Wand[s] of Waves :: wand
+    color   = Blue
+    attack  = 60t10 water
+    use     = Cone("the wave", 10)
+    price   = 1600
+ 
+Wand[s] of Storms :: wand
+    color   = Cyan
+    attack  = 80t20 lightning
+    use     = Cone("the storm", 10)
+    price   = 2000
+
+// balls
+       
+Wand[s] of Fire Balls :: wand
+    color   = Red
+    attack  = 120t10 fire
+    use     = Ball("the fire ball", 3)
+    price   = 3000
+
+Wand[s] of Acid Balls :: wand
+    color   = Red
+    attack  = 170t10 fire
+    use     = Ball("the fire ball", 2)
+    price   = 3000
+
+// staff, rod, mitre, fasces

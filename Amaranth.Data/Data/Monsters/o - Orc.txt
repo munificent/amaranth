@@ -1,0 +1,10 @@
+﻿:: orc
+    glyph   = o
+    groups  = orc
+
+orc :: orc
+    color   = Brown
+    depth   = 9
+    health  = 18
+    attacks
+        hits = 6t3

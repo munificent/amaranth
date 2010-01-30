@@ -1,0 +1,57 @@
+﻿:: bird :: bird resistances
+    glyph   = B
+    speed   = +1
+    groups  = animal
+
+crow :: bird
+    color   = DarkGray
+    depth   = 2
+    health  = 3
+    rarity  = 4
+    attacks
+        bites = 1-2
+        scratches = 1
+    description =
+        It is part of a swirling flock of dirty screeching black birds.
+    + groups
+    + erratic
+
+magpie :: bird
+    color   = DarkBlue
+    depth   = 3
+    health  = 3
+    attacks
+        bites = 1-4
+    drops one
+        (coin) (95%)
+        (stone) (5%)
+    description =
+        A smaller quick-flying cousin of the crow, it has an affinity for shiny things.
+    + very-erratic
+        
+raven :: bird
+    color   = Gray
+    depth   = 6
+    health  = 5
+    rarity  = 4
+    attacks
+        bites = 2-5
+        scratches = 2-3
+    description =
+        More intelligent than crows, ravens are smart enough to attack your eyes.
+    + packs 
+    + slightly-erratic
+        
+murderer :: bird
+    color   = DarkRed
+    depth   = 12
+    health  = 9
+    rarity  = 4
+    speed   = +2
+    attacks
+        bites = 3-9
+        scratches = 4-7
+    description =
+        A maliciously organized flock of crows.
+    + packs
+    + slightly-erratic

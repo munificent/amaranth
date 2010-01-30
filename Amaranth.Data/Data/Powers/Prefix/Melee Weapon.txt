@@ -1,0 +1,49 @@
+﻿:: melee power
+    categories  = Melee Weapon
+
+// hurt group
+Wolfsbane :: melee power
+    + hurts-dog
+    level       = 5 to 40
+    rarity      = 2
+    
+Dragonsbane :: melee power
+    + hurts-dragon
+    level       = 30 to 80
+    rarity      = 3
+    
+Deathsbane :: melee power
+    + hurts-undead
+    + hurts-spirit
+    level       = 20 to 70
+    rarity      = 3
+
+Koboldsbane :: melee power
+    + hurts-kobold
+    level       = 10 to 40
+    rarity      = 3
+
+Serpentsbane :: melee power
+    + hurts-reptile
+    level       = 10 to 40
+    rarity      = 3
+
+Ogresbane :: melee power
+    + hurts-ogre
+    level       = 20 to 60
+    rarity      = 3
+
+Giantsbane :: melee power
+    + hurts-giant
+    level       = 20 to 60
+    rarity      = 3
+
+Trollsbane :: melee power
+    + hurts-troll
+    level       = 10 to 50
+    rarity      = 2
+
+Hellsbane :: melee power
+    + hurts-demon
+    level       = 30 to 80
+    rarity      = 3

@@ -1,0 +1,171 @@
+﻿// armor bonus
+of Hardness
+    level = 1 to 60
+    categories = Armor
+    armor = 1-9
+
+of Toughness
+    level = 50 to 100
+    categories = Armor
+    armor = 10-20
+
+// stat bonus
+:: stat 1 armor
+    level       = 20 to 100
+    rarity      = 5
+    armor       = 1-5
+    stats       = 1-2
+
+:: stat 2 armor :: stat +1 armor
+    stats       = 3-5
+
+of Strength :: stat 1 armor
+    categories  = Torso|Boots|Shield|Gloves
+    + raise:strength
+
+of Agility :: stat 1 armor
+    categories  = Torso|Boots|Gloves
+    + raise:agility
+
+of Will :: stat 1 armor
+    categories  = Torso|Helm|Shield|Gloves
+    + raise:will
+
+of Stamina :: stat 1 armor
+    categories  = Torso|Helm|Shield|Boots
+    + raise:stamina
+
+of Charisma :: stat 1 armor
+    categories  = Torso|Helm|Shield|Cloak
+    + raise:strength
+
+of Might            :: of Strength  :: stat 2 armor
+of Nimbleness       :: of Agility   :: stat 2 armor
+of Perserverance    :: of Will      :: stat 2 armor
+of Endurance        :: of Stamina   :: stat 2 armor
+of Beauty           :: of Charisma  :: stat 2 armor
+
+// basic resistance
+:: resist armor
+    level = 1 to 100
+    rarity = 2
+    categories = Torso|Cloak|Shield
+    armor = 4-8
+
+of Resist Air :: resist armor
+    + resist:air
+        
+of Resist Earth :: resist armor
+    + resist:earth
+    
+of Resist Fire :: resist armor
+    + resist:fire
+    
+of Resist Water :: resist armor
+    + resist:water
+
+of Resist Acid :: resist armor
+    rarity = 4
+    + resist:acid
+
+of Resist Cold :: resist armor
+    rarity = 4
+    + resist:cold
+
+of Resist Lightning :: resist armor
+    rarity = 4
+    + resist:lightning
+
+of Resist Poison :: resist armor
+    rarity = 8
+    + resist:poison
+    
+of Resist Darkness :: resist armor
+    rarity = 3
+    + resist:dark
+
+of Resist Light :: resist armor
+    rarity = 3
+    + resist:light
+
+// resist armors
+
+of the Elements :: resist armor :: resist primary
+    level = 30 to 100
+    rarity = 10
+
+of the Forces :: resist armor :: resist secondary
+    level = 50 to 100
+    rarity = 12
+
+of Nature :: resist armor
+    level = 40 to 100
+    rarity = 9
+    + resist:metal
+    + resist:wood
+    + resist:dark
+    + resist:light
+    + resist:anima
+
+of the Spectre :: resist armor
+    level = 40 to 100
+    rarity = 7
+    + resist:death
+    + resist:dark
+
+of the Sun :: resist armor
+    level = 40 to 100
+    rarity = 6
+    + resist:light
+    + resist:dark
+    + resist:lightning
+    + resist:air
+    + resist:fire
+
+of the Sky :: resist armor
+    level = 30 to 100
+    rarity = 6
+    + resist:light
+    + resist:lightning
+    + resist:air
+
+of the Soil :: resist armor
+    level = 30 to 100
+    rarity = 6
+    + resist:metal
+    + resist:wood
+    + resist:anima
+    + resist:acid
+    + resist:earth
+    + resist:water
+
+of the Sea :: resist armor
+    level = 20 to 100
+    rarity = 6
+    + resist:cold
+    + resist:water
+
+of Resistance :: resist armor :: resist primary :: resist secondary
+    level = 40 to 100
+    rarity = 15
+    + resist:metal
+    + resist:wood
+    + resist:dark
+    + resist:light
+    + resist:anima
+    + resist:death
+
+of Imperviousness :: resist armor :: resist primary :: resist secondary
+    level = 60 to 100
+    rarity = 10
+    + resist:dark
+    + resist:light
+
+of Insulation :: resist armor
+    level = 40 to 100
+    rarity = 8
+    + resist:fire
+    + resist:cold
+    + resist:water
+    + resist:air
+    + resist:lightning

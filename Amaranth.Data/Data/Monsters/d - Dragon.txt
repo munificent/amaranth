@@ -1,0 +1,131 @@
+﻿// blue
+//   wind breath
+// white
+//   cold breath
+// red
+//   fire breath
+// yellow
+//   acid breath
+// green
+//   breathe poison
+// gold
+//   metal melee
+//   light breath
+// silver
+//   lightning breath
+//   metal melee
+// black
+//   death breath
+
+:: dragon
+    glyph   = d
+    groups  = dragon
+    
+blue dragon spawn :: dragon
+    color   = LightBlue
+    depth   = 36
+    health  = 45
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+        
+white dragon spawn :: dragon
+    color   = White
+    depth   = 38
+    health  = 48
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+
+red dragon spawn :: dragon
+    color   = LightRed
+    depth   = 40
+    health  = 50
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+
+yellow dragon spawn :: dragon
+    color   = LightYellow
+    depth   = 42
+    health  = 54
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+
+green dragon spawn :: dragon
+    color   = LightGreen
+    depth   = 44
+    health  = 58
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+
+gold dragon spawn :: dragon
+    color   = LightGold
+    depth   = 46
+    health  = 62
+    attacks
+        bites = 15t5 metal
+        claws = 10t5 metal
+    drops
+        (coins)
+
+silver dragon spawn :: dragon
+    color   = LightGray
+    depth   = 48
+    health  = 66
+    attacks
+        bites = 15t5 metal
+        claws = 10t5 metal
+    drops
+        (coins)
+
+black dragon spawn :: dragon
+    color   = Gray
+    depth   = 50
+    health  = 70
+    attacks
+        bites = 15t5
+        claws = 10t5
+    drops
+        (coins)
+
+youngling green dragon :: dragon
+    color   = Green
+    depth   = 60
+    speed   = +1
+    health  = 100
+    moves
+        breathe poison ::
+            odds    = 1 in 7
+            radius  = 4
+    attacks
+        bites = 45t5
+        claws = 20t5
+    drops
+        (coins)
+            
+green dragon :: dragon
+    color   = DarkGreen
+    depth   = 60
+    speed   = +2
+    health  = 400
+    moves
+        breathe poison ::
+            odds    = 1 in 4
+    attacks
+        bites = 125t5
+        claws = 80t5
+    drops
+        (coins)

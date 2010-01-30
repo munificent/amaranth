@@ -1,0 +1,33 @@
+﻿// Staves are multi-charged items that do not take a target.
+
+:: staff
+    glyph    = _
+    category = Staff
+    usage    = multi
+    charges  = 12t10
+
+// light
+       
+Staff of Light|Staves of Light :: staff
+    color   = Yellow
+    attack  = 3-6 light
+    use     = Light(20, "the light")
+    price   = 150
+
+// detection
+Staff of Escape Detection|Staves of Escape Detection :: staff
+    color   = LightGreen
+    use     = DetectFeatures()
+    price   = 200
+
+Staff of Item Detection|Staves of Item Detection :: staff
+    color   = Green
+    use     = DetectItems()
+    price   = 300
+
+Staff of Detection|Staves of Detection :: staff
+    color   = DarkGreen
+    use     =
+              DetectFeatures();
+              DetectItems();
+    price   = 600

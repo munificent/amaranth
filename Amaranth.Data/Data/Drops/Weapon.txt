@@ -1,0 +1,57 @@
+﻿(whip)
+    one near level
+        whip (1)
+        chain whip (40)
+        flail (60)
+
+(club)
+    one near level
+        cudgel (1)
+        club (11)
+        quarterstaff (21)
+
+(hammer)
+    one near level
+        hammer (1)
+        mattock (38)
+        warhammer (61)
+        
+(dagger)
+    one near level
+        knife (1)
+        dirk (12)
+        dagger (18)
+        stiletto (27)
+        rondel (34)
+        baselard (47)
+        main-guache (51)
+
+(mace)
+    one near level
+        morningstar (15)
+        mace (33)
+        war hammer (62)
+
+(axe)
+    one near level
+        hatchet (1)
+        axe (25)
+        valaska (37)
+        battleaxe (57)
+
+(one-handed sword)
+    one near level
+        rapier (1)
+        shortsword (15)
+        scimitar (33)
+        cutlass (47)
+        falchion (67)
+
+(any weapon)
+    one of
+        (whip)
+        (club)
+        (dagger)
+        (mace)
+        (axe)
+        (one-handed sword)

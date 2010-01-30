@@ -1,0 +1,48 @@
+﻿:: rodent :: animal
+    glyph   = r
+    groups  = animal
+
+dead rat :: rodent :: zombie resistances
+    color   = DarkGray
+    depth   = 1
+    health  = 1
+    speed   = -6
+    moves
+        message
+            odds = 1 in 1
+            verb = decomposes on
+    description =
+        It is a rat, and it is dead.
+    + unmoving
+    
+giant mouse :: rodent
+    color   = White
+    depth   = 1
+    health  = 1
+    speed   = -1
+    attacks
+        bites = 1-2
+    description =
+        It's kind of cute and fuzzy, but those teeth look sharp.
+    + slightly-erratic
+ 
+sewer rat :: rodent
+    color   = Brown
+    depth   = 3
+    health  = 3
+    attacks
+        bites = 1-3
+    description =
+        A common sewer denizen.
+    + slightly-erratic
+        
+rat :: rodent
+    color   = Brown
+    depth   = 5
+    health  = 4
+    attacks
+        bites = 1-5
+    description =
+        A common sewer denizen, and you've disturbed its nest.
+    + erratic
+    + groups

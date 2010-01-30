@@ -1,0 +1,100 @@
+﻿:: jelly
+    glyph   = J
+    groups  = jelly
+    + unmoving
+    
+yellow jelly :: jelly :: anima resistances
+    color   = Yellow
+    depth   = 1
+    health  = 7
+    attacks
+        oozes on = 3-4
+    drops
+        (coin) (50%)
+        (stone) (10%)
+    description =
+        A yellowish furry pile of goo.
+
+white jelly :: jelly :: cold resistances
+    color   = White
+    depth   = 3
+    health  = 9
+    attacks
+        oozes on = 4-5 cold
+    drops
+        (coin) (60%)
+        (stone) (10%)
+    description =
+        Frost lines the rock around this pile of ooze.
+
+blue jelly :: jelly :: water resistances
+    color   = Blue
+    depth   = 4
+    health  = 12
+    attacks
+        touches = 5-8 water
+    drops
+        (coin) (70%)
+        (stone) (10%)
+    description =
+        It's a large dripping heap of bluish jelly.
+
+red jelly :: jelly :: fire resistances
+    color   = Red
+    depth   = 5
+    health  = 16
+    attacks
+        oozes on = 6-9 fire
+    drops
+        (coin) (80%)
+        (stone) (10%)
+    description =
+        The ground near this mass of ooze looks scorched.
+
+green jelly :: jelly :: acid resistances
+    color   = Green
+    depth   = 7
+    health  = 20
+    attacks
+        oozes on = 12t2 acid
+    drops
+        (coin) (90%)
+        (stone) (10%)
+    description =
+        The dungeon floor seems corroded around this mass of jelly.
+
+purple jelly :: jelly :: lightning resistances
+    color   = Purple
+    depth   = 9
+    health  = 24
+    attacks
+        oozes on = 15t2 lightning
+    drops
+        (coin) (90%)
+        (stone) (11%)
+    description =
+        A large smear of purplish ooze, faintly flickering from within.
+
+weeping jelly :: jelly :: poison resistances
+    color   = DarkGreen
+    depth   = 12
+    health  = 28
+    attacks
+        oozes on = 10t2 poison
+    drops
+        (coin) (90%)
+        (stone) (13%)
+    description =
+        A pile of ooze, weeping a strange fluid from dozens of tiny openings.
+
+rotting jelly :: jelly :: death resistances
+    color   = Gray
+    depth   = 16
+    health  = 34
+    attacks
+        oozes on = 15t2 death
+    drops
+        (coin) (90%)
+        (stone) (20%)
+    description =
+        A hideous stench rises from a rotting pile of jelly.

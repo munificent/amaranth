@@ -1,0 +1,200 @@
+﻿// From Angband:
+//
+// !   A potion (or flask)             /   A pole-arm
+// ?   A scroll (or book)              |   An edged weapon
+// ,   A mushroom (or food)            \   A hafted weapon
+// -   A wand or rod                   }   A sling, bow, or x-bow
+// _   A staff                         {   A shot, arrow, or bolt
+// =   A ring                          (   Soft armour (cloak, robes, leather armor)
+// "   An amulet                       [   Hard armour (metal armor)
+// $   Gold or gems                    ]   Misc. armour (gloves, helm, boots)
+// ~   Lites, Tools                    )   A shield
+// &   Chests, Containers
+
+:: resist primary
+    + resist:air
+    + resist:earth
+    + resist:fire
+    + resist:water
+
+:: resist secondary
+    + resist:acid
+    + resist:cold
+    + resist:lightning
+    + resist:poison
+
+// Potion words:
+// heal, cure, restore, sooth, ameliorate, cleanse, relieve, remedy, nourish, revive, rejuvenate, mend
+// aromatic, brew, cordial, cup, dose, draft, dram, draught, drink, elixir, libation, liquid,
+// liquor, medicine, mixture, nip, philter, remedy, restorative, spirits, stimulant, tonic
+//All Angband effects:
+//-poison
+//blind
+//scare
+//confuse
+//hallucinations
+//paralyze
+//-slow
+//-cure poison
+//cure blindness
+//cure fear
+//cure confusion
+//cure stun + cut
+//-gain exp
+//-lose exp
+//-restore exp
+//restore mana
+//-gain stat
+//-gain stats
+//-swap stat
+//lose stat
+//-restore stat
+//-restore all
+//infravision
+//see invisible
+//esp
+//enlightenment
+//self knowledge
+//heroism
+//resist element
+//detect treasure
+//detect trap
+//detect doors/stairs
+//detect invisible
+//detect evil
+//detect all
+//enchant to hit
+//enchant damage
+//enchant armor
+//identify
+//remove curse
+//light
+//summon monster
+//summon undead
+//-phase door
+//-teleport
+//teleport level
+//confusing (confuses others?)
+//magic mapping
+//glyph of warding
+//acquiring
+//annoy monsters
+//create trap
+//destroy doors
+//recharge
+//banishment
+//darkness
+//protection from evil
+//satisfy hunger
+//curse weapon
+//curse armor
+//blessing
+//word of recall
+//haste monsters
+//sleep monsters
+//slow monsters
+//mass banishment
+//earthquake
+//destruction
+//illumination (light + damage)
+//clairvoyance (wizlight + detection)
+//probing
+//stone to mud
+//confuse monsters
+//elemental bolts and balls
+//drain life
+//brand bolts
+//heal monster
+//haste monster
+//clone monster
+//scare monster
+//teleport other
+//disarming
+//polymorph
+//berserk
+//wonder
+//death
+//ruination (damage, stat drain)
+
+
+//Angband potions:
+
+//stat gain
+//-    Strength
+//-    Intelligence
+//-    Wisdom
+//-    Charisma
+//-    Constitution
+//-    Dexterity
+//-    Augmentation
+    
+//stat transfer
+//    Brawn
+//    Intellect
+//    Pleasing
+//    Contemplation
+//    Nimbleness
+//    Toughness
+      
+//stat loss
+//    Weakness
+//    Clumsiness
+//    Sickliness
+//    Apathy
+//    Stupidity
+//    Ugliness
+  
+//stat restore
+//-    Restore Strength
+//-    Restore Intelligence
+//-    Restore Wisdom
+//-    Restore Charisma
+//-    Restore Dexterity
+//-    Restore Constitution
+    
+//healing
+//-    Cure Light Wounds
+//-    Cure Serious Wounds
+//-    Cure Critical Wounds
+//-    Healing
+//    Restore Mana
+//-    *Healing*
+//    Life
+    
+//bad condition
+//    Sleep
+//    Blindness
+//    Confusion
+//    Poison
+//    Slowness
+//    Lose Memories
+//    Salt Water
+
+//good condition
+//    Speed
+//    Heroism
+//    Berserk Strength
+//    Resist Heat
+//    Resist Cold
+//    Resist Poison
+    
+//heal condition
+//    Boldness
+//    Restore Life Levels
+//    Neutralize Poison
+
+//detection
+//    Enlightenment
+//    True Seeing (see invis)
+//    Infravision
+//    Self Knowledge
+//    *Enlightenment*
+    
+//damage
+//    Death
+//    Ruination
+//    Detonations
+
+//other
+//    Slime Mold Juice
+//    Experience

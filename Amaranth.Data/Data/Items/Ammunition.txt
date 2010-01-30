@@ -1,0 +1,39 @@
+﻿:: ammunition
+    glyph       = {
+    category    = Ammunition
+    amount      = 1-20(1:2)
+
+// stones
+:: stone :: ammunition
+    ammunition  = stone
+    effect      = stone
+
+Pebble[s] :: stone
+    color       = Gray
+    attack      = 1-2 earth
+    price       = 1
+        
+Stone[s] :: stone
+    color       = LightGray
+    attack      = 1-3 earth
+    price       = 2
+
+Steel Shot :: stone
+    color       = Gray
+    attack      = 2-4 metal
+    price       = 5
+
+// arrows
+:: arrow :: ammunition
+    ammunition  = arrow
+    effect      = arrow
+
+Arrow[s] :: arrow
+    color       = Brown
+    attack      = 2-6 metal
+    price       = 4
+
+Flight Arrow[s] :: arrow
+    color       = LightBrown
+    attack      = 3-8 metal
+    price       = 7

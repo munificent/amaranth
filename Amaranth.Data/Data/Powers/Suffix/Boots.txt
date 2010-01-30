@@ -1,0 +1,18 @@
+﻿
+of Quickness
+    level       = 40 to 100
+    rarity      = 5
+    categories  = Boots
+    speed       = 1
+    
+of Fleetness
+    level       = 70 to 100
+    rarity      = 7
+    categories  = Boots
+    speed       = 2
+    
+of Flight
+    level       = 90 to 100
+    rarity      = 15
+    categories  = Boots
+    speed       = 3

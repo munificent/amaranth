@@ -1,0 +1,41 @@
+﻿:: slime :: jelly resistances
+    glyph   = j
+    speed   = -3
+    groups  = jelly
+
+green slime :: slime
+    color   = Green
+    depth   = 1
+    health  = 3
+    attacks
+        touches = 1-3
+    drops
+        (coin) (40%)
+        (stone) (5%)
+    description =
+        A quivering lump of goo, inching towards you.
+
+pulsating slime :: slime
+    color   = LightBlue
+    depth   = 8
+    health  = 12
+    attacks
+        touches = 3-4 slow
+    drops
+        (coin) (40%)
+        (stone) (5%)
+    description =
+        It looks a gelanitous lump, but it slowly moves on its own.
+
+twitching slime :: slime
+    color   = Gold
+    depth   = 17
+    health  = 20
+    attacks
+        touches = 4-7 paralyze
+    drops
+        (coin)
+        (stone) (25%)
+    description =
+        An ochre puddle of slime, it twitches every now and then.
+

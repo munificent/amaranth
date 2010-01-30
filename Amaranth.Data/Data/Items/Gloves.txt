@@ -1,0 +1,18 @@
+﻿:: gloves
+    category = Armor
+    subcategory = Gloves
+
+Pair[s] of Leather Gloves :: gloves
+    art     = Brown ]
+    armor   = 1
+    price   = 37
+
+Set[s] of Bracers :: gloves
+    art     = Gray ]
+    armor   = 3
+    price   = 95
+
+Pair[s] of Gauntlets :: gloves
+    art     = LightGray ]
+    armor   = 8
+    price   = 315

@@ -1,0 +1,69 @@
+﻿:: scroll
+    category = Scroll
+    + dissolves
+    + burns up
+    
+// light
+Scroll[s] of Light :: scroll
+    art     = DarkYellow ?
+    attack  = 1 light
+    use     = Light(20, "the light")
+    price   = 8
+
+Scroll[s] of Starlight :: scroll
+    art     = Yellow ?
+    attack  = 3-6 light
+    use     = Light(5, "the starlight")
+    price   = 26
+
+Scroll[s] of Daylight :: scroll
+    art     = LightYellow ?
+    attack  = 4-9 light
+    use     = Light(20, "the daylight")
+    price   = 52
+
+Scroll[s] of Radiance :: scroll
+    art     = White ?
+    attack  = 5-10 light
+    use     = Light(30, "the radiance")
+    price   = 110
+
+// teleportation
+Scroll[s] of Sidestepping :: scroll
+    art     = LightCyan ?
+    use     = Teleport(5)
+    price   = 8
+
+Scroll[s] of Phasing :: scroll
+    art     = Cyan ?
+    use     = Teleport(10)
+    price   = 32
+
+Scroll[s] of Teleportation :: scroll
+    art     = DarkCyan ?
+    use     = Teleport(100)
+    price   = 98
+
+// detection
+Word[s] of Escape Detection :: scroll
+    art     = LightGreen ?
+    use     = DetectFeatures()
+    price   = 27
+
+Word[s] of Item Detection :: scroll
+    art     = Green ?
+    use     = DetectItems()
+    price   = 36
+
+Word[s] of Detection :: scroll
+    art     = DarkGreen ?
+    use     =
+              DetectFeatures();
+              DetectItems();
+    price   = 80
+
+// runes
+Rune[s] of Surfacing :: scroll
+    art     = Green ?
+    use     = MakeTownPortal()
+    price   = 56

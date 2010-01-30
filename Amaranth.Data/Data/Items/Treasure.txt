@@ -1,0 +1,95 @@
+﻿:: treasure
+    category = Treasure
+
+// Coins
+
+:: coin :: treasure
+    amount  = 1-10(9:10)
+
+Copper coin[s] :: coin
+    art     = Brown $
+    price   = 1
+
+Bronze coin[s] :: coin
+    art     = DarkGold $
+    price   = 4
+
+Silver coin[s] :: coin
+    art     = Gray $
+    price   = 10
+
+Electrum coin[s] :: coin
+    art     = LightGold $
+    price   = 30
+
+Gold coin[s] :: coin
+    art     = Gold $
+    price   = 50
+
+Platinum coin[s] :: coin
+    art     = LightGray $
+    price   = 100
+
+// Gemstones
+
+Amethyst[s] :: treasure
+    art     = LightPurple $
+    amount  = 1(9:10)
+    price   = 40
+
+Sapphire[s] :: treasure
+    art     = Blue $
+    amount  = 1(8:9)
+    price   = 80
+
+Emerald[s] :: treasure
+    art     = Green $
+    amount  = 1(5:6)
+    price   = 120
+
+Ruby|Rubies :: treasure
+    art     = Red $
+    amount  = 1(3:4)
+    price   = 200
+
+Diamond[s] :: treasure
+    art     = White $
+    amount  = 1(2:3)
+    price   = 500
+    
+Blue Diamond[s] :: treasure
+    art     = LightBlue $
+    amount  = 1(1:2)
+    price   = 2000
+    
+// Rocks
+
+Turquoise Stone[s] :: treasure
+    art     = Cyan $
+    amount  = 1(7:8)
+    price   = 20
+
+Onyx Stone[s] :: treasure
+    art     = DarkGray $
+    amount  = 1(6:7)
+    price   = 30
+
+Malachite Stone[s] :: treasure
+    art     = DarkCyan $
+    amount  = 1(6:7)
+    price   = 45
+
+Jade Stone[s] :: treasure
+    art     = DarkGreen $
+    amount  = 1(5:6)
+    price   = 65
+
+Pearl[s] :: treasure
+    art     = LightYellow $
+    amount  = 1(3:4)
+    price   = 130
+
+Opal[s] :: treasure
+    art     = LightPurple $
+    amount  = 1(2:3)
+    price   = 270

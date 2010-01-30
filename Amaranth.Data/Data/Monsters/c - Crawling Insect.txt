@@ -1,0 +1,161 @@
+﻿:: crawling insect :: crawling insect resistances
+    glyph   = c
+    groups  = bug
+    
+giant beetle :: crawling insect
+    color   = DarkBlue
+    depth   = 1
+    health  = 2
+    moves
+        breed ::
+    attacks
+        bites = 1
+    description =
+        A fist-sized shiny beetle crawls towards you.
+    + very-erratic
+    
+giant gray centipede :: crawling insect
+    color   = Gray
+    depth   = 2
+    health  = 3
+    attacks
+        bites = 1-3
+    + very-erratic
+
+giant blue centipede :: crawling insect
+    color   = Blue
+    depth   = 6
+    health  = 10
+    speed   = +1
+    attacks
+        bites = 2-5
+    + very-erratic
+
+giant red centipede :: crawling insect
+    color   = Red
+    depth   = 10
+    health  = 14
+    speed   = +1
+    attacks
+        bites = 3-6
+    + very-erratic
+
+slicer beetle :: crawling insect
+    color   = Purple
+    depth   = 14
+    health  = 12
+    speed   = +2
+    moves
+        breed ::
+    attacks
+        bites = 2-4
+    drops
+        amethyst (20%)
+    + very-erratic
+
+giant green centipede :: crawling insect
+    color   = Green
+    depth   = 20
+    health  = 24
+    speed   = +2
+    attacks
+        bites = 5-9 poison
+    drops
+        emerald (20%)
+    + erratic
+
+scarab beetle :: crawling insect
+    color   = LightYellow
+    depth   = 25
+    health  = 20
+    speed   = +3
+    moves
+        breed ::
+    attacks
+        bites = 4t2
+        scratches = 4t2
+        shoots acid at = 6t2 acid
+    + erratic
+
+giant black centipede :: crawling insect
+    color   = White
+    depth   = 31
+    health  = 35
+    speed   = +2
+    attacks
+        bites = 7-11
+    drops
+        onyx stone (10%)
+    description =
+        The sound of a hundred scuttling legs announces the arrival of
+        this massive creature out of the darkness.
+    + erratic
+
+fire beetle :: crawling insect
+    color   = Orange
+    depth   = 33
+    health  = 10
+    speed   = +2
+    moves
+        breed ::
+    attacks
+        bites = 5t2 fire
+    drops
+        ruby (30%)
+    description =
+        Heat shimmers off the shiny carapaces of these swarming beetles.
+    + erratic
+
+lightning bug :: crawling insect
+    color   = Purple
+    depth   = 34
+    health  = 11
+    speed   = +2
+    moves
+        breed ::
+    attacks
+        bites = 5t2 lightning
+    drops
+        sapphire (30%)
+    description =
+        Sparks dance across the glowing backs of these swarming beetles.
+    + erratic
+    
+fire ant :: crawling insect
+    color   = DarkRed
+    depth   = 40
+    health  = 10
+    speed   = +2
+    moves
+        breed ::
+    attacks
+        bites = 7t2 fire
+    description =
+        Swarming out of the darkness, all you see are dozens of glowing red mandibles.
+    + erratic
+    + hordes
+    
+ant lion :: crawling insect
+    color   = LightYellow
+    depth   = 47
+    health  = 30
+    moves
+        acid bolt ::
+    attacks
+        bites = 18t6 acid
+    + slightly-erratic
+
+deathwatch beetle :: crawling insect
+    color   = DarkGray
+    depth   = 88
+    health  = 200
+    speed   = +6
+    attacks
+        claws = 20t5 death
+        bites = 40t10 poison
+    drops
+        onyx stone (70%)
+    description =
+        With eerie foresight, or perhaps just lethal effectiveness, the
+        presence of this shiny little beetle portends a swiftly approaching death.
+    + slightly-erratic

@@ -1,0 +1,27 @@
+﻿:: worm :: bug resistances
+    glyph   = w
+    groups  = bug
+    moves
+        breed ::
+            odds = 1 in 6
+    + very-erratic
+           
+giant maggot :: worm
+    color   = White
+    depth   = 1
+    health  = 1
+    speed   = -3
+    attacks
+        bites = 1
+    description =
+        This festering pile of worms will eventually turn into equally digusting giant flies if you don't get to them first.
+
+blood worm :: worm
+    color   = Red
+    depth   = 4
+    health  = 3
+    speed   = -3
+    attacks
+        bites = 1-3
+    description =
+        A seething ball of blood red worms.

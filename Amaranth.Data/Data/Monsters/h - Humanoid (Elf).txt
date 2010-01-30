@@ -1,0 +1,43 @@
+﻿:: elf
+    glyph   = h
+    groups  = humanoid
+
+wood elf :: elf
+    color   = Brown
+    depth   = 32
+    health  = 47
+    speed   = 2
+    moves
+        arrow ::
+            odds = 1 in 4
+            damage = 20t5
+    attacks
+        stabs = 10t6
+    drops
+        (stone) (30%)
+        one of (5%)
+            pearl amulet of resist air
+            quartz amulet of resist earth
+            sodalite amulet of resist water
+    description
+        Even out of her natural woodland habitat, an elf moves with grace and quickness.
+        
+elven archer :: elf
+    color   = Orange
+    depth   = 41
+    health  = 55
+    speed   = 3
+    moves
+        arrow ::
+            odds = 1 in 2
+            damage = 25t7
+    attacks
+        stabs = 14t8
+    drops
+        (stone) (50%)
+        one of (5%)
+            ruby amulet of resist fire
+            sodalite amulet of resist water
+            diamond amulet of resist acid
+    description
+        While almost all elves are skilled with bows, only the most highly-trained attain the title "archer".

@@ -1,0 +1,17 @@
+﻿:: whip
+    category = Melee Weapon
+
+Whip[s] :: whip
+    art     = LightBrown \
+    attack  = 1-5 anima
+    price   = 14
+
+Chain Whip[s] :: whip
+    art     = LightBrown \
+    attack  = 2-7 metal
+    price   = 160
+
+Flail[s] :: whip
+    art     = Gray \
+    attack  = 4-12 metal
+    price   = 580

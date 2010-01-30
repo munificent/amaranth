@@ -1,0 +1,84 @@
+﻿:: dwarf :: dwarf resistances
+    glyph   = h
+    groups  = humanoid
+
+drunk drawf :: dwarf
+    color     = DarkGreen
+    depth     = 16
+    health    = 28
+    moves
+        vomit ::
+            odds = 1 in 3
+        curse ::
+            odds = 1 in 3
+    attacks
+        punches = 5-7
+    drops
+        1(1:6) (stone) (25%)
+        one of (20%)
+            (hammer)
+            (mace)
+            (axe)
+    description
+        He'd be fearsome if he could stand up straight.
+    + very-erratic
+
+dwarf miner :: dwarf
+    color     = DarkGray
+    depth     = 22
+    health    = 44
+    attacks
+        hammers = 15t5
+    drops
+        1(1:6) (stone) (35%)
+        1(1:8) (gem) (15%)
+        (hammer) (50%)
+    description
+        Covered from head to toe is dust and dirt, you can barely make out the form of this weary dwarf.
+
+dwarf warrior :: dwarf
+    color     = Gray
+    depth     = 27
+    health    = 54
+    attacks
+        hits = 20t5
+    drops
+        (stone) (25%)
+        (gem) (5%)
+        (amulet) (10%)
+        (mace) (50%)
+    description
+        A stout, skilled warrior, if a bit on the short side, wielding a massive hammer.
+
+dwarf barbarian :: dwarf
+    color     = Orange
+    depth     = 34
+    health    = 64
+    speed     = +1
+    attacks
+        axes = 30t5
+    drops
+        (axe)
+        (soft-armor) (50%)
+        (amulet) (10%)
+    description
+        You can barely tell he's shirtless under his massive beard.
+    + erratic
+    
+dwarf berserker :: dwarf
+    color     = Red
+    depth     = 39
+    health    = 64
+    speed     = +3
+    attacks
+        hits = 24t5
+    drops
+        one of
+            (hammer)
+            (mace)
+            (axe)
+        (soft-armor) (50%)
+        (amulet) (10%)
+    description
+        All you see are maddened eyes and the blur of two mighty axes.
+    + erratic

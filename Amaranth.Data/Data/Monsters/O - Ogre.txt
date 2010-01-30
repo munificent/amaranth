@@ -1,0 +1,10 @@
+﻿:: ogre
+    glyph   = O
+    groups  = ogre
+
+ogre :: ogre
+    color   = Brown
+    depth   = 30
+    health  = 65
+    attacks
+        hits = 8t6

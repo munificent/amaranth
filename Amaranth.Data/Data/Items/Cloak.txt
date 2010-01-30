@@ -1,0 +1,18 @@
+﻿:: cloak
+    category = Armor
+    subcategory = Cloak
+
+Cloak[s] :: cloak
+    art     = DarkBlue (
+    armor   = 2
+    price   = 30
+
+Velvet Cloak[s] :: cloak
+    art     = Purple (
+    armor   = 3
+    price   = 70
+
+Fur-lined Cloak[s] :: cloak
+    art     = DarkRed (
+    armor   = 6
+    price   = 260

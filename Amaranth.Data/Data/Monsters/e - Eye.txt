@@ -1,0 +1,57 @@
+﻿:: eye :: eye resistances
+    glyph   = e
+
+severed eye :: eye
+    color   = Pink
+    depth   = 4
+    health  = 7
+    attacks
+        squelches on = 4t2
+    + slightly-erratic
+
+floating eye :: eye
+    color   = LightYellow
+    depth   = 11
+    health  = 20
+    speed   = +1
+    attacks
+        gazes at = 10t3
+    + unmoving
+
+glowing eye :: eye
+    color   = LightPurple
+    depth   = 18
+    health  = 40
+    speed   = +1
+    attacks
+        gazes at  = 30t4
+        stares at = 20t4
+    + unmoving 
+
+gazer :: eye
+    color   = White
+    depth   = 28
+    health  = 70
+    speed   = +1
+    attacks
+        gazes at  = 40t8
+        stares at = 30t8
+    + unmoving
+
+beholder :: eye
+    color   = LightGray
+    depth   = 70
+    health  = 1000
+    speed   = +2
+    attacks
+        gazes at  = 50t8
+        stares at = 60t8
+
+ancient beholder :: eye
+    color   = Brown
+    depth   = 80
+    health  = 2000
+    speed   = +3
+    attacks
+        gazes at  = 70t8
+        stares at = 90t8

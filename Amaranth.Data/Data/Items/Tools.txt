@@ -1,0 +1,11 @@
+﻿:: tool
+    glyph       = ~
+    category    = Tool
+    
+Fuze[s] :: tool
+    color           = Red
+    amount          = 1-20(1:2)
+    attack          = 1 fire
+    price           = 20
+    use             = Explode(1)
+    on hit by fire  = Explode(1)

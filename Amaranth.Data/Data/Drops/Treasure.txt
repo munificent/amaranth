@@ -1,0 +1,93 @@
+﻿//  Drops are a tree of item choices. Leaves of the tree are specific item types,
+//  and branches are ways of selecting one of more of the child nodes. The tree
+//  can be nested arbitrarily deeply.
+//  
+//  Each line in a drop tree is formatted like:
+//      [quantity] type [odds]
+//
+//  Quantity is the number of times that line is repeated. If the line is an item
+//  then it means that many items will be dropped. If the line is a branch, then
+//  the entire branch will be rolled that many times. Quantity can be any die roll:
+//  a fixed number (3), a range (2-5), dice (2d5), a triangle range (5t3), or a
+//  taper (2(3:4)). If omitted, defaults to 1.
+//
+//  Note that this is distinct from the item stack's own quantity, which is
+//  specified by the item type. Quantity here is basically the number of stacks.
+//
+//  Type is the type of drop. For an item, it will be the item type (singular),
+//  for example "dagger". If the line is a branch it will either be "one of" or
+//  "any of". "one of" is a "choose" branch, which means one and only one of the
+//  branch's child nodes will be dropped. "any of" is an "all" branch, which means
+//  that one or more of the child branch's may be chosen.
+//
+//  The odds determine the odds of choosing that particular line when handling
+//  the line's parent branch. If the parent is a "choose" branch then the odds
+//  will be the odds of choosing this line and not any of the others. If the
+//  parent is an "any" branch, the odds are the odds of selecting this line
+//  whether or not any others were selected.
+//  
+//  For "any" drops, the odds for all items can be greater than 100% since odds
+//  are not combined. For "choose" drops, the odds are assumed to add up to 100,
+//  but if they are not, then the odds are interpreted to be the odds out of the
+//  actual total, instead of out of 100.
+//
+//  If odds are omitted, they will default to "even" odds for a "choose" branch.
+//  (I.e. if there are three items to choose from, each will have 1 in 3 odds.)
+//  For an "any" branch, the odds will default to 100% (always drop the item).
+//
+//  The root tag when specifying drops for a monster will be either "drops" or
+//  "drops one". "drops" is the same as an "any" branch, and "drops one" is a
+//  "choose branch".
+
+(coin)
+    one near level
+        1(1:10) copper coin (1)
+        1(1:10) bronze coin (7)
+        1(1:10) silver coin (14)
+        1(1:10) electrum coin (23)
+        1(1:10) gold coin (30)
+        1(1:10) platinum coin (42)
+        1(1:10) amethyst (64)
+        1(1:10) sapphire (73)
+        1(1:10) emerald (82)
+        1(1:10) ruby (91)
+        1(1:10) diamond (95)
+        1(1:10) blue diamond (99)
+
+// stone - single stone of varied grade
+
+(stone)
+    one near level
+        one of (1)
+            turquoise stone (50%)
+            onyx stone (25%)
+            malachite stone (15%)
+            jade stone (10%)
+        one of (26)
+            onyx stone (50%)
+            malachite stone (25%)
+            jade stone (15%)
+            pearl (10%)
+        one of (50)
+            malachite stone (50%)
+            jade stone (25%)
+            pearl (15%)
+            opal (10%)
+
+// gem - single gemstone of varied grade
+
+(gem)
+    one near level
+        amethyst (23)
+        sapphire (38)
+        emerald (52)
+        ruby (62)
+        diamond (87)
+        blue diamond (95)
+
+// coins - a range of coins and possibly gems
+
+(coins)
+    1(1:10) (coin) (70%)
+    (stone) (20%)
+    (gem) (7%)

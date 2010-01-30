@@ -1,0 +1,30 @@
+﻿// intellect bonus
+
+of Cleverness
+    categories  = Helm
+    appearance  = LightBlue
+    level       = 5 to 30
+    stats       = 1
+    + raise:intellect
+
+of Intelligence
+    categories  = Helm
+    appearance  = LightBlue
+    level       = 30 to 60
+    stats       = 2
+    + raise:intellect
+
+of Wisdom
+    categories  = Helm
+    appearance  = LightBlue
+    level       = 60 to 80
+    stats       = 3
+    + raise:intellect
+
+of Brilliance
+    categories  = Helm
+    appearance  = LightBlue
+    level       = 80 to 100
+    stats       = 4
+    + raise:intellect
+    + resist:light

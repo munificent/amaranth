@@ -1,0 +1,31 @@
+﻿:: wraith :: ghost resistances
+    glyph   = W
+    groups  = undead spirit
+
+shadow wraith :: wraith
+    color   = Gray
+    depth   = 72
+    health  = 170
+    moves
+        moan ::
+            damage  = 60t20
+            radius  = 5
+    attacks
+        envelops = 50t30 anima drain:experience
+    description =
+        Even after the alchemist has died, her shadow lives on, imbued with her evil spirit.
+
+wraith :: wraith
+    color   = Red
+    depth   = 98
+    health  = 300
+    moves
+        moan ::
+            damage  = 100t30
+            radius  = 5
+    attacks
+        envelops = 300t50 anima drain:experience
+    description =
+        The undead spirit of a powerful wizard. Using arcane magical powers, he
+        has freed himself from the shackles of a bodily prison and can now live
+        on through the ages, feeding off of magic and the souls of others.

@@ -1,0 +1,12 @@
+﻿:: lich
+    glyph   = L
+    groups  = undead zombie
+
+lich :: lich
+    color   = Gray
+    depth   = 80
+    speed   = +4
+    health  = 500
+    attacks
+        slashes = 20t5 death
+        claws = 10t5 death

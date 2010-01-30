@@ -1,0 +1,33 @@
+﻿:: light
+    category = Light Source
+    usage   = light
+
+Brand[s] :: light
+    art     = DarkBrown ~
+    price   = 2
+    light   = 2
+    charges = -1000
+    
+Candle[s] :: light
+    art     = White ~
+    price   = 5
+    light   = 1
+    charges = -2000
+
+Torch[es] :: light
+    art     = LightBrown ~
+    price   = 9
+    light   = 2
+    charges = -1000
+
+Resinous Flare[s] :: light
+    art     = Orange ~
+    price   = 20
+    light   = 5
+    charges = -10
+
+Lantern[s] :: light
+    art     = Gold ~
+    price   = 34
+    light   = 3
+    charges = -5000

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34C3758D-7282-45F3-9396-6D9925A0B180}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Amaranth.App</RootNamespace>
+    <AssemblyName>Amaranth.App</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.dotTrace.Api, Version=3.1.357.3, Culture=neutral, PublicKeyToken=a69a3c730d060360">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\JetBrains\dotTrace 3.1\JetBrains.dotTrace.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\GameControlExtensions.cs" />
+    <Compile Include="Classes\GameSettings.cs" />
+    <Compile Include="Controls\DescriptionControl.cs" />
+    <Compile Include="Controls\InventoryControl.cs" />
+    <Compile Include="Controls\LogControl.cs" />
+    <Compile Include="Controls\NewStatsControl.cs" />
+    <Compile Include="Controls\OverheadControl.cs" />
+    <Compile Include="Controls\PlayerInputControl.cs" />
+    <Compile Include="Controls\PromptDirectionBar.cs" />
+    <Compile Include="Controls\PromptTargetBar.cs" />
+    <Compile Include="Controls\StatsControl.cs" />
+    <Compile Include="Controls\StatusControl.cs" />
+    <Compile Include="Classes\GameArt.cs" />
+    <Compile Include="Classes\ItemsOnGroundCollection.cs" />
+    <Compile Include="Screens\DeathScreen.cs" />
+    <Compile Include="Screens\HelpScreen.cs" />
+    <Compile Include="Screens\HeroInfoScreen.cs" />
+    <Compile Include="Screens\LoadHeroScreen.cs" />
+    <Compile Include="Screens\NewHeroScreen.cs" />
+    <Compile Include="Classes\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Screens\PlayGameScreen.cs" />
+    <Compile Include="Screens\StoreScreen.cs" />
+    <Compile Include="Screens\WelcomeScreen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amaranth.Data\Amaranth.Data.csproj">
+      <Project>{BBFE0209-6E76-4183-BC44-F2007B804D2C}</Project>
+      <Name>Amaranth.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amaranth.Engine\Amaranth.Engine.csproj">
+      <Project>{3C656971-FFAD-46EE-A964-FB9CF7F468DC}</Project>
+      <Name>Amaranth.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amaranth.Terminals\Amaranth.Terminals.csproj">
+      <Project>{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}</Project>
+      <Name>Amaranth.Terminals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amaranth.UI\Amaranth.UI.csproj">
+      <Project>{6692B9FB-5FA0-4C3B-A15E-87C7723A7720}</Project>
+      <Name>Amaranth.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amaranth.Util\Amaranth.Util.csproj">
+      <Project>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</Project>
+      <Name>Amaranth.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

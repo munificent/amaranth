@@ -1,0 +1,87 @@
+﻿:: canine :: canine resistances
+    glyph   = C
+    groups  = animal dog
+
+mangy cur :: canine
+    color   = DarkBrown
+    depth   = 1
+    health  = 4
+    attacks
+        gnaws on = 1-4
+    description =
+        This annoying filthy dog won't stop nipping at your heels.
+    + very-erratic
+
+scruffy hound :: canine
+    color   = Yellow
+    depth   = 2
+    health  = 7
+    attacks
+        bites = 2-6
+    description =
+        A bony fleabag subsisting on scraps and rodents.
+    + erratic
+
+feral dog :: canine
+    color   = LightBrown
+    depth   = 6
+    health  = 16
+    attacks
+        bites = 5t3
+    + slightly-erratic
+
+feral pack dog :: canine
+    color   = LightBrown
+    depth   = 8
+    health  = 14
+    attacks
+        bites = 5t3
+    + groups
+    + slightly-erratic
+
+wolf :: canine
+    color   = LightGray
+    depth   = 11
+    health  = 24
+    attacks
+        bites = 10t3
+        claws = 3-6
+    + packs
+
+gray wolf :: canine
+    color   = Gray
+    depth   = 15
+    health  = 40
+    attacks
+        bites = 15t4
+        claws = 4-8
+    + packs
+
+wolf hound :: canine
+    color   = Blue
+    depth   = 23
+    health  = 50
+    attacks
+        bites = 20t4
+        claws = 6-12
+    + packs
+
+night wolf :: canine
+    color   = DarkGray
+    depth   = 27
+    health  = 64
+    speed   = +1
+    attacks
+        bites = 30t5
+        claws = 10t4
+    + packs
+    
+plague dog :: canine
+    color   = Green
+    depth   = 34
+    health  = 64
+    speed   = +2
+    attacks
+        bites = 30t5 disease
+        claws = 12t4 disease
+    + packs

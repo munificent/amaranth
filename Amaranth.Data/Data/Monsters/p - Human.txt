@@ -1,0 +1,64 @@
+﻿:: human :: animal
+    glyph   = p
+    groups  = humanoid
+
+starving traveller :: human
+    color     = Green
+    depth     = 2
+    health    = 5
+    attacks
+        hits = 4t2
+    drops
+        (coin) (25%)
+        (light-source) (70%)
+    description
+        Starving and lost in the dungeon. Killing him would be a mercy.
+    + erratic
+    + glows
+    
+lost adventurer :: human
+    color     = Cyan
+    depth     = 5
+    health    = 20
+    attacks
+        hits = 8t2
+    drops
+        (coin) (25%)
+        (dagger) (30%)
+        (light-source) (30%)
+        (boots) (20%)
+    description
+        Tired and hungry, he attacks you in desperation.
+    + slightly-erratic
+    + bright
+    
+novice adventurer :: human
+    color     = Gray
+    depth     = 9
+    health    = 24
+    attacks
+        hits = 8t2
+    drops
+        (coin) (25%)
+        (light-source) (40%)
+        one of (70%)
+            (helm) (20%)
+            (club) (30%)
+    description
+        He wanders around the dungeon, scrounging for paltry treasure.
+
+haggard warrior :: human
+    color     = Gray
+    depth     = 13
+    health    = 32
+    attacks
+        hits = 11t2
+    drops
+        (coin) (25%)
+        (light-source) (30%)
+        one of (80%)
+            (shield)
+            (helm)
+            (whip)
+    description
+        An aging warrior, years past his prime.

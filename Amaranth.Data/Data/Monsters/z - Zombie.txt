@@ -1,0 +1,30 @@
+﻿:: zombie
+    glyph   = z
+    groups  = undead zombie
+
+disembodied hand :: zombie
+    color   = Cyan
+    depth   = 38
+    health  = 30
+    speed   = -4
+    attacks
+        claws = 12t5 death
+        grabs = 8t5 death
+    description =
+        On the ground is a rotting hand, hacked off at the wrist. Blind,
+        it struggles to find some living flesh to latch onto.
+    + erratic
+
+disembodied head :: zombie
+    color   = Green
+    depth   = 42
+    health  = 40
+    speed   = -3
+    attacks
+        bites = 22t5 death
+    description =
+        The severed rotting head of a zombie glares at you with dumb malevolence.
+        If only it could reach you!
+    + unmoving
+
+// zombie wight ghoul ghast revenant

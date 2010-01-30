@@ -1,0 +1,39 @@
+﻿:: dagger
+    category = Melee Weapon
+
+Knife|Knives :: dagger
+    art     = Gray |
+    attack  = 1-3 metal
+    price   = 10
+    
+Dirk[s] :: dagger
+    art     = White |
+    attack  = 1-4 metal
+    price   = 20
+    
+Dagger[s] :: dagger
+    art     = LightGray |
+    attack  = 1-5 metal
+    price   = 30
+            
+Stiletto[s] :: dagger
+    art     = DarkGray |
+    attack  = 1-6 metal
+    price   = 50
+
+Rondel[s] :: dagger
+    art     = LightCyan |
+    attack  = 3-7 metal
+    price   = 100
+    
+Baselard[s] :: dagger
+    art     = LightBlue |
+    attack  = 3-10 metal
+    price   = 220
+    
+Main-guache[s] :: dagger
+    art     = White |
+    attack  = 4-12 metal
+    price   = 500
+
+// Unique dagger: "Mercygiver" (see Misericorde at Wikipedia)

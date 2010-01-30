@@ -1,0 +1,27 @@
+﻿:: one-handed sword
+    category = Melee Weapon
+
+Rapier[s] :: one-handed sword
+    art     = Gray |
+    attack  = 1-10 metal
+    price   = 45
+
+Shortsword[s] :: one-handed sword
+    art     = Gray |
+    attack  = 2-11 metal
+    price   = 160
+
+Scimitar[s] :: one-handed sword
+    art     = LightGray |
+    attack  = 3-13 metal
+    price   = 240
+
+Cutlass[es] :: one-handed sword
+    art     = White |
+    attack  = 3-14 metal
+    price   = 660
+
+Falchion[s] :: one-handed sword
+    art     = LightGray |
+    attack  = 4-15 metal
+    price   = 980

@@ -1,0 +1,38 @@
+﻿:: ring
+    category = Ring
+
+// Resistances
+
+Ring[s] of Fire :: ring
+    art     = Red =
+    price   = 1200
+    + resist:fire
+    
+Ring[s] of Acid :: ring
+    art     = Green =
+    price   = 1400
+    + resist:acid
+
+Ring[s] of Ice :: ring
+    art     = White =
+    price   = 2200
+    + resist:water
+    + resist:cold
+
+Ring[s] of Light :: ring
+    art     = Yellow =
+    price   = 2400
+    + resist:lightning
+    + resist:light
+
+Ring[s] of Poison :: ring
+    art     = DarkGreen =
+    price   = 4200
+    + resist:poison
+
+Ring[s] of the Ether :: ring
+    art     = Cyan =
+    price   = 5600
+    + resist:anima
+    + resist:metal
+    + resist:wood

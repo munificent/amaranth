@@ -1,0 +1,29 @@
+﻿// sprite, pixie, fairy, halfling
+// minotaur, centaur, satyr, harpy, 
+
+// nymph, dryad, naiad, lampade
+// naga
+
+// archer warrior fighter barbarian swordsman
+// adventurer traveller
+// rogue thief rapscallion cutthroat 
+// mage sorceror alchemist
+// knight squire
+
+// unique: typhon (see wikipedia)
+
+// see: http://en.wikipedia.org/wiki/Category:Non-human_races_in_Hindu_mythology
+// http://www.pantheon.org http://www.pantheon.org/areas/bestiary/articles.html
+
+:: hybrid
+    glyph = H
+
+minotaur :: hybrid
+    color     = Brown
+    depth     = 65
+    health    = 260
+    speed     = 2
+    attacks
+        butts = 24t8
+        slashes = 30t5
+

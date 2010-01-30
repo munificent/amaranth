@@ -1,0 +1,77 @@
+﻿:: spider :: spider resistances
+    glyph = a
+    groups = bug
+    
+lone cave spider :: spider
+    color   = DarkGray
+    depth   = 1
+    health  = 2
+    speed   = +3
+    attacks
+        bites   = 1-2 poison
+    description =
+        A lone fist-sized black spider, seemingly lost.
+    + very-erratic
+
+cave spider :: spider
+    color   = DarkGray
+    depth   = 3
+    health  = 2
+    speed   = +2
+    attacks
+        bites   = 1-2 poison
+    description =
+        A crawling swarm of fist-sized black spiders.
+    + groups
+    + very-erratic
+        
+wolf spiderling :: spider
+    color   = Brown
+    depth   = 9
+    health  = 6
+    speed   = +1
+    attacks
+        bites   = 3-5 poison
+    description =
+        A skittering swarm of furry young spiders. You shudder to think
+        of the parent that spawned these fearsome creatures.
+    + groups
+    + erratic
+
+wolf spider :: spider
+    color   = DarkBrown
+    depth   = 15
+    health  = 30
+    speed   = +2
+    attacks
+        bites   = 16t3
+    description =
+        As large as a dog and covered in brown fur, you could almost
+        mistake it for a wolf except for the eight legs and shiny
+        black eyes.
+    + erratic
+
+black widow :: spider
+    color   = DarkRed
+    depth   = 20
+    health  = 5
+    speed   = +3
+    attacks
+        bites   = 60t6 poison
+    description =
+        Deceptively small, the bright red hourglass on its back
+        reminds you of the dangerous poison contained inside this
+        little spider.
+    + slightly-erratic
+       
+giant tarantula :: spider
+    color   = Orange
+    depth   = 38
+    health  = 200
+    speed   = +2
+    attacks
+        bites   = 20t4 poison
+        claws   = 30t4
+    description =
+        This lumbering hulk of a spider almost fills the passageway
+        with its eight furry legs.

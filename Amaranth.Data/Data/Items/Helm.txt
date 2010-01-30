@@ -1,0 +1,28 @@
+﻿:: helm
+    category = Armor
+    subcategory = Helm
+
+Leather Cap[s] :: helm
+    art     = DarkBrown ]
+    armor   = 3
+    price   = 26
+
+Chainmail Coif[s] :: helm
+    art     = Gray ]
+    armor   = 7
+    price   = 88
+
+Steel Cap[s] :: helm
+    art     = LightGray ]
+    armor   = 12
+    price   = 170
+
+Visored Helm[s] :: helm
+    art     = Gray ]
+    armor   = 16
+    price   = 260
+
+Great Helm[s] :: helm
+    art     = White ]
+    armor   = 22
+    price   = 780

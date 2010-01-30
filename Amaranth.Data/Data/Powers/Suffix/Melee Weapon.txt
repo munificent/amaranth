@@ -1,0 +1,98 @@
+﻿:: melee power
+    categories  = Melee Weapon
+
+// strike bonus weapons
+of Precision :: melee power
+    level       = 1 to 70
+    rarity      = 2
+    strike      = 1-5
+    
+of Accuracy :: melee power
+    appearance  = Yellow
+    level       = 60 to 100
+    rarity      = 3
+    strike      = 6-12
+
+// damage bonus weapons
+of Damage :: melee power
+    appearance  = Orange
+    level       = 1 to 60
+    rarity      = 2
+    damage      = 15-25
+
+of Harming :: melee power
+    appearance  = Orange
+    level       = 50 to 90
+    rarity      = 3
+    damage      = 25-45
+
+of Ruin :: melee power
+    appearance  = Orange
+    level       = 80 to 100
+    rarity      = 5
+    damage      = 45-80
+
+// damage and strike bonus weapons
+of Wounding :: melee power
+    appearance  = DarkRed
+    level       = 50 to 90
+    rarity      = 4
+    strike      = 1-4
+    damage      = 15-25
+    
+of Maiming :: melee power
+    appearance  = DarkRed
+    level       = 80 to 100
+    rarity      = 6
+    strike      = 4-10
+    damage      = 25-45
+    
+of Slaying :: melee power
+    appearance  = DarkRed
+    level       = 90 to 100
+    rarity      = 9
+    strike      = 10-25
+    damage      = 45-80
+
+// elemental brand
+of Fire :: of Wounding
+    appearance  = Red
+    level       = 30 to 80
+    rarity      = 4
+    element     = fire
+
+of Ice :: of Wounding
+    appearance  = White
+    level       = 30 to 80
+    rarity      = 4
+    element     = cold
+
+of Lightning :: of Maiming
+    appearance  = Purple
+    level       = 60 to 100
+    rarity      = 4
+    element     = lightning
+
+of Acid :: of Maiming
+    appearance  = Red
+    level       = 60 to 100
+    rarity      = 4
+    element     = acid
+
+of Poison :: of Slaying
+    appearance  = Green
+    level       = 80 to 100
+    rarity      = 4
+    element     = poison
+
+of Death :: of Slaying
+    appearance  = DarkGray
+    level       = 80 to 100
+    rarity      = 4
+    element     = death
+
+// slaying groups
+of Slay Trolls :: melee power
+    + slays-troll
+    level       = 10 to 50
+    rarity      = 2

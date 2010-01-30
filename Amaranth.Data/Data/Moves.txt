@@ -1,0 +1,137 @@
+﻿// bolt
+
+:: bolt
+    move    = bolt
+    radius  = 10
+    odds    = 1 in 8
+    
+:: ooze jet :: bolt
+    noun    = a jet of ooze
+    element = anima
+    radius  = 4
+    
+:: arrow :: bolt
+    noun    = an arrow
+    element = wood
+    effect  = arrow
+    
+:: fire bolt :: bolt
+    noun    = a plume of fire
+    element = fire
+    
+:: acid bolt :: bolt
+    noun    = a jet of acid
+    element = acid
+     
+:: cold bolt :: bolt
+    noun    = a spear of ice
+    element = cold
+   
+:: lightning bolt :: bolt
+    noun    = a bolt of lightning
+    element = lightning
+
+:: poison bolt :: bolt
+    noun    = a jet of poison
+    element = poison
+
+:: light bolt :: bolt
+    noun    = a flash of light
+    element = light
+
+:: death bolt :: bolt
+    noun    = a bolt of death
+    element = death
+
+// ball self
+
+:: ball self
+    move    = ball self
+    radius  = 2
+    
+:: spores :: ball self
+    odds    = 1 in 1
+    noun    = a cloud of spores
+    damage  = 5t3
+    element = poison
+
+:: fire ball self :: ball self
+    odds    = 1 in 4
+    noun    = a ball of fire
+    damage  = 15t3
+    element = fire
+
+// cone
+
+:: cone
+    move    = cone
+    odds    = 1 in 7
+    radius  = 6
+
+:: moan :: cone
+    noun    = the eerie moan
+    radius  = 3
+    damage  = 20t3
+    element = cold
+
+:: splinters :: cone
+    noun    = a burst of splinters
+    radius  = 4
+    damage  = 10t3
+    element = wood
+
+:: spray :: cone
+    noun    = a fierce spray of water
+    radius  = 5
+    damage  = 16t3
+    element = water
+
+:: shards :: cone
+    noun    = a fan of metal shards
+    radius  = 5
+    damage  = 20t10
+    element = metal
+
+:: dark cone :: cone
+    noun    = a burst of dark
+    damage  = 8t3
+    element = dark
+
+:: light cone :: cone
+    noun    = a burst of light
+    damage  = 8t3
+    element = light
+
+// breathe
+
+:: breathe
+    move    = breathe
+    radius  = 7
+
+:: breathe fire :: breathe
+    noun    = the fire breath
+    element = fire
+
+:: breathe poison :: breathe
+    noun    = the poison breath
+    element = poison
+
+:: breathe death :: breathe
+    noun    = the death breath
+    element = death
+
+// message
+
+:: message
+    move    = message
+    
+:: vomit :: message
+    verb    = vomit[s] on
+        
+:: curse :: message
+    verb    = curse[s] incoherently at
+
+// breed
+
+:: breed
+    odds = 1 in 10

@@ -1,0 +1,58 @@
+﻿:: ichor  :: jelly resistances
+    glyph   = i
+    groups  = jelly
+    + unmoving
+
+festering ichor :: ichor
+    color   = Gold
+    depth   = 11
+    health  = 6
+    attacks
+        touches = 3-4 drain:charisma
+    description =
+        An ugly puddle of yellowish ooze.
+
+seeping ichor :: ichor
+    color   = Purple
+    depth   = 13
+    health  = 10
+    attacks
+        touches = 4-5 drain:will
+    description =
+        This little puddle seems to be moving, but just barely.
+
+quivering ichor :: ichor
+    color   = Gray
+    depth   = 15
+    health  = 18
+    attacks
+        touches = 6t2 drain:intellect
+    description =
+        It looks like a lump of brain matter, smeared on the ground.
+
+bubbling ichor :: ichor
+    color   = Green
+    depth   = 17
+    health  = 20
+    attacks
+        touches = 8t2 drain:agility
+    description =
+        It seems a little too... energetic... for a puddle.
+
+bile-colored ichor :: ichor
+    color   = DarkGray
+    depth   = 20
+    health  = 23
+    attacks
+        touches = 12t2 drain:stamina
+    description =
+        Just looking at this sickly puddle makes you feel weak.
+
+pinkish ichor :: ichor
+    color   = Pink
+    depth   = 23
+    health  = 27
+    attacks
+        touches = 18t2 drain:strength
+    description =
+        A creeping puddle of flesh-colored slime.

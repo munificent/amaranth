@@ -1,0 +1,37 @@
+﻿:: ancient dragon
+    glyph   = D
+    groups  = dragon
+    drops
+        (coins)
+        2-3(1:8) one of
+            (any weapon)
+            (any-armor)
+
+ancient green dragon :: ancient dragon
+    color   = Green
+    depth   = 70
+    speed   = +2
+    health  = 200
+    attacks
+        bites = 25t9
+        claws = 15t5
+            
+ancient fire drake :: ancient dragon
+    color   = DarkRed
+    depth   = 80
+    speed   = +3
+    health  = 400
+    attacks
+        bites = 30t12
+        claws = 18t7
+        breathes fire on = 50t7
+
+great wyrm of destruction :: ancient dragon
+    color   = Purple
+    depth   = 99
+    speed   = +3
+    health  = 4000
+    attacks
+        bites = 50t12
+        claws = 38t15
+        breathes fire on = 300t70

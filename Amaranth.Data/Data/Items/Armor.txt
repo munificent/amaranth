@@ -1,0 +1,89 @@
+﻿:: armor
+    category    = Armor
+    subcategory = Torso
+    glyph       = [
+    
+Robe[s] :: armor
+    color   = Cyan
+    armor   = 3
+    price   = 40
+
+Lined Robe[s] :: armor
+    color   = LightPurple
+    armor   = 6
+    price   = 112
+
+Cloth Shirt[s] :: armor
+    color   = White
+    armor   = 1
+    price   = 12
+
+Leather Shirt[s] :: armor
+    color   = DarkBrown
+    armor   = 2
+    price   = 30
+
+Soft Leather Armor[s] :: armor
+    color   = LightBrown
+    armor   = 5
+    price   = 65
+
+Hard Leather Armor[s] :: armor
+    color   = Brown
+    armor   = 8
+    price   = 160
+
+Studded Leather Armor[s] :: armor
+    color   = LightBrown
+    armor   = 10
+    price   = 250
+
+Leather Scale Mail[s] :: armor
+    color   = Gray
+    armor   = 14
+    price   = 450
+
+Mail Hauberk[s] :: armor
+    color   = LightGray
+    armor   = 18
+    price   = 740
+
+Metal Lamellar Armor[s] :: armor
+    color   = Gray
+    armor   = 21
+    price   = 1100
+
+Chain Mail Armor[s] :: armor
+    color   = LightGray
+    armor   = 24
+    price   = 1540
+    
+Metal Scale Mail[s] :: armor
+    color   = Gray
+    armor   = 30
+    price   = 2300
+
+Plated Mail[s] :: armor
+    color   = White
+    armor   = 38
+    price   = 3800
+
+Brigandine[s] :: armor
+    color   = Blue
+    armor   = 48
+    price   = 5400
+
+Steel Breastplate[s] :: armor
+    color   = White
+    armor   = 56
+    price   = 7800
+
+Partial Plate Armor[s] :: armor
+    color   = LightGray
+    armor   = 70
+    price   = 12600
+
+Full Plate Armor[s] :: armor
+    color   = White
+    armor   = 96
+    price   = 18300

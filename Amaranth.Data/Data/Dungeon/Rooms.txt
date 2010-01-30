@@ -1,0 +1,6 @@
+﻿one of
+    stair (2%)
+    room (70%)
+    maze (3%)
+    pit (2%)
+    junction (23%)

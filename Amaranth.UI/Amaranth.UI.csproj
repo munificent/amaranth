@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6692B9FB-5FA0-4C3B-A15E-87C7723A7720}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Amaranth.UI</RootNamespace>
+    <AssemblyName>Amaranth.UI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Controls\Control.cs" />
+    <Compile Include="Classes\ControlCollection.cs" />
+    <Compile Include="Classes\Controls\FixedMenu.cs" />
+    <Compile Include="Classes\Controls\NonvisualControl.cs" />
+    <Compile Include="Classes\Controls\PositionControl.cs" />
+    <Compile Include="Classes\Controls\PromptBar.cs" />
+    <Compile Include="Classes\Controls\PromptNumberBar.cs" />
+    <Compile Include="Classes\Controls\PromptYesNoBar.cs" />
+    <Compile Include="Classes\Controls\RectControl.cs" />
+    <Compile Include="Classes\Controls\TitleBar.cs" />
+    <Compile Include="Interfaces\IFocusable.cs" />
+    <Compile Include="Interfaces\IInputHandler.cs" />
+    <Compile Include="Interfaces\IUserInterfaceScreen.cs" />
+    <Compile Include="Classes\KeyInfo.cs" />
+    <Compile Include="Classes\KeyInstruction.cs" />
+    <Compile Include="Classes\Controls\Label.cs" />
+    <Compile Include="Classes\Controls\Menu.cs" />
+    <Compile Include="Classes\Controls\MenuItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Screen.cs" />
+    <Compile Include="Classes\Controls\ScrollMenu.cs" />
+    <Compile Include="Classes\Controls\StatusBar.cs" />
+    <Compile Include="Classes\Controls\TextBox.cs" />
+    <Compile Include="Classes\UserInterface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amaranth.Terminals\Amaranth.Terminals.csproj">
+      <Project>{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}</Project>
+      <Name>Amaranth.Terminals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amaranth.Util\Amaranth.Util.csproj">
+      <Project>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</Project>
+      <Name>Amaranth.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

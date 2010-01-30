@@ -1,0 +1,75 @@
+﻿:: snake
+    glyph   = S
+    groups  = reptile animal
+
+green snake :: snake
+    color   = Green
+    depth   = 8
+    health  = 20
+    attacks
+        bites = 5-6 poison
+    description =
+        A long slender snake with glistening fangs.
+    + slightly-erratic
+        
+rattlesnake :: snake
+    color   = Orange
+    depth   = 16
+    health  = 34
+    attacks
+        bites = 20t8 poison
+    description =
+        A massive snake, it's rattle warns you of its venemous bite.
+    + slightly-erratic
+
+cobra :: snake
+    color   = Cyan
+    depth   = 28
+    health  = 48
+    attacks
+        bites = 50t8 poison
+    description =
+        Feared for its venemous bite, it raises its head and flares its hood in warning.
+    + slightly-erratic
+           
+adder :: snake
+    color   = DarkGray
+    depth   = 31
+    health  = 14
+    speed   = +1
+    attacks
+        bites = 100t80 poison
+    description =
+        It just looks like a piece of dark rope laying there on the ground.
+     
+king cobra :: snake
+    color   = LightGray
+    depth   = 35
+    health  = 90
+    speed   = +1
+    attacks
+        bites = 70t8 poison
+    description =
+        Much more dangerous than its smaller cousin, this cobra is as tall as you when it rears up.
+    + slightly-erratic
+        
+asp :: snake
+    color   = DarkGold
+    depth   = 41
+    health  = 20
+    speed   = +2
+    attacks
+        bites = 300t80 poison
+    description =
+        A tiny harmless looking sand-colored snake. What's to fear?
+    
+python :: snake
+    color   = DarkGreen
+    depth   = 55
+    health  = 300
+    attacks
+        bites = 40t8
+        constricts = 60t20
+    description =
+        Largest of all snakes, its heavy body fills the dungeon passageway, 30 feet of scaled muscle.
+    // paralyze?

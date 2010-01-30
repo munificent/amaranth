@@ -1,0 +1,13 @@
+﻿:: lesser demon
+    glyph   = u
+    groups  = demon
+
+mischevious imp :: lesser demon
+    color   = Cyan
+    depth   = 10
+    speed   = +2
+    health  = 10
+    attacks
+        curses = 4t3
+        prods = 5t3
+    + erratic

@@ -1,0 +1,28 @@
+﻿:: boots
+    category = Armor
+    subcategory = Boots
+
+Pair[s] of Leather Sandals :: boots
+    art      = LightBrown ]
+    armor    = 1
+    price    = 18
+
+Pair[s] of Leather Shoes :: boots
+    art      = Brown ]
+    armor    = 2
+    price    = 36
+
+Pair[s] of Leather Boots :: boots
+    art      = DarkBrown ]
+    armor    = 4
+    price    = 84
+
+Pair[s] of Metal Shod Boots :: boots
+    art      = Gray ]
+    armor    = 8
+    price    = 280
+
+Set[s] of Greaves :: boots
+    art      = LightGray ]
+    armor    = 10
+    price    = 670

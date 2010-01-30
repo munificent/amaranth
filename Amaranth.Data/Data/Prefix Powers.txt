@@ -1,0 +1,5 @@
+﻿// Main root file for the power data. Includes the base properties, then all of the individual files.
+
+#include "Data/Item Info.txt"
+
+#include "Data/Powers/Prefix"

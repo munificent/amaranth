@@ -1,0 +1,80 @@
+﻿:: skeleton
+    glyph   = s
+    groups  = undead zombie
+
+skeleton dog :: skeleton
+    color   = Yellow
+    depth   = 43
+    health  = 12
+    attacks
+        bites = 2-6 death
+    description =
+        A wild hound in life, it has been re-animated in death. It looks
+        to be carrying one of its own bones in its mouth.
+    + erratic
+
+skeleton goblin :: skeleton
+    color   = Orange
+    depth   = 46
+    health  = 16
+    attacks
+        scratches = 3-8 death
+    description =
+        This dirty little man smells even worse dead than it did alive.
+    + slightly-erratic
+
+skeleton kobold :: skeleton
+    color   = LightGray
+    depth   = 49
+    health  = 20
+    attacks
+        bites       = 4-8 death
+        scratches   = 3-6 death
+    description =
+        A wolf's skull seems to be on top of this small human-like skeleton.
+    + slightly-erratic
+
+skeleton orc :: skeleton
+    color   = Green
+    depth   = 55
+    health  = 30
+    attacks
+        scratches   = 4-8 death
+        bashes      = 5-10 wood
+    description =
+        It carries a rotting club in one massive skeletal claw.
+    + slightly-erratic
+
+skeleton human :: skeleton
+    color   = White
+    depth   = 57
+    health  = 30
+    attacks
+        scratches   = 4-7 death
+        stabs       = 7-11 metal
+    description =
+        For skeleton, it seems surprisingly spry, not to mention the rusty dagger in its hand.
+
+skeleton troll :: skeleton
+    color   = Gray
+    depth   = 67
+    health  = 50
+    attacks
+        bites       = 8-12 death
+        scratches   = 7-12 death
+        bashes      = 15t5 wood
+    description =
+        A massive animated skeleton bears down on you wielding a club.
+    + slightly-erratic
+
+skeleton giant :: skeleton
+    color   = Gold
+    depth   = 77
+    health  = 100
+    attacks
+        bites       = 18t4 death
+        scratches   = 16t8 death
+        bashes      = 25t5 wood
+    description =
+        A huge magically living skeleton towers over you. It hefts a tree trunk like a mighty club.
+    + slightly-erratic

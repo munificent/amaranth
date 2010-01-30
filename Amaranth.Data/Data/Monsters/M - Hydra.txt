@@ -1,0 +1,14 @@
+﻿:: hydra
+    glyph   = M
+    groups  = reptile
+
+hydra :: hydra
+    color   = LightGreen
+    depth   = 80
+    health  = 350
+    speed   = +5
+    attacks
+        bites = 25t5
+        claws = 40t5
+        mauls = 50t5
+        chews = 32t5

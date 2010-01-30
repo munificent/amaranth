@@ -1,0 +1,15 @@
+﻿:: food
+    category = Food
+    use = GainHealth()
+    + dissolves
+    + burns-up
+    
+Bread[s] of Health :: food
+    art     = Yellow ,
+    attack  = 2-4
+    price   = 3000
+
+Bread[s] of Vigor :: food
+    art     = DarkYellow ,
+    attack  = 5-8
+    price   = 6000

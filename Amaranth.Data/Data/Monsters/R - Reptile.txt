@@ -1,0 +1,35 @@
+﻿:: reptile
+    glyph   = R
+    groups  = reptile animal
+
+rock lizard :: reptile
+    color   = Brown
+    depth   = 1
+    speed   = -1
+    health  = 5
+    attacks
+        bites = 1-3
+    description =
+        A mottled lizard, scurrying to get out from underfoot.
+    + slightly-erratic
+        
+cave lizard :: reptile
+    color   = Gray
+    depth   = 4
+    health  = 15
+    attacks
+        bites = 1-3
+    description =
+        A surprisingly tough little lizard that blends in with the dungeon floor.
+    + slightly-erratic
+        
+hellbender :: reptile
+    color   = DarkCyan
+    depth   = 9
+    health  = 40
+    speed   = -1
+    attacks
+        bites = 10t2 fire
+    description =
+        An odd, ungainly looking salamander. It seems angry to be out of water.
+    + erratic

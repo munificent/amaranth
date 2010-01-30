@@ -1,0 +1,41 @@
+﻿// The races a hero can choose from. Distinct from monster races.
+
+Dwarf
+    strength    = +4
+    agility     = -3
+    stamina     = +3
+    will        = +1
+    intellect   = -3
+    charisma    = -2
+    
+Elf
+    strength    = -3
+    agility     = +2
+    stamina     = -1
+    will        = 0
+    intellect   = +3
+    charisma    = +1
+    
+Faerie
+    strength    = -4
+    agility     = +3
+    stamina     = -2
+    will        = +3
+    intellect   = 0
+    charisma    = +2
+    
+Gnome
+    strength    = -2
+    agility     = -1
+    stamina     = +1
+    will        = -1
+    intellect   = +4
+    charisma    = -1
+    
+Human
+    strength    = +2
+    agility     = +1
+    stamina     = 0
+    will        = -1
+    intellect   = -2
+    charisma    = 0

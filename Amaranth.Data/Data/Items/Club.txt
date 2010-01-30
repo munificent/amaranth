@@ -1,0 +1,32 @@
+﻿:: club
+    category = Melee Weapon
+
+Cudgel[s] :: club
+    art     = LightBrown \
+    attack  = 1-4 wood
+    price   = 12
+
+Club[s] :: club
+    art     = Brown \
+    attack  = 1-5 wood
+    price   = 28
+    
+Quarterstaff|Quarterstaves :: club
+    art     = DarkBrown \
+    attack  = 2-8 wood
+    price   = 40
+    
+Hammer[s] :: club
+    art     = Gray \
+    attack  = 3-5 metal
+    price   = 40
+    
+Mattock[s] :: club
+    art     = DarkGray \
+    attack  = 4-6 metal
+    price   = 80
+    
+Warhammer[s] :: club
+    art     = LightGray \
+    attack  = 5-8 metal
+    price   = 240

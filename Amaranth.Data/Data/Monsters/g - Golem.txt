@@ -1,0 +1,4 @@
+﻿// Glopkins are a sad race of humanoids made by shaping jellies and slimes into crude human
+// shapes and magically animating them.
+
+// Also, golems.

@@ -1,0 +1,64 @@
+﻿:: necklace
+    category = Necklace
+
+Pearl Amulet[s] of Resist Air :: necklace
+    art     = LightGray "
+    price   = 1200
+    + resist:air
+
+Quartz Amulet[s] of Resist Earth :: necklace
+    art     = Brown "
+    price   = 2200
+    + resist:earth
+    + resist:metal
+
+Ruby Amulet[s] of Resist Fire :: necklace
+    art     = Red "
+    price   = 1600
+    + resist:fire
+
+Sodalite Amulet[s] of Resist Water :: necklace
+    art     = Blue "
+    price   = 1400
+    + resist:water
+
+Diamond Amulet[s] of Resist Acid :: necklace
+    art     = White "
+    price   = 1400
+    + resist:acid
+
+Emerald Amulet[s] of Resist Lightning :: necklace
+    art     = Green "
+    price   = 1400
+    + resist:lightning
+
+Jade Amulet[s] of Resist Poison :: necklace
+    art     = DarkGreen "
+    price   = 3200
+    + resist:poison
+
+Amethyst Amulet[s] of Frost :: necklace
+    art     = Purple "
+    price   = 3200
+    + resist:cold
+    + resist:water
+
+Onyz Amulet[s] of Daylight :: necklace
+    art     = DarkGray "
+    price   = 2400
+    + resist:light
+    + resist:dark
+
+Bone Amulet[s] of Life :: necklace
+    art     = LightYellow "
+    price   = 6400
+    + resist:anima
+    + resist:death
+    + resist:dark
+    + resist:wood
+
+Amethyst Amulet[s] of Ice :: necklace
+    art     = LightPurple "
+    price   = 6400
+    + resist:cold
+    + resist:water

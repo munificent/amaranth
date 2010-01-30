@@ -1,0 +1,73 @@
+﻿(shield)
+    one near level
+        small leather shield (8)
+        wooden targe (18)
+        large leather shield (34)
+        steel buckler (46)
+        kite shield (63)
+
+(helm)
+    one near level
+        leather cap (6)
+        chainmail coif (17)
+        steel cap (23)
+        visored helm (42)
+        great helm (65)
+
+(boots)
+    one near level
+        pair of leather sandals (3)
+        pair of leather shoes (7)
+        pair of leather boots (13)
+        pair of metal shod boots (30)
+        set of greaves (60)
+
+(gloves)
+    one near level
+        pair of leather gloves (1)
+        set of bracers (60)
+        pair of gauntlets (80)
+
+(soft-armor)
+    one near level
+        cloth shirt (1)
+        leather shirt (14)
+        soft leather armor (21)
+        hard leather armor (34)
+        studded leather armor (47)
+        leather scale mail (60)
+
+(robe)
+    one near level
+        robe (1)
+        lined robe (25)
+
+(hard-armor)
+    one near level
+        leather scale mail (18)
+        mail hauberk (21)
+        metal lamellar armor (29)
+        chain mail armor (36)
+        metal scale mail (46)
+        plated mail (58)
+        brigandine (67)
+        steel breastplate (75)
+        partial plate armor (85)
+        full plate armor (93)
+
+(cloak)
+    one near level
+        cloak (10)
+        velvet cloak (20)
+        fur-lined cloak (50)
+        
+(any-armor)
+    one of
+        (shield)
+        (helm)
+        (boots)
+        (gloves)
+        (cloak)
+        (robe)
+        (soft-armor)
+        (hard-armor)

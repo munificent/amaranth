@@ -1,0 +1,32 @@
+﻿(elemental-ring)
+    one of
+        ring of fire (25)
+        ring of acid (25)
+        ring of ice (25)
+        ring of light (15)
+        ring of poison (7%)
+        ring of the ether (3%)
+     
+(amulet)
+    one near level
+        one of (25)
+            pearl amulet of resist air
+            quartz amulet of resist earth
+            ruby amulet of resist fire
+            sodalite amulet of resist water
+            diamond amulet of resist acid
+        onyz amulet of daylight (45)
+        emerald amulet of resist lightning (50)
+        jade amulet of resist poison (60)
+        amethyst amulet of frost (70)
+        bone amulet of life (80)
+        amethyst amulet of ice (90)
+
+(light-source)
+    one of
+        one near level (80%)
+            brand (1)
+            candle (3)
+            torch (8)
+            lantern (25)
+        resinous flare (20%)

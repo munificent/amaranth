@@ -1,0 +1,184 @@
+﻿// Here's approximately the level distributions for the different
+// broad categories on monsters. Monsters are very roughly lumped
+// together so that different depths tend to have a different
+// feel. This doesn't mean that all monsters of a category will
+// fall in that range, just that they tend to. For every group,
+// there will likely be some oddball out of range monsters, like
+// death molds.
+
+//                   0  10  20  30  40  50  60  70  80  90 100
+// jelly             OOOooo-----
+// bugs              --oooOOOooo-----------
+// animals           ooOOOooooooo------
+// kobolds              --ooOOoo--
+// reptilians               --oooOOOo-
+// humanoids             ----oooooOOOOoooo----
+// plants                  --o--        --oooOoo----
+// orcs                    --ooOOOoo----
+// ogres                        --ooOOOo-
+// undead                            --------oOOOOOoooooo-----
+// trolls                           --ooOOOoooo-------
+// demons                                 -----ooooOOOOooooo--
+// elementals                   --------ooooooooooooo-----
+// golems                                --ooOOOoooo---
+// giants                                     --oooOOOooo-----
+// quylthulgs                                     -----ooooooo
+// mythical beasts                 ----------oooooooOOOOoo----
+// dragons                                  -----oooOOOoo-
+// ancient dragons                               ----ooooOOOOo
+// ancients                                            ---ooOO
+
+// jelly - unmoving, do interesting things when touched
+// bugs - quick, breed, normal attacks
+// animals - normal normal normal, sometimes groups
+// kobolds - weakest of the "human-like" races that can drop useable stuff
+// reptilians
+// humanoids
+// plants - poison touch, unmoving but very strong
+// orcs
+// ogres
+// undead
+//   zombies - slow, appear in groups, very bad to be touched by
+//   ghosts - quick, bad to be touched by
+
+
+// Here's the different letters used for monsters. Letters marked
+// with a * differ from how the letter is used in Angband.
+
+// Mine:
+// $   Creeping Coins      ,   Mushroom Patch
+// a*  Arachnid/Scorpion   A*  Ancient being
+// b   Giant Bat           B   Bird
+// c*  Crawling Insect     C   Canine (Dog)
+// d   Dragon              D   Ancient Dragon
+// e   Floating Eye        E   Elemental
+// f*  Flying Insect       F*  Feline (Cat)
+// g   Golem               G   Ghost
+// h   Humanoids           H   Hybrid
+// i*  Ichor               I*  Goblin / Imp
+// j   Jelly               J*  Slime
+// k   Kobold              K*  Kraken/Land Octopus
+// l*  Lizard man          L   Lich
+// m   Mold                M   Multi-Headed Hydra
+// n   Naga                N*  End boss
+// o   Orc                 O   Ogre
+// p   Human "person"      P   Giant "person"
+// q   Quadruped           Q   Quylthulg (Pulsing Flesh Mound)
+// r   Rodent              R   Reptile/Amphibian
+// s   Skeleton            S*  Snake
+// t*  Troglodyte          T   Troll
+// u   Minor Demon         U   Major Demon
+// v*  Vine/Plant          V   Vampire
+// w   Worm or Worm Mass   W   Wight/Wraith
+// x   (unused)            X   Xorn/Xaren
+// y   Yeek                Y   Yeti
+// z   Zombie/Mummy        Z   Zephyr Hound
+
+// From Angband:
+// $   Creeping Coins      ,   Mushroom Patch
+// a   Giant Ant           A   Angelic being
+// b   Giant Bat           B   Bird
+// c   Giant Centipede     C   Canine (Dog)
+// d   Dragon              D   Ancient Dragon
+// e   Floating Eye        E   Elemental
+// f   Feline (Cat)        F   Dragon Fly
+// g   Golem               G   Ghost
+// h   Humanoids           H   Hybrid
+// i   Icky-Thing          I   Insect
+// j   Jelly               J   Snake
+// k   Kobold              K   Killer Beetle
+// l   Giant Louse         L   Lich
+// m   Mold                M   Multi-Headed Hydra
+// n   Naga                N   (unused)
+// o   Orc                 O   Ogre
+// p   Human "person"      P   Giant "person"
+// q   Quadruped           Q   Quylthulg (Pulsing Flesh Mound)
+// r   Rodent              R   Reptile/Amphibian
+// s   Skeleton            S   Spider/Scorpion/Tick
+// t   Townsperson         T   Troll
+// u   Minor Demon         U   Major Demon
+// v   Vortex              V   Vampire
+// w   Worm or Worm Mass   W   Wight/Wraith
+// x   (unused)            X   Xorn/Xaren
+// y   Yeek                Y   Yeti
+// z   Zombie/Mummy        Z   Zephyr Hound
+
+#include "Data/Moves.txt"
+
+// Resistance types
+//  resists =  .air  .earth  .fire  .water    .metal  .wood    .acid  .cold  .lightning  .poison    .dark  .light    .anima  .death
+
+:: spider resistances
+    resists =  +air ++earth --fire  -water    .metal  .wood    .acid  .cold  .lightning ++poison    *dark  .light    .anima  -death
+
+:: bat resistances
+    resists =  -air  .earth  -fire  -water    -metal  -wood    .acid  -cold  -lightning  +poison    *dark  .light    .anima  -death
+
+:: bird resistances
+    resists =  -air  .earth  -fire  -water    -metal  -wood    .acid  -cold  -lightning  .poison    .dark  *light    .anima  -death
+
+:: canine resistances
+    resists =  .air  .earth  .fire  .water    .metal  .wood    .acid  -cold  .lightning  .poison    .dark  *light    .anima  -death
+
+:: bug resistances
+    resists =  +air  .earth --fire  +water    -metal  -wood    +acid  .cold  .lightning  +poison    +dark  +light    .anima  -death
+
+:: flying insect resistances
+    resists = --air  .earth --fire  +water    -metal  -wood    +acid  .cold  .lightning  +poison    .dark  *light    .anima  -death
+
+:: dwarf resistances
+    resists =  .air  +earth  -fire --water    +metal  .wood    .acid  +cold  +lightning  +poison    +dark  +light    .anima  -death
+
+:: jelly resistances
+    resists = ++air  -earth --fire --water    +metal  +wood    -acid --cold  -lightning  +poison    +dark  .light    .anima  .death
+    
+:: plant resistances
+    resists =  +air ++earth --fire ++water    -metal  +wood    -acid  .cold  -lightning  *poison    -dark  *light    .anima  -death
+
+// undead
+
+:: ghost resistances
+    resists = ++air ++earth  -fire ++water    *metal  *wood   ++acid ++cold  -lightning  *poison   ++dark --light   --anima  +death
+
+:: zombie resistances
+    resists =  .air  .earth ++fire  .water    -metal  -wood    -acid  *cold  +lightning  *poison    *dark --light    +anima  *death
+
+// elementals
+:: acid resistances
+    resists =  +air  -earth  +fire --water    +metal  +wood    *acid  -cold  -lightning  +poison    .dark  *light    .anima  .death
+
+:: anima resistances
+    resists =  .air  .earth  .fire  .water    +metal  +wood    .acid  .cold  .lightning  -poison    .dark  *light    *anima --death
+
+:: cold resistances
+    resists =  +air  +earth --fire  +water    +metal  +wood    +acid  *cold  -lightning  +poison    +dark  -light    -anima  .death
+
+:: dark resistances
+    resists =  .air ++earth --fire  .water    +metal  +wood    +acid  +cold --lightning  +poison    *dark --light    .anima  +death
+
+:: death resistances
+    resists =  +air ++earth  +fire  -water    +metal  +wood    +acid  +cold  -lightning  +poison    *dark --light   --anima  *death
+    
+:: earth resistances
+    resists = ++air  *earth ++fire --water    +metal  +wood    -acid  +cold  +lightning  +poison    .dark  *light    .anima  .death
+
+:: fire resistances
+    resists = ++air  -earth  *fire --water    +metal  +wood    +acid --cold  +lightning  +poison    -dark  *light    +anima  .death
+
+:: light resistances
+    resists =  .air --earth ++fire  .water    +metal  +wood    +acid  +cold ++lightning  +poison   --dark  *light    .anima  .death
+
+:: lightning resistances
+    resists = ++air --earth ++fire --water   ++metal  +wood    +acid  +cold  *lightning  +poison    -dark  +light    .anima  .death
+    
+:: metal resistances
+    resists =  +air  +earth  +fire  +water   ++metal  *wood   --acid  +cold --lightning  +poison    .dark  *light    +anima  .death
+
+:: poison resistances
+    resists =  +air  -earth  .fire  +water    +metal  +wood   --acid  -cold  -lightning  *poison    .dark  *light   ++anima  .death
+    
+:: water resistances
+    resists =  +air  +earth ++fire  *water    +metal  +wood    -acid --cold --lightning  -poison    .dark  *light    .anima  .death
+
+// include all of the individual race letter files
+#include "Data/Monsters"

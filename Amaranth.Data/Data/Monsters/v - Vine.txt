@@ -1,0 +1,114 @@
+﻿:: vine :: plant resistances
+    glyph   = v
+    groups  = plant
+
+puff ball :: vine
+    color   = Pink
+    depth   = 11
+    health  = 1
+    speed   = +5
+    moves
+        breed ::
+            odds = 1 in 4
+        spores ::
+    description =
+        Strange. What is such a delicate-looking flower doing down in a dungeon?
+    + unmoving
+
+thornbush :: vine
+    color   = DarkGreen
+    depth   = 13
+    health  = 20
+    speed   = -2
+    attacks
+        scratches = 26t5 wood
+        pokes = 16 poison
+    description =
+        A large thorny bush mysteriously growing in the dark of the dungeon.
+    + unmoving
+
+creeping weed :: vine
+    color   = Yellow
+    depth   = 15
+    health  = 40
+    speed   = -4
+    attacks
+        scratches = 22t5 wood
+        pokes = 22 poison
+    description =
+        A thorny mass of vegetation seems to stir on its own.
+
+spore patch :: vine
+    color   = DarkPurple
+    depth   = 17
+    health  = 10
+    speed   = +2
+    moves
+        spores ::
+    description =
+        Curious tiny little flowers dot the dungeon floor, faces turned upwards.
+    + groups
+    + unmoving
+   
+strangler vine :: vine
+    color   = Green
+    depth   = 23
+    health  = 50
+    speed   = -2
+    attacks
+        strangles = 42t5 wood
+        pokes = 22 poison
+    description =
+        Hanging from the ceiling is a thick ropy vine, swaying ominously.
+    + unmoving
+
+choke tree :: vine
+    color   = Brown
+    depth   = 45
+    health  = 300
+    speed   = +2
+    moves
+        spores ::
+            odds    = 1 in 5
+            radius  = 3
+            damage  = 15t5
+    attacks
+        strangles = 62t5 wood
+        chokes = 72t5 wood
+        pokes = 28 poison
+    description =
+        A large tree sits improbably in the dungeon. Are those... bodies hanging from its branches?
+    + unmoving
+
+vine swarm :: vine
+    color   = Cyan
+    depth   = 47
+    health  = 200
+    speed   = +1
+    attacks
+        strangles = 62t5 wood
+        chokes = 72t12 wood
+        scratches = 45t10 wood
+        pokes = 32 poison
+    description =
+        The dungeon floor is alive with a sea of creeping thorned vines.
+    + packs
+
+strangler mass :: vine
+    color   = Orange
+    depth   = 55
+    health  = 400
+    speed   = +4
+    moves
+        spores ::
+            odds    = 1 in 5
+            radius  = 3
+            damage  = 40t10
+    attacks
+        strangles = 62t12 wood
+        chokes = 72t12 wood
+        pokes = 52 poison
+    description =
+        A huge mass of strangler vines descend from the ceiling, all reaching towards you.
+    + groups
+    + unmoving

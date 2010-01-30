@@ -1,0 +1,28 @@
+﻿:: shield
+    category = Armor
+    subcategory = Shield
+    
+Small Leather Shield[s] :: shield
+    art     = LightBrown )
+    armor   = 4
+    price   = 65
+
+Wooden Targe[s] :: shield
+    art     = Brown )
+    armor   = 7
+    price   = 115
+
+Large Leather Shield[s] :: shield
+    art     = LightBrown )
+    armor   = 12
+    price   = 220
+
+Steel Buckler[s] :: shield
+    art     = Gray )
+    armor   = 16
+    price   = 340
+
+Kite Shield[s] :: shield
+    art     = White )
+    armor   = 24
+    price   = 630

@@ -1,0 +1,12 @@
+﻿:: missile weapon
+    category = Missile Weapon
+
+Sling[s] :: missile weapon
+    art         = LightBrown }
+    price       = 12
+    ammunition  = stone
+    
+Bow[s] :: missile weapon
+    art         = Brown }
+    price       = 47
+    ammunition  = arrow

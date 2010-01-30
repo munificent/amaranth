@@ -1,0 +1,233 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C656971-FFAD-46EE-A964-FB9CF7F468DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Amaranth.Engine</RootNamespace>
+    <AssemblyName>Amaranth.Engine</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Circle.cs" />
+    <Compile Include="Classes\Content\Content.cs" />
+    <Compile Include="Classes\Content\ContentReference.cs" />
+    <Compile Include="Classes\Content\ContentType.cs" />
+    <Compile Include="Classes\Content\ItemTypeRef.cs" />
+    <Compile Include="Classes\Content\PowerTypeRef.cs" />
+    <Compile Include="Classes\Content\RaceRef.cs" />
+    <Compile Include="Classes\Content\StoreTypeRef.cs" />
+    <Compile Include="Classes\Direction.cs" />
+    <Compile Include="Classes\Dungeon\Generation\FeatureCreepGenerator.cs" />
+    <Compile Include="Classes\Dungeon\Generation\FeatureCreepGeneratorOptions.cs" />
+    <Compile Include="Classes\Dungeon\Generation\FeatureFactory.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Damage\ElementBeamAction.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ValueDrop.cs" />
+    <Compile Include="Interfaces\IRoomDecorator.cs" />
+    <Compile Include="Classes\Dungeon\Generation\RoomDecoration.cs" />
+    <Compile Include="Classes\Dungeon\Lighting.cs" />
+    <Compile Include="Classes\Dungeon\Maze.cs" />
+    <Compile Include="Classes\Dungeon\Town\Building.cs" />
+    <Compile Include="Classes\Dungeon\Town\Store.cs" />
+    <Compile Include="Classes\Dungeon\Town\StoreType.cs" />
+    <Compile Include="Classes\Dungeon\Town\Town.cs" />
+    <Compile Include="Classes\Processing\Actions\Base\EnumerableAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\ExplodeAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\FireAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\GainHealthAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\GainStatAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\HealAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\HealFullAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\RestoreAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\RestoreAllAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\SwapStatAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\FreezeCompleteAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\HasteCompleteAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\PoisonCompleteAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\PoisonDamageAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\SlowAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\SlowCompleteAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Monster\BreedAction.cs" />
+    <Compile Include="Classes\Things\Entities\RaceChooser.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ChooseNearLevelDrop.cs" />
+    <Compile Include="Classes\Things\Items\PowerChooser.cs" />
+    <Compile Include="Enums\Element.cs" />
+    <Compile Include="Classes\GameEvent.cs" />
+    <Compile Include="Classes\Log.cs" />
+    <Compile Include="Classes\Fov.cs" />
+    <Compile Include="Classes\Los.cs" />
+    <Compile Include="Enums\GroupSize.cs" />
+    <Compile Include="Enums\RaceFlags.cs" />
+    <Compile Include="Enums\Pursue.cs" />
+    <Compile Include="Enums\RaceResist.cs" />
+    <Compile Include="Classes\Processing\Actions\Base\Action.cs" />
+    <Compile Include="Classes\Processing\ActionResult.cs" />
+    <Compile Include="Classes\Processing\Actions\Base\DelegateAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\AttackAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\CloseDoorAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\MessageAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\OpenDoorAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\TakeStairsAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\BurnAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\BuyAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\EnterStoreAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\SellAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\UseLightAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\UseMultiAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\UseSingleAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Base\BallAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Base\BoltAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Base\ConeAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\CreatePortalAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\CureDiseaseAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Amelioration\CurePoisonAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Detection\DetectFeaturesAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Detection\DetectItemsAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\DiseaseAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\DropAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Damage\ElementBallAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Damage\ElementBoltAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Damage\ElementConeAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\FreezeAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\HasteAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Damage\LightAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\Conditions\PoisonAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\PushBackAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Magic\TeleportAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\UnequipAction.cs" />
+    <Compile Include="Classes\Processing\Behaviors\HeroBehavior.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\BallSelfMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\BoltMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\BreatheMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\BreedMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\ElementConeMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\HasteSelfMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\MessageMove.cs" />
+    <Compile Include="Classes\Processing\Behaviors\PickUpAllBehavior.cs" />
+    <Compile Include="Classes\Processing\Behaviors\RestBehavior.cs" />
+    <Compile Include="Classes\Processing\Behaviors\RunBehavior.cs" />
+    <Compile Include="Classes\Processing\Behaviors\StraightTowardsPathfinder.cs" />
+    <Compile Include="Classes\Processing\Behaviors\UnmovingPathfinder.cs" />
+    <Compile Include="Classes\Processing\EffectCollection.cs" />
+    <Compile Include="Classes\Processing\Actions\Base\EntityItemAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\EquipAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\PickUpAction.cs" />
+    <Compile Include="Classes\Processing\Actions\Items\UseAction.cs" />
+    <Compile Include="Classes\Things\Hit.cs" />
+    <Compile Include="Classes\Rng.cs" />
+    <Compile Include="Classes\Roller.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Behavior.cs" />
+    <Compile Include="Classes\Text\Noun.cs" />
+    <Compile Include="Classes\Text\Person.cs" />
+    <Compile Include="Classes\Text\Sentence.cs" />
+    <Compile Include="Classes\Things\Attack.cs" />
+    <Compile Include="Classes\Things\Condition.cs" />
+    <Compile Include="Classes\Things\EntityConditions.cs" />
+    <Compile Include="Classes\Things\HeroRace.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ChooseByLevelDrop.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ChooseDrop.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ChooseUpToLevelDrop.cs" />
+    <Compile Include="Classes\Things\Items\Drops\CollectionDropBase.cs" />
+    <Compile Include="Classes\Things\Items\Drops\AllDrop.cs" />
+    <Compile Include="Classes\Things\EnergyTimer.cs" />
+    <Compile Include="Classes\Things\Entities\EntityCollection.cs" />
+    <Compile Include="Classes\Processing\Behaviors\Moves\Move.cs" />
+    <Compile Include="Classes\Things\Items\Drops\ItemDrop.cs" />
+    <Compile Include="Classes\Things\Items\Drops\RepeatDrop.cs" />
+    <Compile Include="Classes\Things\Items\ChargeType.cs" />
+    <Compile Include="Classes\Things\Items\ItemTarget.cs" />
+    <Compile Include="Classes\Things\Stats\BonusType.cs" />
+    <Compile Include="Classes\Things\Stats\FixedStat.cs" />
+    <Compile Include="Classes\Things\Stats\FluidStat.cs" />
+    <Compile Include="Classes\Things\Stats\Speed.cs" />
+    <Compile Include="Classes\Things\Stats\Stat.cs" />
+    <Compile Include="Classes\Things\Stats\StatBase.cs" />
+    <Compile Include="Classes\Things\Stats\Stats.cs" />
+    <Compile Include="Classes\FlagCollection.cs" />
+    <Compile Include="Classes\Things\Stats\StatTable.cs" />
+    <Compile Include="Classes\Things\Items\Equipment.cs" />
+    <Compile Include="Classes\Things\Items\Inventory.cs" />
+    <Compile Include="Classes\Things\Items\Item.cs" />
+    <Compile Include="Classes\Things\Items\ItemCollection.cs" />
+    <Compile Include="Classes\Things\Items\ItemType.cs" />
+    <Compile Include="Classes\Things\Items\ItemScript.cs" />
+    <Compile Include="Classes\Things\Items\Power.cs" />
+    <Compile Include="Classes\Things\Items\PowerType.cs" />
+    <Compile Include="Classes\Things\LevelChooser.cs" />
+    <Compile Include="Classes\Processing\Behaviors\MonsterBehavior.cs" />
+    <Compile Include="Classes\Processing\Behaviors\OneShotBehavior.cs" />
+    <Compile Include="Classes\Things\Entities\Race.cs" />
+    <Compile Include="Classes\Things\ThingCollection.cs" />
+    <Compile Include="Classes\Dungeon\Tile.cs" />
+    <Compile Include="Classes\Dungeon\Dungeon.cs" />
+    <Compile Include="Classes\Processing\Effect.cs" />
+    <Compile Include="Classes\Things\Energy.cs" />
+    <Compile Include="Classes\Things\Entities\Entity.cs" />
+    <Compile Include="Classes\Game.cs" />
+    <Compile Include="Classes\Processing\GameResult.cs" />
+    <Compile Include="Classes\Things\Entities\Hero.cs" />
+    <Compile Include="Classes\Things\Entities\Monster.cs" />
+    <Compile Include="Classes\Processing\Actions\Basic\WalkAction.cs" />
+    <Compile Include="Extension Classes\EnumerableExtensions.cs" />
+    <Compile Include="Interfaces\IDrop.cs" />
+    <Compile Include="Interfaces\IDungeonGenerator.cs" />
+    <Compile Include="Interfaces\IItemCollection.cs" />
+    <Compile Include="Interfaces\INoun.cs" />
+    <Compile Include="Interfaces\IPathfinder.cs" />
+    <Compile Include="Interfaces\IPosition.cs" />
+    <Compile Include="Interfaces\IRoomConnector.cs" />
+    <Compile Include="Interfaces\IRoomPlacement.cs" />
+    <Compile Include="Interfaces\ISpeed.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Things\Thing.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Amaranth.Util\Amaranth.Util.csproj">
+      <Project>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</Project>
+      <Name>Amaranth.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

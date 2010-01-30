@@ -1,0 +1,157 @@
+﻿:: gnome
+    glyph   = h
+    groups  = humanoid
+
+gnome braggart :: gnome
+    color     = Pink
+    depth     = 13
+    health    = 10
+    moves
+        haste self
+            odds = 1 in 5
+        light bolt ::
+            odds    = 1 in 6
+            damage  = 4-7
+    attacks
+        pokes = 3t2
+    drops
+        one of (60%)
+            (light-scroll)
+            (heal-potion)
+        (bolt-wand) (10%)
+    description
+        Banished from a magical academy, she furtively scuttles through the dungeon.
+    + slightly-erratic
+
+gnome troublemaker :: gnome
+    color     = White
+    depth     = 15
+    health    = 14
+    moves
+        haste self
+            odds = 1 in 5
+        light bolt ::
+            odds    = 1 in 6
+            damage  = 8t2
+    attacks
+        pokes = 3t1
+    drops
+        one of (80%)
+            (light-scroll)
+            (heal-potion)
+        (bolt-wand) (10%)
+        (dagger) (20%)
+    description
+        He looks up to no good.
+    + slightly-erratic
+
+gnome apprentice :: gnome
+    color     = DarkBlue
+    depth     = 17
+    health    = 17
+    moves
+        haste self
+            odds = 1 in 5
+        cold bolt ::
+            odds    = 1 in 6
+            damage  = 9t5
+    attacks
+        stabs = 5t4
+    drops
+        one of (80%)
+            (light-scroll)
+            (teleport-scroll)
+            (speed-potion)
+            (heal-potion)
+        (cloak) (40%)
+        (elemental-ring) (15%)
+        (dagger) (20%)
+    description
+        A little magician full of trouble, but not that adept.
+    + slightly-erratic
+
+gnome magician :: gnome
+    color     = LightBlue
+    depth     = 24
+    health    = 34
+    speed     = 2
+    moves
+        haste self
+            odds = 1 in 3
+        cold bolt ::
+            odds    = 1 in 6
+            damage  = 16t3
+        lightning bolt ::
+            odds    = 1 in 6
+            damage  = 16t3
+    attacks
+        stabs = 6t4
+    drops
+        one of (80%)
+            (light-scroll)
+            (teleport-scroll)
+            (speed-potion)
+            (cure-potion)
+        (cloak) (30%)
+        (elemental-ring) (15%)
+        (bolt-wand) (25%)
+        (dagger) (30%)
+    description
+        A little magician full of spells and mischief.
+    + slightly-erratic
+
+gnome alchemist :: gnome
+    color     = Blue
+    depth     = 30
+    health    = 54
+    speed     = 3
+    moves
+        haste self
+            odds = 1 in 3
+        spray ::
+            odds    = 1 in 6
+            damage  = 20t3
+        lightning bolt ::
+            odds    = 1 in 6
+            damage  = 16t3
+    attacks
+        stabs = 15t5
+    drops
+        one of (80%)
+            (light-scroll)
+            (teleport-scroll)
+            (speed-potion)
+        (cloak) (30%)
+        (elemental-ring) (20%)
+        (bolt-wand) (35%)
+        (dagger) (30%)
+    description
+        Trinkets and charms fill the many pockets of this wizened sorceror's robe.
+
+gnome adept :: gnome
+    color     = Cyan
+    depth     = 44
+    health    = 68
+    speed     = 3
+    moves
+        haste self
+            odds = 1 in 3
+        shards ::
+            odds    = 1 in 6
+            damage  = 20t3
+        lightning bolt ::
+            odds    = 1 in 6
+            damage  = 16t3
+    attacks
+        stabs = 15t5
+    drops
+        one of (80%)
+            (light-scroll)
+            (teleport-scroll)
+            (heal-potion)
+        (cloak) (30%)
+        (elemental-ring) (40%)
+        (ball-wand) (40%)
+        (dagger) (30%)
+    description
+        A skilled and respected member of the Gnomish Magical Society. She has countless tricks up her sleeves.

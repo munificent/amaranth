@@ -1,0 +1,92 @@
+﻿:: mold
+    glyph   = m
+    groups  = jelly
+    moves
+        breed ::
+    + unmoving
+    
+silver mold :: mold :: metal resistances
+    color   = Gray
+    depth   = 3
+    health  = 4
+    speed   = -1
+    attacks
+        touches = 3-4 metal
+    description =
+        A creeping stain of grayish mold.
+
+mossy mold :: mold :: plant resistances
+    color   = Green
+    depth   = 6
+    health  = 6
+    speed   = -1
+    attacks
+        touches = 6t2 wood
+    description =
+        A mossy patch of slimy mold.
+        
+frosty mold :: mold :: cold resistances
+    color   = White
+    depth   = 7
+    health  = 10
+    attacks
+        touches = 6t2 cold
+    description =
+        A frost-lined patch of icy slime.
+
+dirty mold :: mold :: earth resistances
+    color   = Brown
+    depth   = 9
+    health  = 14
+    attacks
+        touches = 8t2 earth
+    description =
+        A dirty patch of fuzzy slime seems to be moving.
+        
+glimmering mold :: mold :: fire resistances
+    color   = Red
+    depth   = 15
+    health  = 16
+    attacks
+        touches = 8t2 fire
+    description =
+        Smoke drifts up from a patch of mold on the ground.
+
+dark mold :: mold :: dark resistances
+    color   = DarkGray
+    depth   = 18
+    health  = 20
+    speed   = +3
+    attacks
+        touches = 12t2 dark
+    description =
+        It is an inky patch of spreading darkness.
+
+shimmering mold :: mold :: light resistances
+    color   = White
+    depth   = 22
+    health  = 25
+    speed   = +2
+    attacks
+        touches = 15t2 light
+    description =
+        A blinding pool of shining ooze.
+
+hissing mold :: mold :: acid resistances
+    color   = Green
+    depth   = 26
+    health  = 30
+    attacks
+        touches on = 18t2 acid
+    description =
+        A greenish slime on the ground oozes corrosion.
+
+death mold :: mold :: death resistances
+    color   = Gray
+    depth   = 38
+    health  = 45
+    speed   = +3
+    attacks
+        touches = 20t2 death
+    description =
+        The stench of rotting corpses rises from a discolored patch on the ground.

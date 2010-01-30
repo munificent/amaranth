@@ -1,0 +1,126 @@
+﻿The General's General Store
+    drops
+        one of
+            Brand (30%)
+            Candle (30%)
+            Torch (30%)
+            Lantern (10%)
+        one of (70%)
+            Cloak (90%)
+            Velvet Cloak (10%)
+        one of (60%)
+            Pair of Leather Sandals (60%)
+            Pair of Leather Shoes (30%)
+            Pair of Leather Boots (10%)
+        Pair of Leather Gloves (30%)
+        one of (99%) //### bob: hack. percent here is just to avoid name collision in PropSet
+            Pebble (40%)
+            Stone (40%)
+            Steel Shot (20%)
+        one of (98%) //### bob: hack. percent here is just to avoid name collision in PropSet
+            Arrow (60%)
+            Flight Arrow (40%)
+            
+Dirk's Death Emporium
+    drops
+        one of (70%)
+            Cudgel (60%)
+            Club (30%)
+            Quarterstaff (10%)
+        one of (80%)
+            Knife (60%)
+            Dirk (30%)
+            Dagger (10%)
+        one of
+            Whip (60%)
+            Chain Whip (30%)
+        one of (60%)
+            Sling
+            Bow
+        Morningstar (40%)
+        Mace (20%)
+        Rapier (50%)
+        Shortsword (30%)
+        Bastard Sword (30%)
+        Longsword (20%)
+        
+Garthag's Armoury
+    drops
+        Cloth Shirt
+        Leather Shirt (80%)
+        Robe (80%)
+        Soft Leather Armor (70%)
+        Lined Robe (10%)
+        Hard Leather Armor (60%)
+        Studded Leather Armor (20%)
+        Leather Scale Mail (40%)
+        Mail Hauberk (10%)
+        Chain Mail Armor (30%)
+        Leather Cap (60%)
+        Chainmail Coif (30%)
+        Steel Cap (10%)
+        Small Leather Shield (40%)
+        Wooden Targe (20%)
+
+Unguent the Alchemist
+    drops
+        Philter of Quickness (60%)
+        Philter of Alacrity (20%)
+        Salve of Mending
+        Balm of Soothing (70%)
+        Potion of Healing (50%)
+        Dram of Cure Poison
+        Dram of Cure Disease
+        Dram of Curing (5%)
+        Draught of Restore Charisma (40%)
+        Draught of Restore Will (40%)
+        Draught of Restore Intellect (40%)
+        Draught of Restore Agility (40%)
+        Draught of Restore Stamina (40%)
+        Draught of Restore Strength (40%)
+        Draught of Restoration (5%)
+
+The Droll Magery
+    drops
+        1-5 Scroll of Light
+        1-4 Scroll of Starlight (30%)
+        1-3 Scroll of Daylight (10%)
+        1-2 Scroll of Radiance (3%)
+        1-5 Scroll of Sidestepping
+        1-5 Scroll of Phasing (70%)
+        1-3 Scroll of Teleportation (10%)
+        1-5 Word of Escape Detection
+        1-5 Word of Item Detection
+        1-5 Word of Detection
+        1-5 Rune of Surfacing
+
+Glur's Rare Artifacts
+    depth = 50
+    drops
+        1-10 Knife
+        Fuze
+        Elixir of Charisma (2%)
+        Elixir of Will (2%)
+        Elixir of Intellect (2%)
+        Elixir of Agility (2%)
+        Elixir of Stamina (2%)
+        Elixir of Strength (2%)
+        Elixir of Augmentation (1%)
+        Elixir of Beauty (4%)
+        Elixir of Courage (4%)
+        Elixir of Cleverness (4%)
+        Elixir of Flexibility (4%)
+        Elixir of Fortitude (4%)
+        Elixir of Brawn (4%)
+        Wand of Brilliance (10%)
+        Wand of Frost Bolts (7%)
+        Wand of Fire Bolts (7%)
+        Wand of Winds (5%)
+        Wand of Waves (5%)
+        Wand of Storms (5%)
+        Wand of Fire Balls (5%)
+        Wand of Acid Balls (5%)
+
+Skullduggery and Bamboozelry
+    drops
+        1-10 Dagger (40%)

@@ -1,0 +1,86 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Amaranth.Util</RootNamespace>
+    <AssemblyName>Amaranth.Util</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Array2D.cs" />
+    <Compile Include="Assign.cs" />
+    <Compile Include="CollectibleCollection.cs" />
+    <Compile Include="Extension Classes\EnumerableExtensions.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventArgs\CollectionItemEventArgs.cs" />
+    <Compile Include="Exceptions\UnknownEnumException.cs" />
+    <Compile Include="Profiler.cs" />
+    <Compile Include="PropSet\IndentationTree.cs" />
+    <Compile Include="Interfaces\ICollectible.cs" />
+    <Compile Include="Interfaces\IEvent.cs" />
+    <Compile Include="Interfaces\IMachineToState.cs" />
+    <Compile Include="Interfaces\IMessageReceiver.cs" />
+    <Compile Include="Interfaces\INamed.cs" />
+    <Compile Include="Interfaces\IStateToMachine.cs" />
+    <Compile Include="Math2.cs" />
+    <Compile Include="NotNull.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropSet\PropSet.cs" />
+    <Compile Include="PropSet\PropSetParser.cs" />
+    <Compile Include="RangedInt.cs" />
+    <Compile Include="Rect.cs" />
+    <Compile Include="State Machine\Machine.cs" />
+    <Compile Include="State Machine\State.cs" />
+    <Compile Include="Extension Classes\StringExtensions.cs" />
+    <Compile Include="Text.cs" />
+    <Compile Include="EventArgs\ValueChangeEventArgs.cs" />
+    <Compile Include="Vec.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

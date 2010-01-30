@@ -1,0 +1,17 @@
+﻿Nazrul the Destroyer
+    glyph   = N
+    color   = Red
+    depth   = 100
+    speed   = +6
+    health  = 10 // 10000
+    moves
+        breathe fire ::
+            odds    = 1 in 7
+            radius  = 4
+    attacks
+        bites = 200t12
+        claws = 100t15
+        breathes fire on = 1000t70 fire
+        destroys = 500t70 death
+    + boss
+    + unique

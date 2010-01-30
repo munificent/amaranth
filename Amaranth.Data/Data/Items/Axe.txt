@@ -1,0 +1,22 @@
+﻿:: axe
+    category = Melee Weapon
+
+Hatchet[s] :: axe
+    art     = DarkGray |
+    attack  = 1-8 metal
+    price   = 45
+
+Axe[s] :: axe
+    art     = Gray |
+    attack  = 2-10 metal
+    price   = 160
+
+Valaska[s] :: axe
+    art     = LightBrown |
+    attack  = 3-12 metal
+    price   = 240
+
+Battleaxe[s] :: axe
+    art     = LightGray |
+    attack  = 4-15 metal
+    price   = 660

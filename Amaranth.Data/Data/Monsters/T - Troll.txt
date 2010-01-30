@@ -1,0 +1,61 @@
+﻿:: troll
+    glyph   = T
+    groups  = troll
+
+troll :: troll
+    color   = DarkGreen
+    depth   = 30
+    health  = 80
+    attacks
+        hits = 8t3
+        bites = 10t3
+        bashes = 12t5 wood
+
+cave troll :: troll
+    color   = Cyan
+    depth   = 32
+    health  = 90
+    attacks
+        hits = 14t3
+        bites = 12t3
+        bashes = 14t5 wood
+    
+troll warrior :: troll
+    color   = Orange
+    depth   = 35
+    health  = 120
+    attacks
+        hits = 18t3
+        bites = 15t3
+        bashes = 16t5 wood
+
+two-headed troll :: troll
+    color   = Green
+    depth   = 38
+    health  = 140
+    attacks
+        hits = 14t3
+        bites = 12t3
+        mauls = 12t3
+        bashes = 14t5 wood
+
+troll shaman :: troll
+    color   = Blue
+    depth   = 44
+    health  = 90
+    attacks
+        hits = 14t3
+        bites = 12t3
+        bashes = 14t5 wood
+    // needs spells
+
+troll overlord :: troll
+    color   = White
+    depth   = 80
+    health  = 400
+    attacks
+        hits = 16t3
+        bites = 20t5
+        mauls = 20t8
+        bashes = 30t8 wood
+        crushes = 32t8

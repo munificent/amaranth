@@ -1,0 +1,27 @@
+﻿:: two-handed sword
+    category = Melee Weapon
+
+Bastard Sword[s] :: two-handed sword
+    art     = Gray |
+    attack  = 5-15 metal
+    price   = 460
+
+Longsword[s] :: two-handed sword
+    art     = LightGray |
+    attack  = 6-17 metal
+    price   = 620
+
+Broadsword[s] :: two-handed sword
+    art     = Gray |
+    attack  = 8-20 metal
+    price   = 830
+
+Claymore[s] :: two-handed sword
+    art     = LightGray |
+    attack  = 10-22 metal
+    price   = 1600
+
+Flamberge[s] :: two-handed sword
+    art     = White |
+    attack  = 12-24 metal
+    price   = 2300

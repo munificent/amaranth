@@ -1,0 +1,71 @@
+﻿:: flying insect :: flying insect resistances
+    glyph   = f
+    groups  = bug
+
+giant fly :: flying insect
+    color   = Gray
+    depth   = 1
+    health  = 1
+    speed   = +3
+    attacks
+        bites = 1-2
+    description =
+        A loud buzzing follows this annoying pest grown to unearthly proportions.
+    + very-erratic
+
+giant dragonfly :: flying insect
+    color   = Green
+    depth   = 4
+    health  = 8
+    speed   = +4
+    attacks
+        bites = 2-4
+    description =
+        With a wingspan as long as your arm and vicious pincers, it swoops down towards you.
+    + very-erratic
+
+giant bee :: flying insect
+    color   = Yellow
+    depth   = 7
+    health  = 4
+    speed   = +2
+    attacks
+        stings = 2-4
+    description =
+        You've disturbed the nest and now they want their vengeance.
+    + packs
+    + very-erratic
+
+giant wasp :: flying insect
+    color   = Brown
+    depth   = 10
+    health  = 4
+    speed   = +3
+    attacks
+        stings = 8-12 poison
+    + very-erratic
+
+giant hornet :: flying insect
+    color   = Gold
+    depth   = 14
+    health  = 3
+    speed   = +2
+    attacks
+        stings = 8-12 poison
+    + packs
+    + very-erratic
+
+locust :: flying insect
+    color   = Orange
+    depth   = 25
+    health  = 8
+    speed   = +3
+    moves
+        breed ::
+            odds = 1 in 4
+    attacks
+        bites = 4-6
+    description =
+        Plague of the ancients, these swarming vermin could blot out the sun.
+    + very-erratic
+    + swarms

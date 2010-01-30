@@ -1,0 +1,163 @@
+﻿:: potion
+    category = Potion
+
+// effects
+
+Philter[s] of Quickness :: potion
+    art     = DarkYellow !
+    attack  = 60t10
+    use     = Haste(1)
+    price   = 20
+
+Philter[s] of Alacrity :: potion
+    art     = Yellow !
+    attack  = 60t10
+    use     = Haste(2)
+    price   = 60
+
+Philter[s] of Speed :: potion
+    art     = LightYellow !
+    attack  = 60t10
+    use     = Haste(3)
+    price   = 120
+
+// healing
+
+:: heal potion :: potion
+    use     = Heal()
+
+Salve[s] of Mending :: heal potion
+    art     = Pink !
+    attack  = 10-20
+    price   = 20
+
+Balm[s] of Soothing :: heal potion
+    art     = LightPurple !
+    attack  = 30-50
+    price   = 60
+
+Potion[s] of Healing :: heal potion
+    art     = Red !
+    attack  = 60-80
+    price   = 120
+
+Potion[s] of Amelioration :: heal potion
+    art     = Purple !
+    attack  = 200
+    price   = 320
+
+Potion[s] of Rejuventation :: potion
+    art     = DarkRed !
+    use     = HealFull()
+    price   = 600
+
+// curing
+
+Dram[s] of Cure Poison :: potion
+    art     = DarkGreen !
+    use     = CurePoison()
+    price   = 30
+
+Dram[s] of Cure Disease :: potion
+    art     = DarkPurple !
+    use     = CureDisease()
+    price   = 70
+
+Dram[s] of Curing :: potion
+    art     = DarkBlue !
+    use     =
+        CurePoison();
+        CureDisease();
+    price   = 130
+
+// restoration
+
+:: restore draught :: potion
+    price = 200
+
+Draught[s] of Restore Charisma :: restore draught
+    art     = Gold !
+    use     = RestoreCharisma()
+
+Draught[s] of Restore Will :: restore draught
+    art     = Orange !
+    use     = RestoreWill()
+
+Draught[s] of Restore Intellect :: restore draught
+    art     = Blue !
+    use     = RestoreIntellect()
+
+Draught[s] of Restore Agility :: restore draught
+    art     = Cyan !
+    use     = RestoreAgility()
+
+Draught[s] of Restore Stamina :: restore draught
+    art     = Green !
+    use     = RestoreStamina()
+
+Draught[s] of Restore Strength :: restore draught
+    art     = Brown !
+    use     = RestoreStrength()
+
+Draught[s] of Restoration :: restore draught
+    art     = Purple !
+    use     = RestoreAll()
+    price   = 800
+
+:: gain elixir :: potion
+    price = 12000
+    
+Elixir[s] of Charisma :: gain elixir
+    art     = DarkGold !
+    use     = GainCharisma()
+
+Elixir[s] of Will :: gain elixir
+    art     = DarkOrange !
+    use     = GainWill()
+
+Elixir[s] of Intellect :: gain elixir
+    art     = DarkBlue !
+    use     = GainIntellect()
+
+Elixir[s] of Agility :: gain elixir
+    art     = DarkCyan !
+    use     = GainAgility()
+
+Elixir[s] of Stamina :: gain elixir
+    art     = DarkGreen !
+    use     = GainStamina()
+
+Elixir[s] of Strength :: gain elixir
+    art     = DarkBrown !
+    use     = GainStrength()
+
+Elixir[s] of Augmentation :: gain elixir
+    art     = DarkPurple !
+    use     = GainAll()
+
+:: swap elixir :: potion
+    price   = 3000
+
+Elixir[s] of Beauty :: swap elixir
+    art     = LightGold !
+    use     = SwapCharisma()
+    
+Elixir[s] of Courage :: swap elixir
+    art     = LightOrange !
+    use     = SwapWill()
+
+Elixir[s] of Cleverness :: swap elixir
+    art     = LightBlue !
+    use     = SwapIntellect()
+
+Elixir[s] of Flexibility :: swap elixir
+    art     = LightCyan !
+    use     = SwapAgility()
+
+Elixir[s] of Fortitude :: swap elixir
+    art     = LightGreen !
+    use     = SwapStamina()
+
+Elixir[s] of Brawn :: swap elixir
+    art     = LightBrown !
+    use     = SwapStrength()

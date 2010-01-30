@@ -1,0 +1,17 @@
+syntax: glob
+
+# ignore mac desktop files
+**.DS_Store
+
+# ignore the build output
+bin/**.*
+*.*/obj/**.*
+
+# ignore other vs local stuff
+**.suo
+TestResult.xml
+Unit Tests.VisualState.xml
+**.user
+
+# ignore revert backups
+**.orig

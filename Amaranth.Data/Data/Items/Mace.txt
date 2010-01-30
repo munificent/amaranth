@@ -1,0 +1,17 @@
+﻿:: mace
+    category = Melee Weapon
+
+Morningstar[s] :: mace
+    art     = LightGray \
+    attack  = 2-10 metal
+    price   = 150
+
+Mace[s] :: mace
+    art     = LightBrown \
+    attack  = 3-11 metal
+    price   = 330
+
+War Hammer[s] :: mace
+    art     = LightGray \
+    attack  = 4-13 metal
+    price   = 600

@@ -1,0 +1,21 @@
+﻿:: ooze :: jelly resistances
+    glyph   = j
+    groups  = jelly
+    + unmoving
+
+squirting ooze :: ooze
+    color   = DarkCyan
+    depth   = 3
+    health  = 5
+    attacks
+        oozes on = 1-2
+    moves
+        ooze jet ::
+            odds    = 1 in 4
+            damage  = 2-4
+    drops
+        (coin) (50%)
+        (stone) (10%)
+    description =
+        A malevolent lump of jelly sits on the floor. Even without eyes, it seems to eye you suspiciously.
+

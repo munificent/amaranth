@@ -1,0 +1,127 @@
+﻿:: ghost :: ghost resistances
+    glyph   = G
+    groups  = undead spirit
+    + glows
+
+lost soul :: ghost
+    color   = White
+    depth   = 19
+    health  = 15
+    speed   = -3
+    attacks
+        touches = 7t4 anima slow
+    description =
+        A gauzy insubstantial form drifting lost through the dungeon.
+    + very-erratic
+
+shadow :: ghost
+    color   = DarkGray
+    depth   = 28
+    health  = 30
+    attacks
+        touches     = 7t4 anima slow
+        envelops    = 7t3 anima drain:experience
+    description =
+        A shadow in a dark corner seems to be moving on its own.
+    + erratic
+        
+phantom :: ghost
+    color   = Gray
+    depth   = 38
+    health  = 47
+    moves
+        moan ::
+            odds    = 1 in 3
+    attacks
+        touches = 7t4 anima slow
+    description =
+        You can barely make out a hateful face staring at you from the darkness.
+    + erratic
+
+will-o-wisp :: ghost
+    color   = Yellow
+    depth   = 41
+    health  = 57
+    speed   = +2
+    attacks
+        touches  = 7t4 anima slow
+        envelops = 12t5 anima drain:experience
+    // paralyze
+    
+moaning spirit :: ghost
+    color   = LightGray
+    depth   = 47
+    health  = 73
+    moves
+        moan ::
+            odds    = 1 in 2
+    attacks
+        envelops = 7t4 anima drain:experience
+    description =
+        A vengeful, hateful ghost. It resents being dead and wants to take you with it.
+        
+banshee :: ghost
+    color   = LightBlue
+    depth   = 51
+    health  = 85
+    speed   = +2
+    moves
+        moan ::
+            odds    = 1 in 2
+            radius  = 4
+    attacks
+        touches = 7t4 anima
+    description =
+        She was once beautiful, but now this ghostly form wails in horror.
+        
+poltergeist :: ghost
+    color   = Gold
+    depth   = 58
+    health  = 98
+    attacks
+        envelops    = 12t5 anima drain:experience
+        touches     = 19t5 drain:experience
+    description =
+        It is an undead spirit so filled with hatred for all that is living that
+        it can touch the physical world.
+        
+shade :: ghost
+    color   = DarkCyan
+    depth   = 60
+    health  = 110
+    attacks
+        envelops = 12t5 anima drain:experience
+    description =
+        Suddenly, you realize all of the shadows in the room are moving, and moving towards you!
+    + groups
+
+spectre :: ghost
+    color   = Cyan
+    depth   = 69
+    health  = 120
+    speed   = +1
+    moves
+        moan ::
+    attacks
+        envelops = 12t5 anima drain:experience
+    description =
+        With every unholy shriek this shimmering spirit lets forth, you are filled with horrific visions.
+    // hallucinations or something
+    
+spirit :: ghost
+    color   = White
+    depth   = 78
+    health  = 170
+    speed   = +2
+    attacks
+        envelops at = 22t5 anima drain:experience
+
+ghost :: ghost
+    color   = White
+    depth   = 87
+    health  = 250
+    attacks
+        envelops = 32t5 anima drain:experience
+    description =
+        The most stable form of the disembodied undead, a ghost may be hundreds
+        if not thousands of years old.

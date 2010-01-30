@@ -1,0 +1,63 @@
+﻿:: bat :: bat resistances
+    glyph   = b
+    groups  = animal
+
+little brown bat :: bat
+    color   = Brown
+    depth   = 1
+    speed   = +3
+    health  = 3
+    attacks
+        bites = 1
+    description =
+        It flutters in the shadows, distracting you from bigger dangers.
+    + erratic
+        
+brown bat :: bat
+    color   = DarkBrown
+    depth   = 3
+    speed   = +2
+    health  = 4
+    attacks
+        bites = 1-3
+    description =
+        It sweeps out of the shadows, keening, wings batting you in the face.
+    + slightly-erratic
+        
+vampire bat :: bat
+    color   = DarkRed
+    depth   = 8
+    speed   = +1
+    health  = 8
+    attacks
+        bites = 6-10
+    + slightly-erratic
+    
+giant bat :: bat
+    color   = DarkGray
+    depth   = 15
+    speed   = +3
+    health  = 20
+    attacks
+        bites       = 4t3
+        scratches   = 3t2
+    + slightly-erratic
+    
+bloodsucker :: bat
+    color   = DarkRed
+    depth   = 25
+    speed   = +2
+    health  = 30
+    attacks
+        bites       = 8t3
+        scratches   = 12t2
+
+winged reaver :: bat
+    color    = Red
+    depth    = 45
+    speed    = +4
+    health   = 40
+    attacks
+        bites       = 20t4
+        scratches   = 12t4
+        slices      = 12t4

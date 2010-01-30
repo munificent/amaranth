@@ -1,0 +1,12 @@
+﻿:: giant
+    glyph   = P
+    groups  = giant
+
+giant :: giant
+    color   = Flesh
+    depth   = 60
+    speed   = -1
+    health  = 260
+    attacks
+        hits = 7t3
+        clubs = 12t3 wood

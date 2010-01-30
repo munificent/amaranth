@@ -1,0 +1,50 @@
+﻿:: elemental
+    glyph   = E
+    groups  = elemental
+
+:: fire elemental :: elemental :: fire resistances
+    + bright
+
+fire spirit :: fire elemental
+    color   = Gold
+    depth   = 10
+    speed   = +1
+    health  = 15
+    moves
+        fire ball self ::
+            radius  = 1
+    attacks
+        burns = 8t4 fire
+    description =
+        A glowing flickering ball of fire hovering in the air.
+    + erratic
+
+fire devil :: fire elemental
+    color   = Orange
+    depth   = 22
+    speed   = +2
+    health  = 35
+    moves
+        fire ball self ::
+            damage  = 20t6
+    attacks
+        sears = 16t4 fire
+        burns = 16t4 fire
+    description =
+        A swirling twister of fire travelling towards you across the dungeon.
+    + slightly-erratic
+
+fire elemental :: fire elemental
+    color   = Red
+    depth   = 46
+    speed   = +4
+    health  = 65
+    moves
+        fire ball self ::
+            damage  = 30t8
+    attacks
+        brands = 16t4 fire
+        sears = 24t6 fire
+        burns = 28t8 fire
+    description =
+        A roughly man-shaped form, made of fire and burning with hatred.

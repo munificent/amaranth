@@ -1,0 +1,49 @@
+﻿(light-scroll)
+    one near level
+        scroll of light (1)
+        scroll of starlight (15)
+        scroll of daylight (40)
+        scroll of radiance (80)
+
+(teleport-scroll)
+    one near level
+        scroll of sidestepping (1)
+        scroll of phasing (25)
+        scroll of teleportation (60)
+
+(speed-potion)
+    one near level
+        philter of quickness (5)
+        philter of alacrity (30)
+        philter of speed (60)
+
+(heal-potion)
+    one near level
+        salve of mending (1)
+        balm of soothing (25)
+        potion of healing (50)
+        potion of amelioration (70)
+        potion of rejuventation (90)
+
+(cure-potion)
+    one near level
+        dram of cure poison (1)
+        dram of cure disease (17)
+        dram of curing (25)
+        potion of amelioration (40)
+
+(bolt-wand)
+    one of
+        wand of frost bolts (60%)
+        wand of fire bolts (40%)
+
+(ball-wand)
+    one of
+        wand of fire balls (50%)
+        wand of acid balls (50%)
+
+(cone-wand)
+    one near level
+        wand of winds (30)
+        wand of waves (50)
+        wand of storms (70)
