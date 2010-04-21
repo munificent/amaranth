@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Engine", "Amaranth.Engine\Amaranth.Engine.csproj", "{3C656971-FFAD-46EE-A964-FB9CF7F468DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Terminals", "Amaranth.Terminals\Amaranth.Terminals.csproj", "{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}"

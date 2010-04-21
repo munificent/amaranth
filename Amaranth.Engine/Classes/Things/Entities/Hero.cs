@@ -516,6 +516,7 @@ namespace Amaranth.Engine
 
         private void RefreshMaxHealth()
         {
+            /*
             const int startingHealth = 10;
             const int baseHealth     = 4;
 
@@ -525,12 +526,13 @@ namespace Amaranth.Engine
 
             // calculate total max health
             int maxHealth = startingHealth + (int)(levelsGained * healthPerLevel);
-            int change = maxHealth - Health.Base;
+             * */
+            int change = Stats.Stamina.MaxHealth - Health.Base;
 
             if (change != 0)
             {
                 // set the new base
-                Health.Base = maxHealth;
+                Health.Base = Stats.Stamina.MaxHealth;
 
                 // if the max went up, increase the current health too
                 if (change > 0)

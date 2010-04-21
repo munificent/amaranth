@@ -172,13 +172,17 @@ namespace Amaranth.TermApp
                         break;
 
                     case Key.F11:
+                        /*
                         mGame.Log.Write(LogType.Special, "Starting profile");
                         JetBrains.dotTrace.Api.CPUProfiler.Start();
+                         */
                         break;
 
                     case Key.F12:
+                        /*
                         JetBrains.dotTrace.Api.CPUProfiler.StopAndSaveSnapShot();
                         mGame.Log.Write(LogType.Special, "Ended profile");
+                         */
                         break;
 
                     case Key.F15: Profiler.Init(); break;

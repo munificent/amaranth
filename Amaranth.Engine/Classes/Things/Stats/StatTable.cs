@@ -73,5 +73,14 @@ namespace Amaranth.Engine
             else if (value <= 40) return Math2.Remap(30, value, 40, 3.0f, 6.0f);   // 40 = 6.0
             else return Math2.Remap(40, value, 50, 6.0f, 10.0f);                   // 50 = 10.0
         }
+
+        public static float GetFiveToTwoHundred(int value)
+        {                                                                             //  1 = 5
+            if (value <= 10)      return Math2.Remap( 1, value, 10,  0.0f,  10.0f);   // 10 = 10
+            else if (value <= 20) return Math2.Remap(10, value, 20, 10.0f,  20.0f);   // 20 = 20
+            else if (value <= 30) return Math2.Remap(20, value, 30, 20.0f,  40.0f);   // 30 = 40
+            else if (value <= 40) return Math2.Remap(30, value, 40, 40.0f,  70.0f);   // 40 = 80
+            else                  return Math2.Remap(40, value, 50, 70.0f, 100.0f);   // 50 = 200
+        }
     }
 }

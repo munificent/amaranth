@@ -12,7 +12,7 @@ namespace Amaranth.Engine
     /// </summary>
     /// <remarks>
     /// <para>Note that the Max value here is the hero's current max value for that stat.
-    /// In other words, the Max is the value a drained stat will be restored too, not the
+    /// In other words, the Max is the value a drained stat will be restored to, not the
     /// absolutely highest value any stat can have. All stats range from 1 to 50.
     /// 15 is considered "normal" for a hero. New heroes will likely have stats ranging
     /// from 10 to 20. </para>
@@ -148,7 +148,10 @@ namespace Amaranth.Engine
     [Serializable]
     public class Stamina : Stat
     {
+        /*
         public float HealthBonus { get { return StatTable.GetNegativeThreeToTen(Current); } }
+         */
+        public int MaxHealth { get { return (int)StatTable.GetFiveToTwoHundred(Current); } }
     }
 
     [Serializable]
