@@ -148,9 +148,6 @@ namespace Amaranth.Engine
     [Serializable]
     public class Stamina : Stat
     {
-        /*
-        public float HealthBonus { get { return StatTable.GetNegativeThreeToTen(Current); } }
-         */
         public int MaxHealth { get { return (int)StatTable.GetFiveToTwoHundred(Current); } }
     }
 

@@ -516,17 +516,6 @@ namespace Amaranth.Engine
 
         private void RefreshMaxHealth()
         {
-            /*
-            const int startingHealth = 10;
-            const int baseHealth     = 4;
-
-            // figure out how much health each level adds
-            float healthPerLevel = baseHealth + Stats.Stamina.HealthBonus;
-            int levelsGained = mLevel - 1;
-
-            // calculate total max health
-            int maxHealth = startingHealth + (int)(levelsGained * healthPerLevel);
-             * */
             int change = Stats.Stamina.MaxHealth - Health.Base;
 
             if (change != 0)
@@ -559,9 +548,6 @@ namespace Amaranth.Engine
                 Stat stat = mStatGains[mLevel + 1]; // offset by one to get the level just lost
                 stat.Base--;
                 if (action != null) action.Log(LogType.BadState, "Your " + stat.Name + " decreased!");
-
-                // lose some health
-                RefreshMaxHealth();
             }
 
             // gain levels
@@ -574,9 +560,6 @@ namespace Amaranth.Engine
                 Stat stat = mStatGains[mLevel];
                 stat.Base++;
                 if (action != null) action.Log(LogType.PermanentGood, "Your " + stat.Name + " increased!");
-
-                // gain some health
-                RefreshMaxHealth();
             }
         }
 
