@@ -7,28 +7,6 @@ using Amaranth.Util;
 
 namespace Amaranth.Engine
 {
-    //### bob: move to separate file
-    public interface IFeatureWriter
-    {
-        Rect Bounds { get; }
-        Content Content { get; }
-
-        bool IsOpen(Rect rect, Vec? exception);
-        void SetTile(Vec pos, TileType type);
-        void LightRect(Rect bounds, int depth);
-        void AddRoomConnector(Vec pos, Direction dir);
-        void AddHallConnector(Vec pos, Direction dir);
-        void AddEntity(Entity entity);
-
-        TileType GetTile(Vec pos);
-
-        //### bob: temp. doesn't really belong here
-        FeatureCreepGeneratorOptions Options { get; }
-
-        //### bob: should move this into here
-        void Populate(Vec pos, int monsterDensity, int itemDensity, int depth);
-    }
-
     public delegate bool CreateFeature(IFeatureWriter writer, Connector connector, int depth);
 
     public static class FeatureFactory

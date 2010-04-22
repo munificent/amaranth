@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Amaranth.Engine
 {
+    /// <summary>
+    /// Content reference type for a reference to a <see cref="StoreType"/> object.
+    /// </summary>
     [Serializable]
     public class StoreTypeRef : ContentReference<StoreType>
     {

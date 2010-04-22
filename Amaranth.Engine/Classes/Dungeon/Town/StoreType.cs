@@ -7,7 +7,7 @@ using Amaranth.Util;
 
 namespace Amaranth.Engine
 {
-    public class StoreType : ContentType
+    public class StoreType : ContentBase
     {
         public override string Name { get { return mName; } }
 

@@ -11,7 +11,7 @@ namespace Amaranth.Engine
     /// <summary>
     /// Represents a type of magical power that can be added to an <see cref="Item"/>.
     /// </summary>
-    public class PowerType : ContentType
+    public class PowerType : ContentBase
     {
         public object Appearance { get; private set; }
 

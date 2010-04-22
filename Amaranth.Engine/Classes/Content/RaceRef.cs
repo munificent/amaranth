@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Amaranth.Engine
 {
+    /// <summary>
+    /// Content reference type for a reference to a <see cref="Race"/> object.
+    /// </summary>
     [Serializable]
     public class RaceRef : ContentReference<Race>
     {

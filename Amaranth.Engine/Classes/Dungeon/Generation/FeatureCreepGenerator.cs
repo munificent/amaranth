@@ -7,6 +7,20 @@ using Amaranth.Util;
 
 namespace Amaranth.Engine
 {
+    /// <summary>
+    /// The dungeon generator used for normal dungeon levels. It works by iteratively growing the
+    /// dungeon from a single starting room. The basic algorithm is:
+    /// 1. Place a starting room, and add a number of connection points to it.
+    /// 2. Select a random open connection point in the dungeon.
+    /// 3. Try to generate a random feature (room, hallway, etc.) that can connect to that
+    ///    point. If it fits, place it. Add any connection points on that feature to the list
+    ///    of open connection points.
+    /// 4. Go to 2 until enough of the dungeon is open.
+    /// Normally, this would generate tree-like dungeons that only branch off the starting room.
+    /// However, the hallway features are smart enough to allow themselves to be placed even if
+    /// they extend into an existing room. This allows it to add redundant connections, yielding
+    /// a more natural dungeon.
+    /// </summary>
     public class FeatureCreepGenerator : IDungeonGenerator, IFeatureWriter
     {
         #region IDungeonGenerator Members
@@ -24,12 +38,12 @@ namespace Amaranth.Engine
             {
                 mTry++;
 
-                dungeon.Entities.Clear();
-                dungeon.Items.Clear();
+                mDungeon.Entities.Clear();
+                mDungeon.Items.Clear();
 
                 MakeDungeon(dungeon.Bounds.Size, depth);
             }
-            while ((100 * mOpenCount / dungeon.Bounds.Area < mOptions.MinimumOpenPercent)
+            while ((100 * mOpenCount / mDungeon.Bounds.Area < mOptions.MinimumOpenPercent)
                   || !mMadeDownStair || !mMadeUpStair);
         }
 

@@ -10,7 +10,7 @@ namespace Amaranth.Engine
     /// <summary>
     /// A Race defines a type of <see cref="Monster"/>: blue dragon, troll, etc.
     /// </summary>
-    public class Race : ContentType, IComparable<Race>
+    public class Race : ContentBase, IComparable<Race>
     {
         public static Race Random(Dungeon dungeon, int level, bool allowUniques)
         {

@@ -11,7 +11,7 @@ namespace Amaranth.Engine
     /// A generatable class of items in the game. For example, all "daggers" or "potions of healing" share the same ItemType.
     /// Comparable to a Monster's Race.
     /// </summary>
-    public class ItemType : ContentType, IComparable<ItemType>
+    public class ItemType : ContentBase, IComparable<ItemType>
     {
         public override string Name { get { return mName.Singular; } }
 

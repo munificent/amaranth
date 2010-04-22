@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Amaranth.Engine
 {
+    /// <summary>
+    /// Parameters that tune how the <see cref="FeatureCreepGenerator"/> will generate dungeons.
+    /// Changing these values will affect the overall look of the dungeon, sometimes drastically.
+    /// </summary>
     public class FeatureCreepGeneratorOptions
     {
         public int MaxTries { get; set; }

@@ -6,17 +6,12 @@ using System.Text;
 using Amaranth.Util;
 
 namespace Amaranth.Engine
-{    /// <summary>
+{
+    /// <summary>
     /// Contains all of the data-derived objects needed by the Game.
     /// </summary>
     public class Content
     {
-        /// <summary>
-        /// Gets the Content associated with the game that is currently being loaded.
-        /// Only valid during game load.
-        /// </summary>
-        public static Content CurrentlyDeserializing { get; set; }
-
         /// <summary>
         /// Gets all of the <see cref="HeroRace"/> instances.
         /// </summary>

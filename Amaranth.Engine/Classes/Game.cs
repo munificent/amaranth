@@ -141,17 +141,16 @@ namespace Amaranth.Engine
             // load the file
             using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                IFormatter formatter = new BinaryFormatter();
+                // provide a streaming context that gives access to the game content
+                var context = new StreamingContext(StreamingContextStates.File, content);
+                var formatter = new BinaryFormatter(null, context);
+
                 try
                 {
-                    Content.CurrentlyDeserializing = content;
-
                     game = (Game)formatter.Deserialize(stream);
 
                     // content is not serialized so bind it afterwards
                     game.mContent = content;
-
-                    Content.CurrentlyDeserializing = null;
                 }
                 catch (SerializationException e)
                 {
