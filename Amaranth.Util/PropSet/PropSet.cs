@@ -36,7 +36,7 @@ namespace Amaranth.Util
         {
             string[] lines = File.ReadAllLines(filePath, Encoding.ASCII);
 
-            IEnumerable<string> included = PropSetParser.ParseIncludes(lines);
+            IEnumerable<string> included = PropSetParser.ParseIncludes(Path.GetDirectoryName(filePath), lines);
             IEnumerable<string> noComments = PropSetParser.StripComments(included);
             IEnumerable<string> noWhitespace = PropSetParser.StripEmptyLines(noComments);
 

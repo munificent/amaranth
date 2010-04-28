@@ -1,6 +1,4 @@
 ﻿// Main root file for the item data. Includes the base properties, then all
 // of the individual category files.
-
-#include "Data/Item Info.txt"
-
-#include "Data/Items"
+#include "Item Info.txt"
+#include "Items"

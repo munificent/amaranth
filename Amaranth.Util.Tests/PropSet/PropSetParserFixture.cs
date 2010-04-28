@@ -146,39 +146,65 @@ namespace Amaranth.Util.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ParseIncludes_ThrowsOnNull()
+        public void ParseIncludes_ThrowsOnNullBasePath()
         {
-            IEnumerable<string> dummy = PropSetParser.ParseIncludes(null);
+            IEnumerable<string> dummy = PropSetParser.ParseIncludes(null, new string[0]);
 
             // needed to make sure dummy is evaluated
             int count = dummy.Count();
         }
 
         [Test]
-        public void ParseIncludes()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ParseIncludes_ThrowsOnNullLines()
         {
+            IEnumerable<string> dummy = PropSetParser.ParseIncludes(String.Empty, null);
 
-            IEnumerable<string> results = PropSetParser.ParseIncludes(
-                new string[]
-                {
-                    "before",
-                    "#include \"" + TempDir + "\\include.txt\"",
-                    "middle",
-                    "#include \"" + TempDir + "\\sub\"",
-                    "#include \"" + TempDir + "\\some missing file.txt\"",
-                    "after"
-                });
+            // needed to make sure dummy is evaluated
+            int count = dummy.Count();
+        }
 
-            List<string> lines = new List<string>(results);
+        [Test]
+        public void ParseIncludes_IncludeFile()
+        {
+            var lines = ParseIncludes(
+                "before",
+                "#include \"include.txt\"",
+                "after");
 
-            Assert.AreEqual(7, lines.Count);
+            Assert.AreEqual(4, lines.Count);
             Assert.AreEqual("before", lines[0]);
             Assert.AreEqual("included text", lines[1]);
             Assert.AreEqual("nested line", lines[2]);
-            Assert.AreEqual("middle", lines[3]);
-            Assert.AreEqual("a", lines[4]);
-            Assert.AreEqual("b", lines[5]);
-            Assert.AreEqual("after", lines[6]);
+            Assert.AreEqual("after", lines[3]);
+        }
+
+        [Test]
+        public void ParseIncludes_IncludeDir()
+        {
+            var lines = ParseIncludes(
+                "before",
+                "#include \"sub\"",
+                "after");
+
+            Assert.AreEqual(4, lines.Count);
+            Assert.AreEqual("before", lines[0]);
+            Assert.AreEqual("a", lines[1]);
+            Assert.AreEqual("b", lines[2]);
+            Assert.AreEqual("after", lines[3]);
+        }
+
+        [Test]
+        public void ParseIncludes_MissingFile()
+        {
+            var lines = ParseIncludes(
+                "before",
+                "#include \"missing.txt\"",
+                "after");
+
+            Assert.AreEqual(2, lines.Count);
+            Assert.AreEqual("before", lines[0]);
+            Assert.AreEqual("after", lines[1]);
         }
 
         #endregion
@@ -368,6 +394,11 @@ namespace Amaranth.Util.Tests
                 string tempDir = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
                 return Path.Combine(tempDir, "Amaranth.Util.Tests");
             }
+        }
+
+        private IList<string> ParseIncludes(params string[] lines)
+        {
+            return PropSetParser.ParseIncludes(TempDir, lines).ToList();
         }
 
         private void AssertProp(PropSet prop, string name, string value, string baseNames, params PropAsserter[] children)

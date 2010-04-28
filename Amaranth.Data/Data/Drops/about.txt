@@ -1,0 +1,106 @@
+﻿Drops are used to randomly spawn things, typically treasure. When a monster
+dies, its drop (if any) is used to determine what treasures it leaves
+behind. Since random spawning is a key piece of the gameplay experience,
+the drop system is designed to be powerful and very flexible.
+
+Each drop is a tree of item choices. Leaves of the tree are specific item types,
+and branches are ways of selecting one of more of the child nodes. The tree
+can be nested arbitrarily deeply.
+
+Each line in a drop tree is formatted like:
+    [quantity] type [odds]
+
+Quantity is the number of times that line is repeated. If the line is an item
+then it means that many items will be dropped. If the line is a branch, then
+the entire branch will be rolled that many times. Quantity can be any die roll:
+a fixed number (3), a range (2-5), dice (2d5), a triangle range (5t3), or a
+taper (2(3:4)). If omitted, defaults to 1.
+
+(Note that this is distinct from the item stack's own quantity, which is
+specified by the item type. Quantity here is basically the number of stacks.)
+
+Type is the type of drop. For an item, it will be the item type (singular),
+for example "dagger". If it is the name of a drop macro, then that macro will
+be inserted here. If the line is a branch it will one of a few different
+pre-defined drop branch selection types.
+
+Drop Branches
+=============
+
+Drop branches let the game select between multiple different potential drops
+instead of always dropping the same thing. The parent line determines what
+kind of logic is used to select a branch, and each child line is one
+potential option. Branches can be nested arbitrarily, such that child lines
+in a branch can themselves be branches.
+
+- "one of"
+  This is a "choose" branch, which means one and only one of the branch's
+  child nodes will be dropped. With a choose branch, the odds for each
+  child line are the odds of selecting that line and not any of the others.
+  Odds are assumed to add up to 100, and if omitted will default to "even"
+  odds. I.e. if there are three items to choose from, each will have a 1 in
+  3 chance of being selected if the odds aren't explicitly provided. ex:
+
+- "any of"
+  This is an "all" branch, which means that zero, one, or more of the child
+  branches may be chosen. This lets you drop multiple items at once. With an
+  all branch, each child line will be rolled against its odds to see if it
+  dropped, independent of whether other child lines were dropped. The odds
+  are assumed to be out of 100. If omitted, they default to 100% (always
+  drop the item).
+
+The other branch types are based on "level". For drops from killing a
+monster, this will be the monster's level. The "odds", when provided by
+child lines will represent levels instead of numeric odds.
+
+- "one from level"
+  This chooses an item tightly based on level. Each child line's odds
+  specify the minimum level required to generate that item. The last child
+  line whose minimum level is greater than or equal to the current level
+  (with some slight random variation) will be chosen. Child lines should
+  be ordered in ascending level order. For example:
+
+  one from level
+	sword (10)
+	axe (20)
+
+  If this drop is placed at level 15, it will generate a sword. At level
+  20 or higher, it will drop an axe. At level 9 or less, it will drop
+  nothing.
+
+- "one up to level"
+  This is similar to "one from level" except that it may randomly choose
+  a lower-level child line where "one from level" always selects the
+  highest possible match. With the above example, a level 30 drop would
+  always be an axe for "one from level", but could be an axe or a sword
+  with "one up to level".
+
+- "one near level"
+  This is a fuzzier version of "one from level" (and generally preferable
+  since it gives less artificial behavior). Where "one from level" treats
+  each child line's odds as a hard level requirement, this treats them as
+  probabilities. For example:
+
+  one near level
+	dagger (10)
+	sword (20)
+	axe (40)
+
+  At level 10 or less, it will most likely drop a dagger. From 10 to 20,
+  the odds will gradually shift until by 20, a sword is the most likely
+  drop. Then from 20 to 40, the odds will drift towards axes. From 40 and
+  above, an axe is the most likely drop.
+
+The root tag when specifying drops for a monster will be either "drops" or
+"drops one". "drops" is the same as an "any" branch, and "drops one" is a
+"choose branch".
+
+Drop Macros
+===========
+
+Because drop trees can get pretty complex, it's useful to be able to
+reuse pieces of them. We can do this by defining drop macros. A drop
+macro is a drop tree associated with a name, by convention placed inside
+parentheses. These macros are defined in the drop data files in this
+directory. They can then be used either directly in a race's drop line,
+or within another drop definition.

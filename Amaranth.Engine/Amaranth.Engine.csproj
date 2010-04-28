@@ -74,6 +74,7 @@
     <Compile Include="Classes\Dungeon\Generation\FeatureCreepGenerator.cs" />
     <Compile Include="Classes\Dungeon\Generation\FeatureCreepGeneratorOptions.cs" />
     <Compile Include="Classes\Dungeon\Generation\FeatureFactory.cs" />
+    <Compile Include="Classes\Dungeon\Generation\IFeatureWriter.cs" />
     <Compile Include="Classes\Processing\Actions\Magic\Damage\ElementBeamAction.cs" />
     <Compile Include="Classes\Things\Items\Drops\ValueDrop.cs" />
     <Compile Include="Interfaces\IRoomDecorator.cs" />

@@ -23,11 +23,9 @@ namespace Amaranth.Util
             return lines.Select(line => sCommentRegex.Match(line).Groups["content"].Value);
         }
 
-        public static IEnumerable<string> ParseIncludes(IEnumerable<string> lines)
+        public static IEnumerable<string> ParseIncludes(string basePath, IEnumerable<string> lines)
         {
-            //### bob: right now includes are searched for from the current working directory.
-            // should be relative to the file containing the #include
-
+            if (basePath == null) throw new ArgumentNullException("basePath");
             if (lines == null) throw new ArgumentNullException("lines");
 
             foreach (string line in lines)
@@ -38,6 +36,7 @@ namespace Amaranth.Util
                 {
                     // got an include
                     string path = match.Groups["path"].Value;
+                    path = Path.Combine(basePath, path);
 
                     // see if it's a dir
                     if (Directory.Exists(path))
@@ -45,7 +44,7 @@ namespace Amaranth.Util
                         foreach (string filePath in Directory.GetFiles(path))
                         {
                             string[] includeLines = File.ReadAllLines(filePath);
-                            foreach (string includeLine in ParseIncludes(includeLines))
+                            foreach (string includeLine in ParseIncludes(path, includeLines))
                             {
                                 yield return includeLine;
                             }
@@ -55,7 +54,7 @@ namespace Amaranth.Util
                     {
                         // it's a file
                         string[] includeLines = File.ReadAllLines(path);
-                        foreach (string includeLine in ParseIncludes(includeLines))
+                        foreach (string includeLine in ParseIncludes(Path.GetDirectoryName(path), includeLines))
                         {
                             yield return includeLine;
                         }
@@ -63,6 +62,7 @@ namespace Amaranth.Util
                     else
                     {
                         // it doesn't exist, do nothing
+                        Console.WriteLine("Couldn't find include " + path);
                     }
                 }
                 else

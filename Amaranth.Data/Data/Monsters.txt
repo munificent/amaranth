@@ -103,7 +103,7 @@
 // y   Yeek                Y   Yeti
 // z   Zombie/Mummy        Z   Zephyr Hound
 
-#include "Data/Moves.txt"
+#include "Moves.txt"
 
 // Resistance types
 //  resists =  .air  .earth  .fire  .water    .metal  .wood    .acid  .cold  .lightning  .poison    .dark  .light    .anima  .death
@@ -181,4 +181,4 @@
     resists =  +air  +earth ++fire  *water    +metal  +wood    -acid --cold --lightning  -poison    .dark  *light    .anima  .death
 
 // include all of the individual race letter files
-#include "Data/Monsters"
+#include "Monsters"
