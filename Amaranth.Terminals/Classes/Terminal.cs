@@ -52,17 +52,6 @@ namespace Amaranth.Terminals
             return mCharacters[pos];
         }
 
-        /*
-        protected override bool SetValue(Vec pos, Character value)
-        {
-            // don't do anything if the value doesn't change
-            if (mCharacters[pos].Equals(value)) return false;
-
-            mCharacters[pos] = value;
-            return true;
-        }
-        */
-
         protected override bool SetValue(Vec pos, Character value)
         {
             // don't do anything if the value doesn't change

@@ -33,20 +33,6 @@ namespace Amaranth.Terminals
             return Get(new Vec(x, y));
         }
 
-        /*
-        public void Set(Vec pos, Character value)
-        {
-            pos = FlipNegativePosition(pos);
-
-            if (!GetValue(pos).Equals(value))
-            {
-                SetValue(pos, value);
-
-                if (CharacterChanged != null) CharacterChanged(this, new CharacterEventArgs(value, pos));
-            }
-        }
-        */
-
         public void Set(Vec pos, Character value)
         {
             pos = FlipNegativePosition(pos);

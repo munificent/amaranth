@@ -23,7 +23,7 @@ namespace Amaranth.Terminals
 
         void IDisposable.Dispose()
         {
-            if (mTerminal == null) throw new InvalidOperationException("Cannot dispose the DisposableTerminalState more than once.");
+            if (mTerminal == null) throw new ObjectDisposedException("DisposableTerminalState");
 
             mTerminal.PopState();
             mTerminal = null;
