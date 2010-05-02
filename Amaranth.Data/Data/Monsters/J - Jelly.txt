@@ -10,7 +10,7 @@ yellow jelly :: jelly :: anima resistances
     attacks
         oozes on = 3-4
     drops
-        (coin) (50%)
+        (coin) (70%)
         (stone) (10%)
     description =
         A yellowish furry pile of goo.
@@ -22,7 +22,7 @@ white jelly :: jelly :: cold resistances
     attacks
         oozes on = 4-5 cold
     drops
-        (coin) (60%)
+        (coin) (80%)
         (stone) (10%)
     description =
         Frost lines the rock around this pile of ooze.
@@ -34,7 +34,7 @@ blue jelly :: jelly :: water resistances
     attacks
         touches = 5-8 water
     drops
-        (coin) (70%)
+        (coin) (90%)
         (stone) (10%)
     description =
         It's a large dripping heap of bluish jelly.
@@ -46,8 +46,8 @@ red jelly :: jelly :: fire resistances
     attacks
         oozes on = 6-9 fire
     drops
-        (coin) (80%)
-        (stone) (10%)
+        (coin) (90%)
+        (stone) (15%)
     description =
         The ground near this mass of ooze looks scorched.
 
@@ -59,7 +59,7 @@ green jelly :: jelly :: acid resistances
         oozes on = 12t2 acid
     drops
         (coin) (90%)
-        (stone) (10%)
+        (stone) (20%)
     description =
         The dungeon floor seems corroded around this mass of jelly.
 
@@ -71,7 +71,7 @@ purple jelly :: jelly :: lightning resistances
         oozes on = 15t2 lightning
     drops
         (coin) (90%)
-        (stone) (11%)
+        (stone) (25%)
     description =
         A large smear of purplish ooze, faintly flickering from within.
 
@@ -83,7 +83,7 @@ weeping jelly :: jelly :: poison resistances
         oozes on = 10t2 poison
     drops
         (coin) (90%)
-        (stone) (13%)
+        (stone) (30%)
     description =
         A pile of ooze, weeping a strange fluid from dozens of tiny openings.
 
@@ -95,6 +95,6 @@ rotting jelly :: jelly :: death resistances
         oozes on = 15t2 death
     drops
         (coin) (90%)
-        (stone) (20%)
+        (stone) (35%)
     description =
         A hideous stench rises from a rotting pile of jelly.

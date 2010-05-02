@@ -86,6 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Drops\about.txt" />
     <Content Include="Data\Prefix Powers.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

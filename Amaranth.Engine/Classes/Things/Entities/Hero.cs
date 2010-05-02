@@ -159,6 +159,10 @@ namespace Amaranth.Engine
         {
             mName = name;
             mRace = race;
+
+            //### bob: temp. should be passed in
+            mClass = new Warrior();
+
             mStats = stats;
 
             mCheatDeath = cheatDeath;
@@ -235,6 +239,9 @@ namespace Amaranth.Engine
             {
                 mSlainUniques.Add(monster.Race.Name);
             }
+
+            // let the class know
+            mClass.KilledMonster(action, monster);
         }
 
         public override Attack GetAttack(Entity defender)
@@ -259,7 +266,12 @@ namespace Amaranth.Engine
                 effectType = EffectType.Stab;
             }
 
-            return new Attack(damage, MeleeStrikeBonus, MeleeDamageBonus, element, verb, effectType, flags);
+            var attack = new Attack(damage, MeleeStrikeBonus, MeleeDamageBonus, element, verb, effectType, flags);
+
+            // give the class a chance to modify it
+            mClass.BeforeAttack(defender, attack);
+
+            return attack;
         }
 
         public override int GetDodge()
@@ -653,6 +665,7 @@ namespace Amaranth.Engine
 
         private readonly string mName;
         private readonly string mRace;
+        private readonly HeroClass mClass;
 
         private int mLevel = 1;
         private long mTurns = 0;

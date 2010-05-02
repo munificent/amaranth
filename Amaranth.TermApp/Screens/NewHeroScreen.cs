@@ -36,19 +36,17 @@ namespace Amaranth.TermApp
 
             Controls.Add(mRaceMenu);
 
+            mClassMenu = new ScrollMenu("Class", new string[] { "Warrior" });
+            mClassMenu.Position = new Vec(mRaceMenu.Bounds.Right + 5, 11);
+            Controls.Add(mClassMenu);
+
             mLevelMenu = new ScrollMenu("Level", new string[] { "1", "10" });
-            mLevelMenu.Position = new Vec(mRaceMenu.Bounds.Right + 5, 11);
+            mLevelMenu.Position = new Vec(mClassMenu.Bounds.Right + 5, 11);
             Controls.Add(mLevelMenu);
 
             mCheatMenu = new ScrollMenu("Cheat Death", new string[] { "Yes", "No" });
             mCheatMenu.Position = new Vec(mLevelMenu.Bounds.Right + 5, 11);
             Controls.Add(mCheatMenu);
-
-            /*
-            ScrollMenu classMenu = new ScrollMenu("Class", new string[] { "Adventurer", "Mage", "Priest", "Rogue", "Warrior" });
-            classMenu.Position = new Vec(mRaceMenu.Bounds.Right + 5, 11);
-            Controls.Add(classMenu);
-            */
 
             mStatsControl = new NewStatsControl(new Vec(3, 17));
             mStatsControl.Race = mContent.HeroRaces.Find(mRaceMenu.SelectedItem.Text);
@@ -129,6 +127,7 @@ namespace Amaranth.TermApp
         private Content mContent;
         private TextBox mNameBox;
         private ScrollMenu mRaceMenu;
+        private ScrollMenu mClassMenu;
         private ScrollMenu mLevelMenu;
         private ScrollMenu mCheatMenu;
         NewStatsControl mStatsControl;
