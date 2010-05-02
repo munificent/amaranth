@@ -19,7 +19,7 @@ namespace Amaranth.TermApp
         {
             switch (element)
             {
-                case Element.Air:       return TerminalColors.LightBlue;
+                case Element.Air:       return TerminalColors.Cyan;
                 case Element.Earth:     return TerminalColors.LightBrown;
                 case Element.Fire:      return TerminalColors.Red;
                 case Element.Water:     return TerminalColors.Blue;
@@ -30,14 +30,14 @@ namespace Amaranth.TermApp
                 case Element.Lightning: return TerminalColors.Purple;
                 case Element.Poison:    return TerminalColors.DarkGreen;
                 case Element.Dark:      return TerminalColors.DarkGray;
-                case Element.Light:     return TerminalColors.Yellow;
-                case Element.Anima:     return TerminalColors.Orange;
-                case Element.Death:     return TerminalColors.Gray;
+                case Element.Light:     return TerminalColors.LightYellow;
+                case Element.Anima:     return TerminalColors.Gold;
+                case Element.Death:     return TerminalColors.DarkRed;
                 default: throw new UnknownEnumException(element);
             }
         }
 
-        public static string GetAbbreviation(Element element)
+        public static string GetAbbreviation2(Element element)
         {
             switch (element)
             {
@@ -55,6 +55,28 @@ namespace Amaranth.TermApp
                 case Element.Light:     return "Li";
                 case Element.Anima:     return "An";
                 case Element.Death:     return "De";
+                default: throw new UnknownEnumException(element);
+            }
+        }
+        
+        public static string GetAbbreviation4(Element element)
+        {
+            switch (element)
+            {
+                case Element.Air:       return "Air";
+                case Element.Earth:     return "Eart";
+                case Element.Fire:      return "Fire";
+                case Element.Water:     return "Watr";
+                case Element.Metal:     return "Metl";
+                case Element.Wood:      return "Wood";
+                case Element.Acid:      return "Acid";
+                case Element.Cold:      return "Cold";
+                case Element.Lightning: return "Ltng";
+                case Element.Poison:    return "Pois";
+                case Element.Dark:      return "Dark";
+                case Element.Light:     return "Lite";
+                case Element.Anima:     return "Anim";
+                case Element.Death:     return "Deth";
                 default: throw new UnknownEnumException(element);
             }
         }

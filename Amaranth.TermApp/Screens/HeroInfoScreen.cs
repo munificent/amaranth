@@ -28,33 +28,34 @@ namespace Amaranth.TermApp
             const int DamageX = 9;
             const int DodgeX = 16;
             const int ArmorX = 23;
-            const int StatX = 27;
-            const int ResistX = 46;
-            const int LabelX = 75;
+            const int ElemX = 27;
+            const int StatX = 32;
+            const int ResistX = 51;
+            const int LabelX = 80;
 
             // draw the table
-            terminal[0, 0, 75, 28][TerminalColors.DarkGray].DrawBox(false, false);
-            terminal[26, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
-            terminal[45, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
+            terminal[0, 0, 80, 28][TerminalColors.DarkGray].DrawBox(false, false);
+            terminal[31, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
+            terminal[50, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
 
-            terminal[26, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
-            terminal[45, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
-            terminal[26, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
-            terminal[45, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
+            terminal[31, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
+            terminal[50, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
+            terminal[31, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
+            terminal[50, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
 
             // write the header
-            terminal[11, 0][TerminalColors.Gray].Write("Melee");
-            terminal[34, 0][TerminalColors.Gray].Write("Stats");
-            terminal[55, 0][TerminalColors.Gray].Write("Resistances");
+            terminal[14, 0][TerminalColors.Gray].Write("Melee");
+            terminal[39, 0][TerminalColors.Gray].Write("Stats");
+            terminal[60, 0][TerminalColors.Gray].Write("Resistances");
 
-            terminal[1, 1].Write("Strike Damage Dodge Armor");
+            terminal[1, 1].Write("Strike Damage Dodge Armor Elem");
             terminal[StatX, 1].Write("StrAgiStaWilIntCha");
 
             // write the elements in color
             int x = ResistX;
             foreach (Element element in Enum.GetValues(typeof(Element)))
             {
-                terminal[x, 1][GameArt.GetColor(element)].Write(GameArt.GetAbbreviation(element));
+                terminal[x, 1][GameArt.GetColor(element)].Write(GameArt.GetAbbreviation2(element));
                 x += 2;
             }
 
@@ -70,6 +71,7 @@ namespace Amaranth.TermApp
             terminal[DamageX, y].Write("x1.0");
             terminal[DodgeX, y].Write(Hero.DodgeBase.ToString());
             terminal[ArmorX, y].Write(" 0");
+            terminal[ElemX, y][GameArt.GetColor(Element.Anima)].Write(GameArt.GetAbbreviation4(Element.Anima));
 
             // stats
             x = StatX;
@@ -152,6 +154,13 @@ namespace Amaranth.TermApp
                     {
                         terminal[ArmorX, y][color].Write(Glyph.ArrowUp);
                         terminal[ArmorX + 1, y][color].Write(item.TotalArmor.ToString());
+                    }
+
+                    // element
+                    if (item.Attack != null)
+                    {
+                        Element element = item.Attack.Element;
+                        terminal[ElemX, y][GameArt.GetColor(element)].Write(GameArt.GetAbbreviation4(element));
                     }
                 }
 
@@ -324,6 +333,18 @@ namespace Amaranth.TermApp
                 x += 2;
             }
 
+            // element
+            Element attackElement = Element.Anima;
+            Item weapon = mHero.Equipment.MeleeWeapon;
+            if (weapon != null)
+            {
+                if (weapon.Attack != null)
+                {
+                    attackElement = weapon.Attack.Element;
+                }
+            }
+            terminal[ElemX, y][GameArt.GetColor(attackElement)].Write(GameArt.GetAbbreviation4(attackElement));
+
             y += 2;
             terminal[1, y].Write("A total armor of " + mHero.Armor + " reduces damage by " + (100 - (int)(100.0f * Entity.GetArmorReduction(mHero.Armor))) + "%.");
         }
@@ -376,11 +397,11 @@ namespace Amaranth.TermApp
 
         private void DrawRowLine(ITerminal terminal, int y)
         {
-            terminal[1, y, 74, 1][TerminalColors.DarkGray].DrawBox(false, true);
+            terminal[1, y, 79, 1][TerminalColors.DarkGray].DrawBox(false, true);
             terminal[0, y][TerminalColors.DarkGray].Write(Glyph.BarUpDownRight);
-            terminal[26, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
-            terminal[45, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
-            terminal[74, y][TerminalColors.DarkGray].Write(Glyph.BarUpDownLeft);
+            terminal[31, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
+            terminal[50, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
+            terminal[79, y][TerminalColors.DarkGray].Write(Glyph.BarUpDownLeft);
         }
 
         private Hero mHero;
