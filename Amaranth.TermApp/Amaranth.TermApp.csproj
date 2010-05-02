@@ -84,6 +84,7 @@
     <Compile Include="Controls\StatusControl.cs" />
     <Compile Include="Classes\GameArt.cs" />
     <Compile Include="Classes\ItemsOnGroundCollection.cs" />
+    <Compile Include="Screens\ClassInfoScreen.cs" />
     <Compile Include="Screens\DeathScreen.cs" />
     <Compile Include="Screens\HelpScreen.cs" />
     <Compile Include="Screens\HeroInfoScreen.cs" />

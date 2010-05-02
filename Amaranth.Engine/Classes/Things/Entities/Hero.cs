@@ -87,6 +87,8 @@ namespace Amaranth.Engine
 
         public string Race { get { return mRace; } }
 
+        public HeroClass Class { get { return mClass; } }
+
         public int Level { get { return mLevel; } }
 
         /// <summary>

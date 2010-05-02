@@ -10,6 +10,9 @@ using Amaranth.UI;
 
 namespace Amaranth.TermApp
 {
+    /// <summary>
+    /// A screen that shows detailed stat information for a Hero.
+    /// </summary>
     public class HeroInfoScreen : Screen, IInputHandler
     {
         public HeroInfoScreen(Hero hero)
@@ -356,6 +359,7 @@ namespace Amaranth.TermApp
             get
             {
                 yield return new KeyInstruction("Return to Game", new KeyInfo(Key.Escape));
+                yield return new KeyInstruction("Show Class Info", new KeyInfo(Key.Tab));
             }
         }
 
@@ -364,6 +368,11 @@ namespace Amaranth.TermApp
             if (key.Key == Key.Escape)
             {
                 UI.PopScreen();
+                return true;
+            }
+            else if (key.Key == Key.Tab)
+            {
+                UI.SetScreen(new ClassInfoScreen(mHero));
                 return true;
             }
 

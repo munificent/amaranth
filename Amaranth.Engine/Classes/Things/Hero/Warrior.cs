@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -26,6 +27,23 @@ namespace Amaranth.Engine
     [Serializable]
     public class Warrior : HeroClass
     {
+        /// <summary>
+        /// Gets the warrior's slay lore. For each monster group that a
+        /// Warrior has slain at least one of, this will show the group
+        /// name, the number of slain monsters of that group, and the
+        /// lore level for the group.
+        /// </summary>
+        public IEnumerable<SlayLore> SlayLore
+        {
+            get
+            {
+                foreach (var pair in mSlays)
+                {
+                    yield return new SlayLore(pair.Key, pair.Value, GetLevel(pair.Value));
+                }
+            }
+        }
+
         /// <summary>
         /// Overridden from HeroClass.
         /// </summary>
@@ -103,6 +121,20 @@ namespace Amaranth.Engine
 
         private const int MaxLevel = 10;
 
-        private readonly Dictionary<string, int> mSlays = new Dictionary<string, int>();
+        private readonly SortedDictionary<string, int> mSlays = new SortedDictionary<string, int>();
+    }
+
+    public class SlayLore
+    {
+        public string Group { get; private set; }
+        public int Slain { get; private set; }
+        public int Level { get; private set; }
+
+        public SlayLore(string group, int slain, int level)
+        {
+            Group = group;
+            Slain = slain;
+            Level = level;
+        }
     }
 }
