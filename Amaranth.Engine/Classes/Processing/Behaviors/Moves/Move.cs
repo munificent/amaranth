@@ -20,7 +20,10 @@ namespace Amaranth.Engine
 
         public void BindInfo(MoveInfo info)
         {
-            Assign.OnlyOnce(ref mInfo, info, "info");
+            if (info == null) throw new ArgumentNullException("info");
+            if (mInfo != null) throw new InvalidOperationException("Cannot bind info more than once.");
+
+            mInfo = info;
         }
 
         public bool ShouldAttempt()

@@ -4,41 +4,103 @@ using System.Text;
 
 namespace Amaranth.Util
 {
+    /// <summary>
+    /// A 2D integer rectangle class. Similar to Rectangle, but not dependent on System.Drawing
+    /// and much more feature-rich.
+    /// </summary>
     [Serializable]
     public struct Rect : IEquatable<Rect>, IEnumerable<Vec>
     {
+        /// <summary>
+        /// Gets the empty rectangle.
+        /// </summary>
         public readonly static Rect Empty;
 
+        /// <summary>
+        /// Creates a new rectangle a single row in height, as wide as the given size.
+        /// </summary>
+        /// <param name="size">The width of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Row(int size)
         {
             return new Rect(0, 0, size, 1);
         }
 
+        /// <summary>
+        /// Creates a new rectangle a single row in height, as wide as the given size,
+        /// starting at the given top-left corner.
+        /// </summary>
+        /// <param name="x">The left edge of the rectangle.</param>
+        /// <param name="y">The top of the rectangle.</param>
+        /// <param name="size">The width of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Row(int x, int y, int size)
         {
             return new Rect(x, y, size, 1);
         }
 
+        /// <summary>
+        /// Creates a new rectangle a single row in height, as wide as the given size,
+        /// starting at the given top-left corner.
+        /// </summary>
+        /// <param name="pos">The top-left corner of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Row(Vec pos, int size)
         {
             return new Rect(pos.X, pos.Y, size, 1);
         }
 
+        /// <summary>
+        /// Creates a new rectangle a single column in width, as tall as the given size.
+        /// </summary>
+        /// <param name="size">The height of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Column(int size)
         {
             return new Rect(0, 0, 1, size);
         }
 
+        /// <summary>
+        /// Creates a new rectangle a single column in width, as tall as the given size,
+        /// starting at the given top-left corner.
+        /// </summary>
+        /// <param name="x">The left edge of the rectangle.</param>
+        /// <param name="y">The top of the rectangle.</param>
+        /// <param name="size">The height of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Column(int x, int y, int size)
         {
             return new Rect(x, y, 1, size);
         }
 
+        /// <summary>
+        /// Creates a new rectangle a single column in width, as tall as the given size,
+        /// starting at the given top-left corner.
+        /// </summary>
+        /// <param name="pos">The top-left corner of the rectangle.</param>
+        /// <param name="size">The height of the rectangle.</param>
+        /// <returns>The new rectangle.</returns>
         public static Rect Column(Vec pos, int size)
         {
             return new Rect(pos.X, pos.Y, 1, size);
         }
 
+        /// <summary>
+        /// Creates a new rectangle that is the intersection of the two given rectangles.
+        /// </summary>
+        /// <example><code>
+        /// .----------.
+        /// | a        |
+        /// | .--------+----.
+        /// | | result |  b |
+        /// | |        |    |
+        /// '-+--------'    |
+        ///   |             |
+        ///   '-------------'
+        /// </code></example>
+        /// <param name="a">The first rectangle.</param>
+        /// <param name="b">The rectangle to intersect it with.</param>
+        /// <returns></returns>
         public static Rect Intersect(Rect a, Rect b)
         {
             int left = Math.Max(a.Left, b.Left);

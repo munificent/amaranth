@@ -53,7 +53,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Array2D.cs" />
-    <Compile Include="Assign.cs" />
     <Compile Include="CollectibleCollection.cs" />
     <Compile Include="Extension Classes\EnumerableExtensions.cs" />
     <Compile Include="EventArgs\CollectionItemEventArgs.cs" />

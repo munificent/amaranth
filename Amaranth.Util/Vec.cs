@@ -5,11 +5,21 @@ using System.Text;
 
 namespace Amaranth.Util
 {
+    /// <summary>
+    /// A 2D integer vector class. Similar to Point but not dependent on System.Drawing and much more
+    /// feature-rich.
+    /// </summary>
     [Serializable]
     public struct Vec : IEquatable<Vec>
     {
-        public static readonly Vec Empty;
+        /// <summary>
+        /// Gets the zero vector.
+        /// </summary>
         public static readonly Vec Zero = new Vec(0, 0);
+
+        /// <summary>
+        /// Gets the unit vector.
+        /// </summary>
         public static readonly Vec One = new Vec(1, 1);
 
         #region Operators

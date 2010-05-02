@@ -15,15 +15,6 @@ namespace Amaranth.Util.Tests
         #region Public static properties
 
         [Test]
-        public void TestEmpty()
-        {
-            Vec v = Vec.Empty;
-
-            Assert.AreEqual(0, v.X);
-            Assert.AreEqual(0, v.Y);
-        }
-
-        [Test]
         public void TestZero()
         {
             Vec v = Vec.Zero;
