@@ -44,7 +44,7 @@ namespace Amaranth.Engine
             mEntities.Clear();
 
             // fill the dungeon with default tiles
-            mTiles.SetAll((pos) => new Tile(TileType.Wall));
+            mTiles.Fill((pos) => new Tile(TileType.Wall));
 
             // generate the dungeon
             IDungeonGenerator generator;

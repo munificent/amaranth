@@ -16,7 +16,7 @@ namespace Amaranth.Terminals
             mCharacters = new Array2D<Character>(width, height);
 
             // fill with empty characters since default Character constructor doesn't initialize colors
-            mCharacters.SetAll((pos) => new Character(' '));
+            mCharacters.Fill((pos) => new Character(' '));
 
             mStates = new Stack<ITerminalState>();
 

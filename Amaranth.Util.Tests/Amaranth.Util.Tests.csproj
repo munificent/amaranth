@@ -76,9 +76,7 @@
     <Compile Include="PropSet\IndentationTreeFixture.cs" />
     <Compile Include="PropSet\PropSetFixture.cs" />
     <Compile Include="PropSet\PropSetParserFixture.cs" />
-    <Compile Include="RangedIntFixture.cs" />
     <Compile Include="RectFixture.cs" />
-    <Compile Include="StateFixture.cs" />
     <Compile Include="VecFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

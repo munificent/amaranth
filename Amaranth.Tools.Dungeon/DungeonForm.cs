@@ -45,7 +45,7 @@ namespace Amaranth.Tools.Dungeons
             Game game = new Game(Hero.CreateTemp(), mContent);
 
             // fill the dungeon with default tiles
-            game.Dungeon.Tiles.SetAll((pos) => new Tile(TileType.Wall));
+            game.Dungeon.Tiles.Fill((pos) => new Tile(TileType.Wall));
 
             IDungeonGenerator generator = new FeatureCreepGenerator();
             generator.Create(game.Dungeon, true, mLevelTrackBar.Value, mPropertyGrid.SelectedObject);

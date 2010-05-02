@@ -55,7 +55,7 @@ namespace Amaranth.Engine
             mOpenCount = 0;
             mMadeUpStair = false;
             mMadeDownStair = false;
-            mDungeon.Tiles.SetAll(pos => new Tile(TileType.Wall));
+            mDungeon.Tiles.Fill(pos => new Tile(TileType.Wall));
 
             // create a starting room
             mUnusedConnectors.Clear();

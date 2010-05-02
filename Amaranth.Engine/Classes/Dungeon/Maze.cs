@@ -25,7 +25,7 @@ namespace Amaranth.Engine
             // pad by one for the outer bottom and right walls
             mCells = new Array2D<Cell>(width + 1, height + 1);
 
-            mCells.SetAll((pos) => new Cell());
+            mCells.Fill((pos) => new Cell());
         }
 
         /// <summary>

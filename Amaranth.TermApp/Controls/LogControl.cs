@@ -59,7 +59,7 @@ namespace Amaranth.TermApp
                     text += " (x" + entry.Count.ToString() + ")";
                 }
 
-                foreach (string line in Text.WordWrap(text, terminal.Width))
+                foreach (string line in text.WordWrap(terminal.Width))
                 {
                     terminal.Scroll(0, -1, pos => new Character(Glyph.Space));
                     terminal[0, -1].Write(line);
