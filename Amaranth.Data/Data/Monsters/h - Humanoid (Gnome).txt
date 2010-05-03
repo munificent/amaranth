@@ -149,9 +149,41 @@ gnome adept :: gnome
             (light-scroll)
             (teleport-scroll)
             (heal-potion)
+            (restore-potion)
         (cloak) (30%)
         (elemental-ring) (40%)
         (ball-wand) (40%)
         (dagger) (30%)
+    description
+        A skilled and respected member of the Gnomish Magical Society. She has countless tricks up her sleeves.
+
+gnome wizard :: gnome
+    color     = Purple
+    depth     = 58
+    health    = 80
+    speed     = 3
+    moves
+        haste self
+            odds = 1 in 4
+        dark bolt ::
+            odds    = 1 in 6
+            damage  = 15t3
+        acid bolt ::
+            odds    = 1 in 6
+            damage  = 20t3
+        cold bolt ::
+            odds    = 1 in 6
+            damage  = 20t3
+    attacks
+        stabs = 15t5
+    drops
+        one of (80%)
+            (teleport-scroll) (30%)
+            (heal-potion) (30%)
+            (restore-potion) (30%)
+            (gain-potion) (10%)
+        (cloak) (30%)
+        (elemental-ring) (40%)
+        (ball-wand) (40%)
     description
         A skilled and respected member of the Gnomish Magical Society. She has countless tricks up her sleeves.

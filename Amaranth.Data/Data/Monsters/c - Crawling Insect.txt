@@ -141,6 +141,8 @@ ant lion :: crawling insect
     health  = 30
     moves
         acid bolt ::
+            odds    = 1 in 8
+            damage  = 20t3
     attacks
         bites = 18t6 acid
     + slightly-erratic

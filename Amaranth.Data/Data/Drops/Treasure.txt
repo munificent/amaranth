@@ -1,17 +1,17 @@
 ﻿(coin)
     one near level
-        1(1:10) copper coin (1)
-        1(1:10) bronze coin (7)
-        1(1:10) silver coin (14)
+        1(1:10) copper coin    (1)
+        1(1:10) bronze coin    (7)
+        1(1:10) silver coin   (14)
         1(1:10) electrum coin (23)
-        1(1:10) gold coin (30)
+        1(1:10) gold coin     (30)
         1(1:10) platinum coin (42)
-        1(1:10) amethyst (64)
-        1(1:10) sapphire (73)
-        1(1:10) emerald (82)
-        1(1:10) ruby (91)
-        1(1:10) diamond (95)
-        1(1:10) blue diamond (99)
+        1(1:10) amethyst      (64)
+        1(1:10) sapphire      (73)
+        1(1:10) emerald       (82)
+        1(1:10) ruby          (91)
+        1(1:10) diamond       (95)
+        1(1:10) blue diamond  (99)
 
 // stone - single stone of varied grade
 

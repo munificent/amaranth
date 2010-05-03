@@ -14,6 +14,8 @@ namespace Amaranth.Engine
     {
         public RepeatDrop(NotNull<Roller> repeat, IDrop<T> drop)
         {
+            if (drop == null) throw new ArgumentNullException("drop");
+
             mRepeat = repeat;
             mDrop = drop;
         }

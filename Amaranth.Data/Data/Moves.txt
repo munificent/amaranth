@@ -35,6 +35,10 @@
     noun    = a jet of poison
     element = poison
 
+:: dark bolt :: bolt
+    noun    = a bolt of darkness
+    element = dark
+
 :: light bolt :: bolt
     noun    = a flash of light
     element = light

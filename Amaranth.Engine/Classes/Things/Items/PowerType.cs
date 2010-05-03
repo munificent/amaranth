@@ -70,7 +70,7 @@ namespace Amaranth.Engine
 
             // default to no bonus
             StrikeBonus = Roller.Fixed(0);
-            DamageBonus = Roller.Fixed(0);
+            DamageBonus = Roller.Fixed(10);
             ArmorBonus = Roller.Fixed(0);
             StatBonus = Roller.Fixed(0);
             SpeedBonus = Roller.Fixed(0);

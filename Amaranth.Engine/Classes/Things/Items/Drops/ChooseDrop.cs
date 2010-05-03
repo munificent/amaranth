@@ -31,15 +31,13 @@ namespace Amaranth.Engine
             float totalOdds = Math.Max(TotalOdds, Choices.Sum((choice) => choice.Odds));
             float choiceValue = Rng.Float(TotalOdds);
 
-            float original = choiceValue;
-
             IDrop<T> dropped = null;
 
             // count through to find the chosen one
             foreach (DropChoice choice in Choices)
             {
                 choiceValue -= choice.Odds;
-                if (choiceValue < 0)
+                if (choiceValue <= 0)
                 {
                     dropped = choice.Drop;
                     break;
@@ -52,14 +50,6 @@ namespace Amaranth.Engine
                 foreach (var item in dropped.Create(level))
                 {
                     yield return item;
-                }
-            }
-            else
-            {
-                if (typeof(T).Equals(typeof(CreateFeature)))
-                {
-                    Console.WriteLine(original.ToString());
-                    System.Diagnostics.Debugger.Break();
                 }
             }
         }

@@ -43,7 +43,7 @@ namespace Amaranth.Data
             odds = 0;
 
             // check for a repeat
-            string[] parts = property.Name.Split(' ');
+            string[] parts = property.Name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             Roller repeat = null;
             bool hasOdds = false;

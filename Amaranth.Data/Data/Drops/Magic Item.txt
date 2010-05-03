@@ -18,19 +18,52 @@
         philter of speed (60)
 
 (heal-potion)
-    one near level
-        salve of mending (1)
-        balm of soothing (25)
-        potion of healing (50)
-        potion of amelioration (70)
-        potion of rejuventation (90)
+    one of
+        one near level (99%)
+            salve of mending (1)
+            balm of soothing (25)
+            potion of healing (50)
+            potion of amelioration (70)
+            potion of rejuventation (90)
+        (gain-potion) (1%)
 
 (cure-potion)
-    one near level
-        dram of cure poison (1)
-        dram of cure disease (17)
-        dram of curing (25)
-        potion of amelioration (40)
+    one of
+        one near level (97%)
+            dram of cure poison (1)
+            dram of cure disease (17)
+            dram of curing (25)
+            potion of amelioration (40)
+        (restore-potion) (3%)
+
+(restore-potion)
+    one of
+        one of (90%)
+            draught of restore charisma
+            draught of restore will
+            draught of restore intellect
+            draught of restore agility
+            draught of restore stamina
+            draught of restore strength
+        draught of restoration (10%)
+
+(gain-potion)
+    one of
+        one of (60%)
+            elixir of Beauty
+            elixir of Courage
+            elixir of Cleverness
+            elixir of Flexibility
+            elixir of Fortitude
+            elixir of Brawn
+        one of (35%)
+            elixir of Charisma
+            elixir of Will
+            elixir of Intellect
+            elixir of Agility
+            elixir of Stamina
+            elixir of Strength
+        elixir of Augmentation (5%)
 
 (bolt-wand)
     one of
