@@ -587,7 +587,7 @@ namespace Amaranth.Engine
         {
             int level = 1;
 
-            while (true)
+            while (level <= MaxLevel)
             {
                 int needed = GetExperience(level + 1);
                 int neededCents = needed * 100;

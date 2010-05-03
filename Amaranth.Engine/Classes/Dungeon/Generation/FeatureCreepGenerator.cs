@@ -57,9 +57,11 @@ namespace Amaranth.Engine
             mMadeDownStair = false;
             mDungeon.Tiles.Fill(pos => new Tile(TileType.Wall));
 
+            mFactory = new FeatureFactory(this, depth);
+
             // create a starting room
             mUnusedConnectors.Clear();
-            mStartPos = FeatureFactory.MakeStartingRoom(this, depth).Center;
+            mStartPos = mFactory.MakeStartingRoom().Center;
 
             for (int tries = 0; (tries < mOptions.MaxTries) && (mUnusedConnectors.Count > 0); tries++)
             {
@@ -72,12 +74,12 @@ namespace Amaranth.Engine
                 {
                     case ConnectFrom.Room:
                         // try to add a hall
-                        success = FeatureFactory.MakeHall(this, connector, depth);
+                        success = mFactory.MakeHall(connector);
                         break;
 
                     case ConnectFrom.Hall:
-                        var create = mDungeon.Game.Content.Features.CreateOne(depth);
-                        success = create(this, connector, depth);
+                        var feature = mDungeon.Game.Content.Features.CreateOne(depth);
+                        success = mFactory.CreateFeature(feature, connector);
                         break;
                 }
 
@@ -203,6 +205,7 @@ namespace Amaranth.Engine
         private int mTry = 0;
         private int mOpenCount;
         private Dungeon mDungeon;
+        private FeatureFactory mFactory;
         private Vec mStartPos;
         bool mMadeUpStair;
         bool mMadeDownStair;

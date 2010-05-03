@@ -40,9 +40,9 @@ namespace Amaranth.Engine
         /// <summary>
         /// Gets drop for creating a dungeon feature.
         /// </summary>
-        public IDrop<CreateFeature> Features { get { return mFeatures; } }
+        public IDrop<string> Features { get { return mFeatures; } }
 
-        public void SetFeatures(IDrop<CreateFeature> drop)
+        public void SetFeatures(IDrop<string> drop)
         {
             mFeatures = drop;
         }
@@ -52,6 +52,6 @@ namespace Amaranth.Engine
         private readonly List<ItemType> mItems = new List<ItemType>();
         private readonly PowerChooser mPowers = new PowerChooser();
         private readonly List<StoreType> mStores = new List<StoreType>();
-        private IDrop<CreateFeature> mFeatures;
+        private IDrop<string> mFeatures;
     }
 }

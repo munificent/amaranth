@@ -72,7 +72,6 @@
     <Compile Include="Classes\DataFiles.cs" />
     <Compile Include="Classes\DropMacroCollection.cs" />
     <Compile Include="Classes\DropParser.cs" />
-    <Compile Include="Classes\FeatureDropParser.cs" />
     <Compile Include="Classes\Features.cs" />
     <Compile Include="Classes\HeroRaces.cs" />
     <Compile Include="Classes\ItemDropParser.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Classes\Races.cs" />
     <Compile Include="Classes\FlagMacro.cs" />
     <Compile Include="Classes\Stores.cs" />
+    <Compile Include="Classes\StringDropParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

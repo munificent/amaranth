@@ -14,7 +14,7 @@ namespace Amaranth.Data
         {
             foreach (PropSet baseProp in PropSet.FromFile(filePath))
             {
-                var parser = new FeatureDropParser();
+                var parser = new StringDropParser();
                 content.SetFeatures(parser.ParseDefinition(baseProp, null));
             }
 

@@ -7,19 +7,36 @@ using Amaranth.Util;
 
 namespace Amaranth.Engine
 {
-    public delegate bool CreateFeature(IFeatureWriter writer, Connector connector, int depth);
-
-    public static class FeatureFactory
+    public class FeatureFactory
     {
-        public static Rect MakeStartingRoom(IFeatureWriter writer, int depth)
+        public FeatureFactory(IFeatureWriter writer, int depth)
         {
-            return CreateRoom(writer, null, depth);
+            mWriter = writer;
+            mDepth = depth;
         }
 
-        public static bool MakeHall(IFeatureWriter writer, Connector connector, int depth)
+        public Rect MakeStartingRoom()
+        {
+            return CreateRoom(null);
+        }
+
+        public bool CreateFeature(string name, Connector connector)
+        {
+            switch (name)
+            {
+                case "stair": return MakeStair(connector);
+                case "room": return MakeRoom(connector);
+                case "maze": return MakeMaze(connector);
+                case "pit": return MakePit(connector);
+                case "junction": return MakeJunction(connector);
+                default: throw new ArgumentException("Unknown feature \"" + name + "\"/");
+            }
+        }
+
+        public bool MakeHall(Connector connector)
         {
             // create a random hall
-            int length = Rng.Int(writer.Options.HallLengthMin, writer.Options.HallLengthMax);
+            int length = Rng.Int(mWriter.Options.HallLengthMin, mWriter.Options.HallLengthMax);
 
             // check to see if we can place it
             Rect bounds = Rect.Empty;
@@ -28,47 +45,47 @@ namespace Amaranth.Engine
             if (connector.Direction == Direction.E) bounds = new Rect(connector.Position.X, connector.Position.Y - 1, length + 1, 3);
             if (connector.Direction == Direction.W) bounds = new Rect(connector.Position.X - length, connector.Position.Y - 1, length + 1, 3);
 
-            if (!writer.IsOpen(bounds, null)) return false;
+            if (!mWriter.IsOpen(bounds, null)) return false;
 
             // make sure the end corners aren't open unless the position in front of the end is too
             // prevents cases like:
             Vec pos = connector.Position + (connector.Direction.Offset * (length + 1));
 
-            if (!writer.Bounds.Contains(pos)) return false;
-            if (!writer.Bounds.Contains(pos + connector.Direction.RotateLeft90)) return false;
-            if (!writer.Bounds.Contains(pos + connector.Direction.RotateRight90)) return false;
+            if (!mWriter.Bounds.Contains(pos)) return false;
+            if (!mWriter.Bounds.Contains(pos + connector.Direction.RotateLeft90)) return false;
+            if (!mWriter.Bounds.Contains(pos + connector.Direction.RotateRight90)) return false;
             // ####..
             // ####..
             // ....## <- new hall ends at corner of room
             // ######
-            if ((writer.GetTile(pos + connector.Direction.RotateLeft90) != TileType.Wall) &&
-                (writer.GetTile(pos) == TileType.Wall)) return false;
+            if ((mWriter.GetTile(pos + connector.Direction.RotateLeft90) != TileType.Wall) &&
+                (mWriter.GetTile(pos) == TileType.Wall)) return false;
 
-            if ((writer.GetTile(pos + connector.Direction.RotateRight90) != TileType.Wall) &&
-                (writer.GetTile(pos) == TileType.Wall)) return false;
+            if ((mWriter.GetTile(pos + connector.Direction.RotateRight90) != TileType.Wall) &&
+                (mWriter.GetTile(pos) == TileType.Wall)) return false;
 
             // place the hall
             pos = connector.Position;
             for (int i = 0; i <= length; i++)
             {
-                writer.SetTile(pos, TileType.Floor);
+                mWriter.SetTile(pos, TileType.Floor);
 
                 pos += connector.Direction;
             }
 
-            PlaceDoor(writer, connector.Position);
-            PlaceDoor(writer, connector.Position + (connector.Direction.Offset * length));
+            PlaceDoor(connector.Position);
+            PlaceDoor(connector.Position + (connector.Direction.Offset * length));
 
             // add the connectors
-            writer.AddHallConnector(connector.Position + (connector.Direction.Offset * length),
+            mWriter.AddHallConnector(connector.Position + (connector.Direction.Offset * length),
                                     connector.Direction);
 
-            Populate(writer, bounds, 10, 10, depth);
+            Populate(bounds, 10, 10, mDepth);
 
             return true;
         }
 
-        public static bool MakeJunction(IFeatureWriter writer, Connector connector, int depth)
+        private bool MakeJunction(Connector connector)
         {
             // create a random junction
             Vec center = connector.Position + connector.Direction;
@@ -78,24 +95,24 @@ namespace Amaranth.Engine
             bool straight = false;
 
             int choice = Rng.Int(100);
-            if (choice < writer.Options.ChanceOfTurn)
+            if (choice < mWriter.Options.ChanceOfTurn)
             {
                 if (Rng.OneIn(2)) left = true; else right = true;
             }
-            else if (choice - writer.Options.ChanceOfTurn < writer.Options.ChanceOfFork)
+            else if (choice - mWriter.Options.ChanceOfTurn < mWriter.Options.ChanceOfFork)
             {
                 if (Rng.OneIn(2)) left = true; else right = true;
                 straight = true;
             }
-            else if (choice - writer.Options.ChanceOfTurn
-                            - writer.Options.ChanceOfFork < writer.Options.ChanceOfTee)
+            else if (choice - mWriter.Options.ChanceOfTurn
+                            - mWriter.Options.ChanceOfFork < mWriter.Options.ChanceOfTee)
             {
                 left = true;
                 right = true;
             }
-            else if (choice - writer.Options.ChanceOfTurn
-                            - writer.Options.ChanceOfFork
-                            - writer.Options.ChanceOfTee < writer.Options.ChanceOfFourWay)
+            else if (choice - mWriter.Options.ChanceOfTurn
+                            - mWriter.Options.ChanceOfFork
+                            - mWriter.Options.ChanceOfTee < mWriter.Options.ChanceOfFourWay)
             {
                 left = true;
                 right = true;
@@ -108,45 +125,45 @@ namespace Amaranth.Engine
 
             // check to see if we can place it
             Rect rect = new Rect(center.Offset(-1, -1), 3, 3);
-            if (!writer.IsOpen(rect, center + connector.Direction.Rotate180)) return false;
+            if (!mWriter.IsOpen(rect, center + connector.Direction.Rotate180)) return false;
 
             // place the junction
-            writer.SetTile(center, TileType.Floor);
+            mWriter.SetTile(center, TileType.Floor);
 
             // add the connectors
-            if (left) writer.AddRoomConnector(center + connector.Direction.RotateLeft90, connector.Direction.RotateLeft90);
-            if (right) writer.AddRoomConnector(center + connector.Direction.RotateRight90, connector.Direction.RotateRight90);
-            if (straight) writer.AddRoomConnector(center + connector.Direction, connector.Direction);
+            if (left) mWriter.AddRoomConnector(center + connector.Direction.RotateLeft90, connector.Direction.RotateLeft90);
+            if (right) mWriter.AddRoomConnector(center + connector.Direction.RotateRight90, connector.Direction.RotateRight90);
+            if (straight) mWriter.AddRoomConnector(center + connector.Direction, connector.Direction);
 
             return true;
         }
 
-        public static bool MakeRoom(IFeatureWriter writer, Connector connector, int depth)
+        private bool MakeRoom(Connector connector)
         {
-            return CreateRoom(writer, connector, depth) != Rect.Empty;
+            return CreateRoom(connector) != Rect.Empty;
         }
 
-        public static bool MakeStair(IFeatureWriter writer, Connector connector, int depth)
+        private bool MakeStair(Connector connector)
         {
             // check to see if we can place it
             Rect rect = new Rect(connector.Position.Offset(-1, -1), 3, 3);
-            if (!writer.IsOpen(rect, connector.Position + connector.Direction.Rotate180)) return false;
+            if (!mWriter.IsOpen(rect, connector.Position + connector.Direction.Rotate180)) return false;
 
             TileType type = (Rng.Int(10) < 6) ? TileType.StairsDown : TileType.StairsUp;
-            writer.SetTile(connector.Position, type);
+            mWriter.SetTile(connector.Position, type);
 
             return true;
         }
 
-        public static bool MakeMaze(IFeatureWriter writer, Connector connector, int depth)
+        private bool MakeMaze(Connector connector)
         {
             // in maze units (i.e. thin walls), not tiles
-            int width = Rng.Int(writer.Options.MazeSizeMin, writer.Options.MazeSizeMax);
-            int height = Rng.Int(writer.Options.MazeSizeMin, writer.Options.MazeSizeMax);
+            int width = Rng.Int(mWriter.Options.MazeSizeMin, mWriter.Options.MazeSizeMax);
+            int height = Rng.Int(mWriter.Options.MazeSizeMin, mWriter.Options.MazeSizeMax);
 
             int tileWidth = width * 2 + 3;
             int tileHeight = height * 2 + 3;
-            Rect bounds = CreateRectRoom(writer, connector, tileWidth, tileHeight);
+            Rect bounds = CreateRectRoom(connector, tileWidth, tileHeight);
 
             // bail if we failed
             if (bounds == Rect.Empty) return false;
@@ -154,7 +171,7 @@ namespace Amaranth.Engine
             // the hallway around the maze
             foreach (Vec pos in bounds.Trace())
             {
-                writer.SetTile(pos, TileType.Floor);
+                mWriter.SetTile(pos, TileType.Floor);
             }
 
             // sometimes make the walls low
@@ -162,7 +179,7 @@ namespace Amaranth.Engine
             {
                 foreach (Vec pos in bounds.Inflate(-1))
                 {
-                    writer.SetTile(pos, TileType.LowWall);
+                    mWriter.SetTile(pos, TileType.LowWall);
                 }
             }
 
@@ -180,65 +197,65 @@ namespace Amaranth.Engine
                 case 7: doorway = bounds.BottomLeft.Offset(1, -3); break;
                 default: throw new Exception();
             }
-            PlaceDoor(writer, doorway);
+            PlaceDoor(doorway);
 
             // carve the maze
             Maze maze = new Maze(width, height);
             maze.GrowTree();
 
             Vec offset = bounds.Position.Offset(1, 1);
-            maze.Draw(pos => writer.SetTile(pos + offset, TileType.Floor));
+            maze.Draw(pos => mWriter.SetTile(pos + offset, TileType.Floor));
 
-            writer.LightRect(bounds, depth);
+            mWriter.LightRect(bounds, mDepth);
 
             // populate it
-            int boostedDepth = depth + Rng.Int(depth / 5) + 2;
-            Populate(writer, bounds.Inflate(-2), 200, 300, boostedDepth);
+            int boostedDepth = mDepth + Rng.Int(mDepth / 5) + 2;
+            Populate(bounds.Inflate(-2), 200, 300, boostedDepth);
 
             // place the connectors
-            AddRoomConnectors(writer, connector, bounds);
+            AddRoomConnectors(connector, bounds);
 
             return true;
         }
 
-        public static bool MakePit(IFeatureWriter writer, Connector connector, int depth)
+        private bool MakePit(Connector connector)
         {
             // pits use room size right now
-            int width = Rng.Int(writer.Options.RoomSizeMin, writer.Options.RoomSizeMax);
-            int height = Rng.Int(writer.Options.RoomSizeMin, writer.Options.RoomSizeMax);
-            Rect bounds = CreateRectRoom(writer, connector, width, height);
+            int width = Rng.Int(mWriter.Options.RoomSizeMin, mWriter.Options.RoomSizeMax);
+            int height = Rng.Int(mWriter.Options.RoomSizeMin, mWriter.Options.RoomSizeMax);
+            Rect bounds = CreateRectRoom(connector, width, height);
 
             // bail if we failed
             if (bounds == Rect.Empty) return false;
 
             // light it
-            writer.LightRect(bounds, depth);
+            mWriter.LightRect(bounds, mDepth);
 
             // choose a group
-            IList<Race> races = writer.Content.Races.AllInGroup(Rng.Item(writer.Content.Races.Groups));
+            IList<Race> races = mWriter.Content.Races.AllInGroup(Rng.Item(mWriter.Content.Races.Groups));
 
             // make sure we've got some races that aren't too out of depth
-            races = new List<Race>(races.Where(race => race.Depth <= depth + 10));
+            races = new List<Race>(races.Where(race => race.Depth <= mDepth + 10));
             if (races.Count == 0) return false;
 
             // place the room
             foreach (Vec pos in bounds)
             {
-                writer.SetTile(pos, TileType.Floor);
+                mWriter.SetTile(pos, TileType.Floor);
             }
 
-            RoomDecoration.DecorateInnerRoom(bounds, new RoomDecorator(writer,
-                pos => writer.AddEntity(new Monster(pos, Rng.Item(races)))));
+            RoomDecoration.DecorateInnerRoom(bounds, new RoomDecorator(this,
+                pos => mWriter.AddEntity(new Monster(pos, Rng.Item(races)))));
 
             return true;
         }
 
-        private static Rect CreateRoom(IFeatureWriter writer, Connector connector, int depth)
+        private Rect CreateRoom(Connector connector)
         {
             int width = Rng.Int(6, 13);
             int height = Rng.Int(6, 13);
 
-            Rect bounds = CreateRectRoom(writer,connector, width, height);
+            Rect bounds = CreateRectRoom(connector, width, height);
 
             // bail if we failed
             if (bounds == Rect.Empty) return bounds;
@@ -246,24 +263,25 @@ namespace Amaranth.Engine
             // place the room
             foreach (Vec pos in bounds)
             {
-                writer.SetTile(pos, TileType.Floor);
+                mWriter.SetTile(pos, TileType.Floor);
             }
 
             TileType decoration = ChooseInnerWall();
 
-            RoomDecoration.Decorate(bounds, new FeatureFactory.RoomDecorator(writer, pos => writer.Populate(pos, 60, 200, depth + Rng.Int(depth / 10))));
+            RoomDecoration.Decorate(bounds, new FeatureFactory.RoomDecorator(this,
+                pos => mWriter.Populate(pos, 60, 200, mDepth + Rng.Int(mDepth / 10))));
 
-            writer.LightRect(bounds, depth);
+            mWriter.LightRect(bounds, mDepth);
 
             // place the connectors
-            AddRoomConnectors(writer, connector, bounds);
+            AddRoomConnectors(connector, bounds);
 
-            Populate(writer, bounds, 20, 20, depth);
+            Populate(bounds, 20, 20, mDepth);
 
             return bounds;
         }
 
-        private static Rect CreateRectRoom(IFeatureWriter writer, Connector connector, int width, int height)
+        private Rect CreateRectRoom(Connector connector, int width, int height)
         {
             int x = 0;
             int y = 0;
@@ -272,8 +290,8 @@ namespace Amaranth.Engine
             if (connector == null)
             {
                 // initial room, so start near center
-                x = Rng.TriangleInt((writer.Bounds.Width - width) / 2, (writer.Bounds.Width - width) / 2 - 4);
-                y = Rng.TriangleInt((writer.Bounds.Height - height) / 2, (writer.Bounds.Height - height) / 2 - 4);
+                x = Rng.TriangleInt((mWriter.Bounds.Width - width) / 2, (mWriter.Bounds.Width - width) / 2 - 4);
+                y = Rng.TriangleInt((mWriter.Bounds.Height - height) / 2, (mWriter.Bounds.Height - height) / 2 - 4);
             }
             else if (connector.Direction == Direction.N)
             {
@@ -303,20 +321,20 @@ namespace Amaranth.Engine
             Rect bounds = new Rect(x, y, width, height);
 
             // check to see if the room can be positioned
-            if (!writer.IsOpen(bounds.Inflate(1), (connector != null) ? (Vec?)connector.Position : (Vec?)null)) return Rect.Empty;
+            if (!mWriter.IsOpen(bounds.Inflate(1), (connector != null) ? (Vec?)connector.Position : (Vec?)null)) return Rect.Empty;
 
             return bounds;
         }
 
-        private static void AddRoomConnectors(IFeatureWriter writer, Connector connector, Rect bounds)
+        private void AddRoomConnectors(Connector connector, Rect bounds)
         {
-            AddRoomEdgeConnectors(writer, connector, Rect.Row(bounds.TopLeft + Direction.N, bounds.Width), Direction.N);
-            AddRoomEdgeConnectors(writer, connector, Rect.Column(bounds.TopRight, bounds.Height), Direction.E);
-            AddRoomEdgeConnectors(writer, connector, Rect.Row(bounds.BottomLeft, bounds.Width), Direction.S);
-            AddRoomEdgeConnectors(writer, connector, Rect.Column(bounds.TopLeft + Direction.W, bounds.Height), Direction.W);
+            AddRoomEdgeConnectors(connector, Rect.Row(bounds.TopLeft + Direction.N, bounds.Width), Direction.N);
+            AddRoomEdgeConnectors(connector, Rect.Column(bounds.TopRight, bounds.Height), Direction.E);
+            AddRoomEdgeConnectors(connector, Rect.Row(bounds.BottomLeft, bounds.Width), Direction.S);
+            AddRoomEdgeConnectors(connector, Rect.Column(bounds.TopLeft + Direction.W, bounds.Height), Direction.W);
         }
 
-        private static void AddRoomEdgeConnectors(IFeatureWriter writer, Connector connector, Rect edge, Direction dir)
+        private void AddRoomEdgeConnectors(Connector connector, Rect edge, Direction dir)
         {
             bool skip = Rng.OneIn(2);
 
@@ -328,9 +346,9 @@ namespace Amaranth.Engine
                     if (Vec.IsDistanceWithin(connector.Position, pos, 1)) continue;
                 }
 
-                if (!skip && (Rng.Int(100) < writer.Options.ChanceOfRoomConnector))
+                if (!skip && (Rng.Int(100) < mWriter.Options.ChanceOfRoomConnector))
                 {
-                    writer.AddRoomConnector(pos, dir);
+                    mWriter.AddRoomConnector(pos, dir);
                     skip = true;
                 }
                 else
@@ -340,50 +358,50 @@ namespace Amaranth.Engine
             }
         }
 
-        private static void PlaceDoor(IFeatureWriter writer, Vec pos)
+        private void PlaceDoor(Vec pos)
         {
             int choice = Rng.Int(100);
-            if (choice < writer.Options.ChanceOfOpenDoor)
+            if (choice < mWriter.Options.ChanceOfOpenDoor)
             {
-                writer.SetTile(pos, TileType.DoorOpen);
+                mWriter.SetTile(pos, TileType.DoorOpen);
             }
-            else if (choice - writer.Options.ChanceOfOpenDoor < writer.Options.ChanceOfClosedDoor)
+            else if (choice - mWriter.Options.ChanceOfOpenDoor < mWriter.Options.ChanceOfClosedDoor)
             {
-                writer.SetTile(pos, TileType.DoorClosed);
+                mWriter.SetTile(pos, TileType.DoorClosed);
             }
             else
             {
-                writer.SetTile(pos, TileType.Floor);
+                mWriter.SetTile(pos, TileType.Floor);
             }
             //### bob: add locked and secret doors
         }
 
-        private static void Populate(IFeatureWriter writer, Rect bounds, int monsterDensity, int itemDensity, int depth)
+        private void Populate(Rect bounds, int monsterDensity, int itemDensity, int depth)
         {
             // test every open tile
             foreach (Vec pos in bounds)
             {
-                writer.Populate(pos, monsterDensity, itemDensity, depth);
+                mWriter.Populate(pos, monsterDensity, itemDensity, depth);
             }
         }
 
-        private static TileType ChooseInnerWall()
+        private TileType ChooseInnerWall()
         {
             return Rng.Item(new TileType[] { TileType.Wall, TileType.LowWall });
         }
 
         public class RoomDecorator : IRoomDecorator
         {
-            public RoomDecorator(IFeatureWriter writer, Action<Vec> insideRoom)
+            public RoomDecorator(FeatureFactory factory, Action<Vec> insideRoom)
             {
                 mInsideRoom = insideRoom;
-                mWriter = writer;
-                mDecoration = ChooseInnerWall();
+                mFactory = factory;
+                mDecoration = mFactory.ChooseInnerWall();
             }
 
             public void AddDecoration(Vec pos)
             {
-                mWriter.SetTile(pos, mDecoration);
+                mFactory.mWriter.SetTile(pos, mDecoration);
             }
 
             public void AddInsideRoom(Vec pos)
@@ -393,12 +411,15 @@ namespace Amaranth.Engine
 
             public void AddDoor(Vec pos)
             {
-                PlaceDoor(mWriter, pos);
+                mFactory.PlaceDoor(pos);
             }
 
-            private IFeatureWriter mWriter;
+            private FeatureFactory mFactory;
             private Action<Vec> mInsideRoom;
             private TileType mDecoration;
         }
+
+        private readonly IFeatureWriter mWriter;
+        private readonly int mDepth;
     }
 }
