@@ -12,40 +12,13 @@ namespace Amaranth.Terminals
         public override Vec Size { get { return mCharacters.Size; } }
 
         public Terminal(int width, int height)
+            : base(null)
         {
             mCharacters = new Array2D<Character>(width, height);
 
             // fill with empty characters since default Character constructor doesn't initialize colors
             mCharacters.Fill((pos) => new Character(' '));
-
-            mStates = new Stack<ITerminalState>();
-
-            // push a default state on
-            mStates.Push(new TerminalState());
         }
-
-        #region TerminalState methods
-
-        public override ITerminalState State { get { return mStates.Peek(); } }
-
-        public override void PushState(ITerminalState state)
-        {
-            mStates.Push(state);
-        }
-
-        public override void PushState()
-        {
-            PushState(new TerminalState());
-        }
-
-        public override void PopState()
-        {
-            if (mStates.Count <= 1) throw new InvalidOperationException("Cannot pop more states than were pushed.");
-
-            mStates.Pop();
-        }
-
-        #endregion
 
         protected override Character GetValue(Vec pos)
         {
@@ -61,9 +34,6 @@ namespace Amaranth.Terminals
             return true;
         }
 
-        protected override ITerminalState GetState() { return State; }
-
         private readonly Array2D<Character> mCharacters;
-        private readonly Stack<ITerminalState> mStates;
     }
 }

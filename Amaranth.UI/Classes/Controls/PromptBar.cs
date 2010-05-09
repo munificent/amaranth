@@ -62,53 +62,52 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            using (new DisposableTerminalState(terminal))
+            terminal = terminal.CreateWindow(new Rect(terminal.Size));
+
+            terminal.State.ForeColor = TerminalColors.White;
+            terminal.State.BackColor = TerminalColors.DarkGray;
+
+            terminal.Clear();
+
+            // write the instruction
+            terminal[0, 0][TerminalColors.LightGray].Write(Title);
+            terminal[Title.Length + 1, 0][TerminalColors.Yellow].Write(GetValueString(mValue));
+
+            Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
+
+            foreach (KeyInstruction instruction in KeyInstructions)
             {
-                terminal.State.ForeColor = TerminalColors.White;
-                terminal.State.BackColor = TerminalColors.DarkGray;
+                instructions.Push(instruction);
+            }
+            instructions.Push(new KeyInstruction("Cancel", new KeyInfo(Key.Escape)));
+            instructions.Push(new KeyInstruction("Accept", new KeyInfo(Key.Enter)));
 
-                terminal.Clear();
+            // write the keys from right to left
+            int x = terminal.Width;
 
-                // write the instruction
-                terminal[0, 0][TerminalColors.LightGray].Write(Title);
-                terminal[Title.Length + 1, 0][TerminalColors.Yellow].Write(GetValueString(mValue));
+            while (instructions.Count > 0)
+            {
+                KeyInstruction instruction = instructions.Pop();
 
-                Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
+                // write the text
+                x -= instruction.Instruction.Length;
+                terminal[x, 0].Write(instruction.Instruction);
 
-                foreach (KeyInstruction instruction in KeyInstructions)
+                // write the glyphs
+                x--;
+                for (int j = instruction.Keys.Length - 1; j >= 0; j--)
                 {
-                    instructions.Push(instruction);
-                }
-                instructions.Push(new KeyInstruction("Cancel", new KeyInfo(Key.Escape)));
-                instructions.Push(new KeyInstruction("Accept", new KeyInfo(Key.Enter)));
+                    Glyph[] glyphs = instruction.Keys[j].DisplayGlyphs;
 
-                // write the keys from right to left
-                int x = terminal.Width;
-
-                while (instructions.Count > 0)
-                {
-                    KeyInstruction instruction = instructions.Pop();
-
-                    // write the text
-                    x -= instruction.Instruction.Length;
-                    terminal[x, 0].Write(instruction.Instruction);
-
-                    // write the glyphs
-                    x--;
-                    for (int j = instruction.Keys.Length - 1; j >= 0; j--)
+                    for (int i = glyphs.Length - 1; i >= 0; i--)
                     {
-                        Glyph[] glyphs = instruction.Keys[j].DisplayGlyphs;
-
-                        for (int i = glyphs.Length - 1; i >= 0; i--)
-                        {
-                            x--;
-                            terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
-                        }
+                        x--;
+                        terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
                     }
-
-                    // put some space between each instruction
-                    x -= 2;
                 }
+
+                // put some space between each instruction
+                x -= 2;
             }
         }
 

@@ -9,6 +9,18 @@ namespace Amaranth.Terminals
 {
     public abstract class TerminalBase : TerminalWriterBase, ITerminal
     {
+        public TerminalBase(ITerminalState state)
+        {
+            if (state != null)
+            {
+                mState = new TerminalState(state);
+            }
+            else
+            {
+                mState = new TerminalState();
+            }
+        }
+
         public event EventHandler<CharacterEventArgs> CharacterChanged;
 
         public abstract Vec Size { get; }
@@ -16,10 +28,6 @@ namespace Amaranth.Terminals
         public int Width { get { return Size.X; } }
 
         public int Height { get { return Size.Y; } }
-
-        public TerminalBase()
-        {
-        }
 
         public Character Get(Vec pos)
         {
@@ -58,7 +66,7 @@ namespace Amaranth.Terminals
 
         public ITerminal CreateWindow(Rect bounds)
         {
-            return new WindowTerminal(this, bounds);
+            return new WindowTerminal(this, GetState(), bounds);
         }
 
         public void Write(Vec pos, Character character)
@@ -229,23 +237,18 @@ namespace Amaranth.Terminals
             }
         }
 
-        #region ITerminal Members
-
-        public abstract ITerminalState State { get; }
-
-        public abstract void PushState(ITerminalState state);
-
-        public abstract void PushState();
-
-        public abstract void PopState();
-
-        #endregion
+        public ITerminalState State { get { return mState; } }
 
         protected abstract Character GetValue(Vec pos);
         protected abstract bool SetValue(Vec pos, Character value);
 
         protected override TerminalBase GetTerminal() { return this; }
         protected override Vec GetSize() { return Size; }
+
+        protected override ITerminalState GetState()
+        {
+            return mState;
+        }
 
         private Vec FlipNegativePosition(Vec pos)
         {
@@ -376,5 +379,7 @@ namespace Amaranth.Terminals
         {
             CheckBounds(pos.X, pos.Y, size.X, size.Y);
         }
+
+        private readonly ITerminalState mState;
     }
 }

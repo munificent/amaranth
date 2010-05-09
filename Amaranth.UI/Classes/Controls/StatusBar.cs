@@ -29,90 +29,89 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            using (new DisposableTerminalState(terminal))
+            terminal = terminal.CreateWindow(new Rect(terminal.Size));
+
+            terminal.State.ForeColor = TerminalColors.White;
+            terminal.State.BackColor = TerminalColors.DarkGray;
+
+            terminal.Clear();
+
+            // write the instruction
+            string instruction = Screen.UI.Title;
+            IFocusable focus = Screen.FocusControl;
+            if (focus != null)
             {
-                terminal.State.ForeColor = TerminalColors.White;
-                terminal.State.BackColor = TerminalColors.DarkGray;
+                instruction = focus.Instruction;
+            }
+            else if (!String.IsNullOrEmpty(Screen.UI.CurrentScreen.Title))
+            {
+                instruction = Screen.UI.CurrentScreen.Title;
+            }
+            terminal[0, 0][TerminalColors.LightGray].Write(instruction);
 
-                terminal.Clear();
+            Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
 
-                // write the instruction
-                string instruction = Screen.UI.Title;
-                IFocusable focus = Screen.FocusControl;
-                if (focus != null)
+            // get the focused control key instructions
+            IInputHandler input = Screen.FocusControl as IInputHandler;
+            if (input != null)
+            {
+                foreach (KeyInstruction keyInstruction in input.KeyInstructions)
                 {
-                    instruction = focus.Instruction;
+                    instructions.Push(keyInstruction);
                 }
-                else if (!String.IsNullOrEmpty(Screen.UI.CurrentScreen.Title))
+            }
+            else
+            {
+                foreach (Control control in Screen.Controls)
                 {
-                    instruction = Screen.UI.CurrentScreen.Title;
-                }
-                terminal[0, 0][TerminalColors.LightGray].Write(instruction);
+                    input = control as IInputHandler;
 
-                Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
-
-                // get the focused control key instructions
-                IInputHandler input = Screen.FocusControl as IInputHandler;
-                if (input != null)
-                {
-                    foreach (KeyInstruction keyInstruction in input.KeyInstructions)
+                    if (input != null)
                     {
-                        instructions.Push(keyInstruction);
-                    }
-                }
-                else
-                {
-                    foreach (Control control in Screen.Controls)
-                    {
-                        input = control as IInputHandler;
-
-                        if (input != null)
+                        foreach (KeyInstruction keyInstruction in input.KeyInstructions)
                         {
-                            foreach (KeyInstruction keyInstruction in input.KeyInstructions)
-                            {
-                                instructions.Push(keyInstruction);
-                            }
+                            instructions.Push(keyInstruction);
                         }
                     }
                 }
+            }
 
-                // get the screen control keys
-                IInputHandler screen = Screen as IInputHandler;
-                if (screen != null)
+            // get the screen control keys
+            IInputHandler screen = Screen as IInputHandler;
+            if (screen != null)
+            {
+                foreach (KeyInstruction keyInstruction in screen.KeyInstructions)
                 {
-                    foreach (KeyInstruction keyInstruction in screen.KeyInstructions)
+                    instructions.Push(keyInstruction);
+                }
+            }
+
+            // write the keys from right to left
+            int x = terminal.Width;
+
+            while (instructions.Count > 0)
+            {
+                KeyInstruction keyInstruction = instructions.Pop();
+
+                // write the text
+                x -= keyInstruction.Instruction.Length;
+                terminal[x, 0].Write(keyInstruction.Instruction);
+
+                // write the glyphs
+                x--;
+                for (int j = keyInstruction.Keys.Length - 1; j >= 0; j--)
+                {
+                    Glyph[] glyphs = keyInstruction.Keys[j].DisplayGlyphs;
+
+                    for (int i = glyphs.Length - 1; i >= 0; i--)
                     {
-                        instructions.Push(keyInstruction);
+                        x--;
+                        terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
                     }
                 }
 
-                // write the keys from right to left
-                int x = terminal.Width;
-
-                while (instructions.Count > 0)
-                {
-                    KeyInstruction keyInstruction = instructions.Pop();
-
-                    // write the text
-                    x -= keyInstruction.Instruction.Length;
-                    terminal[x, 0].Write(keyInstruction.Instruction);
-
-                    // write the glyphs
-                    x--;
-                    for (int j = keyInstruction.Keys.Length - 1; j >= 0; j--)
-                    {
-                        Glyph[] glyphs = keyInstruction.Keys[j].DisplayGlyphs;
-
-                        for (int i = glyphs.Length - 1; i >= 0; i--)
-                        {
-                            x--;
-                            terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
-                        }
-                    }
-
-                    // put some space between each instruction
-                    x -= 2;
-                }
+                // put some space between each instruction
+                x -= 2;
             }
         }
 

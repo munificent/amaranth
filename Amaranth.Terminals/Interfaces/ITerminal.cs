@@ -48,14 +48,6 @@ namespace Amaranth.Terminals
 
         ITerminal CreateWindow(Rect bounds);
 
-        #region TerminalState methods
-
         ITerminalState State { get; }
-
-        void PushState(ITerminalState state);
-        void PushState();
-        void PopState();
-
-        #endregion
     }
 }

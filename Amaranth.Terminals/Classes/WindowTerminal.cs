@@ -9,7 +9,8 @@ namespace Amaranth.Terminals
 {
     public class WindowTerminal : TerminalBase, ITerminal
     {
-        public WindowTerminal(TerminalBase parent, Rect bounds)
+        public WindowTerminal(TerminalBase parent, ITerminalState state, Rect bounds)
+            : base(state)
         {
             mParent = parent;
             mBounds = bounds;
@@ -22,43 +23,12 @@ namespace Amaranth.Terminals
             return mParent.Get(pos + mBounds.Position);
         }
 
-        /*
         protected override bool SetValue(Vec pos, Character value)
         {
-            return mParent.Set(pos + mBounds.Position, value);
-        }
-        */
+            if (!mBounds.Size.Contains(pos)) return false;
 
-        protected override bool SetValue(Vec pos, Character value)
-        {
             return mParent.SetInternal(pos + mBounds.Position, value);
         }
-
-        protected override ITerminalState GetState()
-        {
-            return mParent.State;
-        }
-
-        #region TerminalState methods
-
-        public override ITerminalState State { get { return mParent.State; } }
-
-        public override void PushState(ITerminalState state)
-        {
-            mParent.PushState(state);
-        }
-
-        public override void PushState()
-        {
-            mParent.PushState();
-        }
-
-        public override void PopState()
-        {
-            mParent.PopState();
-        }
-
-        #endregion
 
         private TerminalBase mParent;
         private Rect mBounds;

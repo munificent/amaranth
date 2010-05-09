@@ -22,17 +22,15 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            using (new DisposableTerminalState(terminal))
-            {
-                terminal.State.ForeColor = TerminalColors.White;
-                terminal.State.BackColor = TerminalColors.DarkGray;
+            terminal = terminal.CreateWindow(new Rect(terminal.Size));
+            terminal.State.ForeColor = TerminalColors.White;
+            terminal.State.BackColor = TerminalColors.DarkGray;
 
-                terminal.Clear();
+            terminal.Clear();
 
-                // write the navigation text
-                terminal[-Screen.UI.Title.Length, 0][TerminalColors.Gray].Write(Screen.UI.Title);
-                terminal[0, 0][TerminalColors.Gray].Write(Screen.Title);
-            }
+            // write the navigation text
+            terminal[-Screen.UI.Title.Length, 0][TerminalColors.Gray].Write(Screen.UI.Title);
+            terminal[0, 0][TerminalColors.Gray].Write(Screen.Title);
         }
     }
 }

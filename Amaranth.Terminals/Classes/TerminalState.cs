@@ -27,6 +27,13 @@ namespace Amaranth.Terminals
             set { mBackColor = value; }
         }
 
+        public TerminalState(ITerminalState cloneFrom)
+        {
+            mCursor = cloneFrom.Cursor;
+            mForeColor = cloneFrom.ForeColor;
+            mBackColor = cloneFrom.BackColor;
+        }
+
         public TerminalState(Vec cursor, Color foreColor, Color backColor)
         {
             mCursor = cursor;
