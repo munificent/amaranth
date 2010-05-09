@@ -1,49 +1,91 @@
 ﻿:: melee power
     categories  = Melee Weapon
+    
+:: bane weapon :: melee power
+    strike      = 1-5
+    damage      = 10-40
 
 // hurt group
-Wolfsbane :: melee power
+Wolfsbane :: bane weapon
     + hurts-dog
     level       = 5 to 40
     rarity      = 2
-    
-Dragonsbane :: melee power
+
+Dragonsbane :: bane weapon
     + hurts-dragon
     level       = 30 to 80
     rarity      = 3
     
-Deathsbane :: melee power
+Deathsbane :: bane weapon
     + hurts-undead
     + hurts-spirit
     level       = 20 to 70
     rarity      = 3
 
-Koboldsbane :: melee power
+Koboldsbane :: bane weapon
     + hurts-kobold
     level       = 10 to 40
     rarity      = 3
 
-Serpentsbane :: melee power
+Serpentsbane :: bane weapon
     + hurts-reptile
     level       = 10 to 40
     rarity      = 3
 
-Ogresbane :: melee power
+Ogresbane :: bane weapon
     + hurts-ogre
     level       = 20 to 60
     rarity      = 3
 
-Giantsbane :: melee power
+Giantsbane :: bane weapon
     + hurts-giant
     level       = 20 to 60
     rarity      = 3
 
-Trollsbane :: melee power
+Trollsbane :: bane weapon
     + hurts-troll
     level       = 10 to 50
     rarity      = 2
 
-Hellsbane :: melee power
+Hellsbane :: bane weapon
     + hurts-demon
     level       = 30 to 80
     rarity      = 3
+
+// elemental brand
+Glimmering :: melee power
+    appearance  = White
+    level       = 20 to 50
+    rarity      = 3
+    element     = light
+    damage      = 10-20
+
+Shining :: melee power
+    appearance  = White
+    level       = 30 to 70
+    rarity      = 3
+    element     = light
+    strike      = 1-4
+    damage      = 20-35
+
+Radiant :: melee power
+    appearance  = White
+    level       = 60 to 90
+    rarity      = 3
+    element     = light
+    strike      = 3-8
+    damage      = 35-50
+    
+Dim :: melee power
+    appearance  = DarkGray
+    level       = 20 to 50
+    rarity      = 3
+    element     = dark
+    damage      = 10-20
+
+Black :: melee power
+    appearance  = DarkGray
+    level       = 40 to 80
+    rarity      = 3
+    element     = dark
+    damage      = 20-40

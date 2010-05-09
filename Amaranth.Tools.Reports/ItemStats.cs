@@ -96,6 +96,47 @@ namespace Amaranth.Reports
             {
                 for (int level = 1; level <= 100; level++)
                 {
+                    //### bob: slightly less accurate but faster way to generate
+                    for (int i = 0; i < 5000; i++)
+                    {
+                        // let the level wander
+                        int monsterLevel = Math2.Clamp(1, Rng.WalkLevel(level), 100);
+
+                        // pick a race
+                        Race race = mContent.Races.RandomSoft(monsterLevel);
+
+                        int count = mRaces[race].Increment(level);
+                        MaxRaceCount = Math.Max(MaxRaceCount, count);
+                        MaxRaceCounts[level - 1] = Math.Max(MaxRaceCounts[level - 1], count);
+
+                        if (race.Drop != null)
+                        {
+                            foreach (var item in race.Drop.Create(race.Depth))
+                            {
+                                int itemCount = mItems[item.Type].Increment(level);
+                                MaxItemCount = Math.Max(MaxItemCount, itemCount);
+                                MaxItemCounts[level - 1] = Math.Max(MaxItemCounts[level - 1], itemCount);
+
+                                if (item.Power != null)
+                                {
+                                    int powerCount = mPowers[item.Power.Type].Increment(level);
+                                    MaxPowerCount = Math.Max(MaxPowerCount, powerCount);
+                                    MaxPowerCounts[level - 1] = Math.Max(MaxPowerCounts[level - 1], powerCount);
+                                }
+                            }
+                        }
+                    }
+
+                    // bail if stopped
+                    if (mState != RunState.Running) break;
+
+                    if (level % 10 == 0)
+                    {
+                        if (Updated != null) Updated(this, EventArgs.Empty);
+                    }
+
+                    //### bob: slower, more accurate way
+                    /*
                     // generate actual dungeons
                     Game game = new Game(Hero.CreateTemp(), mContent);
                     game.SetFloor(level);
@@ -159,6 +200,7 @@ namespace Amaranth.Reports
                     {
                         if (Updated != null) Updated(this, EventArgs.Empty);
                     }
+                    */
                 }
 
                 generated++;

@@ -99,9 +99,6 @@
     <Compile Include="Classes\TerminalState.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Font.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Controls\TerminalControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TerminalControl.cs</DependentUpon>
