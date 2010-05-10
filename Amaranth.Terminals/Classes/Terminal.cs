@@ -7,12 +7,12 @@ using Amaranth.Util;
 
 namespace Amaranth.Terminals
 {
-    public class Terminal : TerminalBase, ITerminal
+    public class Terminal : TerminalBase
     {
         public override Vec Size { get { return mCharacters.Size; } }
 
         public Terminal(int width, int height)
-            : base(null)
+            : base()
         {
             mCharacters = new Array2D<Character>(width, height);
 

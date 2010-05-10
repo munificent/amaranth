@@ -87,7 +87,7 @@ namespace Amaranth.TermApp
                 terminal[-1, y][TerminalColors.DarkBlue].Write(Glyph.ArrowUp);
             }
 
-            terminal[0, y][color].Write(formatter(value.Max).PadLeft(terminal.Width - 1));
+            terminal[0, y][color].Write(formatter(value.Max).PadLeft(terminal.Size.X - 1));
             terminal[0, y][textColor].Write(name);
         }
 
@@ -109,7 +109,7 @@ namespace Amaranth.TermApp
                 textColor = TerminalColors.DarkRed;
             }
 
-            terminal[0, y][color].Write(value.Current.ToString().PadLeft(terminal.Width - 1));
+            terminal[0, y][color].Write(value.Current.ToString().PadLeft(terminal.Size.X - 1));
             terminal[0, y][textColor].Write(name);
         }
 
@@ -142,7 +142,7 @@ namespace Amaranth.TermApp
                 terminal[-1, y][TerminalColors.DarkGreen].Write(Glyph.ArrowUp);
             }
 
-            terminal[0, y][color].Write(stat.Current.ToString().PadLeft(terminal.Width - 1));
+            terminal[0, y][color].Write(stat.Current.ToString().PadLeft(terminal.Size.X - 1));
             terminal[0, y][textColor].Write(name);
         }
 

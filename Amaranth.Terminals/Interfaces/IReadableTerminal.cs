@@ -12,9 +12,6 @@ namespace Amaranth.Terminals
 
         Vec Size { get; }
 
-        int Width { get; }
-        int Height { get; }
-
         Character Get(Vec pos);
         Character Get(int x, int y);
     }

@@ -54,10 +54,10 @@ namespace Amaranth.TermApp
                 CharacterString text = new CharacterString(monster.GetDescription(mHero), TerminalColors.LightGray, TerminalColors.Black);
 
                 int y = 1;
-                foreach (CharacterString line in text.WordWrap(terminal.Width))
+                foreach (CharacterString line in text.WordWrap(terminal.Size.X))
                 {
                     // bail if we run out of room
-                    if (y >= terminal.Height) break;
+                    if (y >= terminal.Size.Y) break;
 
                     terminal[0, y++].Write(line);
                 }

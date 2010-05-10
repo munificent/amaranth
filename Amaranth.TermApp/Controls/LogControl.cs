@@ -25,7 +25,7 @@ namespace Amaranth.TermApp
             terminal.Clear();
 
             // write the last few entries
-            int startIndex = Math.Max(mLog.Entries.Count - terminal.Height, 0);
+            int startIndex = Math.Max(mLog.Entries.Count - terminal.Size.Y, 0);
             for (int index = startIndex; index < mLog.Entries.Count; index++)
             {
                 WriteLog(terminal, mLog.Entries[index]);
@@ -59,7 +59,7 @@ namespace Amaranth.TermApp
                 text += " (x" + entry.Count.ToString() + ")";
             }
 
-            foreach (string line in text.WordWrap(terminal.Width))
+            foreach (string line in text.WordWrap(terminal.Size.X))
             {
                 terminal.Scroll(0, -1, pos => new Character(Glyph.Space));
                 terminal[0, -1].Write(line);

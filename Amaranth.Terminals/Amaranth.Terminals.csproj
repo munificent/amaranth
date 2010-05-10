@@ -70,7 +70,6 @@
     <Compile Include="Classes\TerminalWriterBase.cs" />
     <Compile Include="Classes\WindowTerminal.cs" />
     <Compile Include="EventArgs\CharacterEventArgs.cs" />
-    <Compile Include="Classes\DisposableTerminalState.cs" />
     <Compile Include="Enums\Glyph.cs" />
     <Compile Include="Classes\GlyphSheet.cs" />
     <Compile Include="Interfaces\IReadableTerminal.cs" />

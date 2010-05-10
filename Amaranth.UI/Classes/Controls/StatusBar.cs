@@ -87,7 +87,7 @@ namespace Amaranth.UI
             }
 
             // write the keys from right to left
-            int x = terminal.Width;
+            int x = terminal.Size.X;
 
             while (instructions.Count > 0)
             {

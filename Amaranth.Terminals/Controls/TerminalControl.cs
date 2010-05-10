@@ -67,8 +67,8 @@ namespace Amaranth.Terminals
         public override Size GetPreferredSize(Size proposedSize)
         {
             return new Size(
-                (mGlyphSheet.Width * mTerminal.Width) + (mPadding * 2),
-                (mGlyphSheet.Height * mTerminal.Height) + (mPadding * 2));
+                (mGlyphSheet.Width * mTerminal.Size.X) + (mPadding * 2),
+                (mGlyphSheet.Height * mTerminal.Size.Y) + (mPadding * 2));
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -80,8 +80,8 @@ namespace Amaranth.Terminals
                 // only refresh characters in the clip rect
                 int left = Math.Max(0, (e.ClipRectangle.Left - mPadding) / mGlyphSheet.Width);
                 int top = Math.Max(0, (e.ClipRectangle.Top - mPadding) / mGlyphSheet.Height);
-                int right = Math.Min(mTerminal.Width, (e.ClipRectangle.Right - mPadding) / mGlyphSheet.Width + 1);
-                int bottom = Math.Min(mTerminal.Height, (e.ClipRectangle.Bottom - mPadding) / mGlyphSheet.Height + 1);
+                int right = Math.Min(mTerminal.Size.X, (e.ClipRectangle.Right - mPadding) / mGlyphSheet.Width + 1);
+                int bottom = Math.Min(mTerminal.Size.Y, (e.ClipRectangle.Bottom - mPadding) / mGlyphSheet.Height + 1);
 
                 for (int y = top; y < bottom; y++)
                 {
@@ -103,7 +103,7 @@ namespace Amaranth.Terminals
                                 fillLeft -= mPadding;
                                 width += mPadding;
                             }
-                            if (x == mTerminal.Width - 1)
+                            if (x == mTerminal.Size.X - 1)
                             {
                                 width += mPadding;
                             }
@@ -112,7 +112,7 @@ namespace Amaranth.Terminals
                                 fillTop -= mPadding;
                                 height += mPadding;
                             }
-                            if (y == mTerminal.Height - 1)
+                            if (y == mTerminal.Size.Y - 1)
                             {
                                 height += mPadding;
                             }
@@ -169,7 +169,7 @@ namespace Amaranth.Terminals
                 left -= mPadding;
                 width += mPadding;
             }
-            if (pos.X == mTerminal.Width - 1)
+            if (pos.X == mTerminal.Size.X - 1)
             {
                 width += mPadding;
             }
@@ -178,7 +178,7 @@ namespace Amaranth.Terminals
                 top -= mPadding;
                 height += mPadding;
             }
-            if (pos.Y == mTerminal.Height - 1)
+            if (pos.Y == mTerminal.Size.Y - 1)
             {
                 height += mPadding;
             }

@@ -9,36 +9,22 @@ namespace Amaranth.Terminals
 {
     public class TerminalState : ITerminalState
     {
-        public Vec Cursor
-        {
-            get { return mCursor; }
-            set { mCursor = value; }
-        }
-
-        public Color ForeColor
-        {
-            get { return mForeColor; }
-            set { mForeColor = value; }
-        }
-
-        public Color BackColor
-        {
-            get { return mBackColor; }
-            set { mBackColor = value; }
-        }
+        public Vec   Cursor    { get; set; }
+        public Color ForeColor { get; set; }
+        public Color BackColor { get; set; }
 
         public TerminalState(ITerminalState cloneFrom)
         {
-            mCursor = cloneFrom.Cursor;
-            mForeColor = cloneFrom.ForeColor;
-            mBackColor = cloneFrom.BackColor;
+            Cursor = cloneFrom.Cursor;
+            ForeColor = cloneFrom.ForeColor;
+            BackColor = cloneFrom.BackColor;
         }
 
         public TerminalState(Vec cursor, Color foreColor, Color backColor)
         {
-            mCursor = cursor;
-            mForeColor = foreColor;
-            mBackColor = backColor;
+            Cursor = cursor;
+            ForeColor = foreColor;
+            BackColor = backColor;
         }
 
         public TerminalState(Color foreColor, Color backColor)
@@ -50,9 +36,5 @@ namespace Amaranth.Terminals
             : this(new Vec(0, 0), TerminalColors.White, TerminalColors.Black)
         {
         }
-
-        private Vec mCursor;
-        private Color mForeColor;
-        private Color mBackColor;
     }
 }

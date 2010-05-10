@@ -7,7 +7,7 @@ using Amaranth.Util;
 
 namespace Amaranth.Terminals
 {
-    public class WindowTerminal : TerminalBase, ITerminal
+    public class WindowTerminal : TerminalBase
     {
         public WindowTerminal(TerminalBase parent, ITerminalState state, Rect bounds)
             : base(state)

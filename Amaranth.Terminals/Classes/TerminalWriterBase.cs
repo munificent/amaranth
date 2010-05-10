@@ -9,6 +9,13 @@ namespace Amaranth.Terminals
 {
     public abstract class TerminalWriterBase : IWriterPosColor
     {
+        public TerminalWriterBase(ITerminalState state)
+        {
+            mState = state;
+        }
+
+        public ITerminalState State { get { return mState; } }
+
         #region IWriterPosColor Members
 
         public IWriterColor this[Vec pos]
@@ -28,7 +35,7 @@ namespace Amaranth.Terminals
 
         public IWriterColor this[Vec pos, Vec size]
         {
-            get { return new TerminalWriter(GetTerminal(), size, new TerminalState(pos, GetState().ForeColor, GetState().BackColor)); }
+            get { return new TerminalWriter(GetTerminal(), size, new TerminalState(pos, mState.ForeColor, mState.BackColor)); }
         }
 
         public IWriterColor this[int x, int y, int width, int height]
@@ -42,17 +49,17 @@ namespace Amaranth.Terminals
 
         public IWriter this[Color foreColor, Color backColor]
         {
-            get { return new TerminalWriter(GetTerminal(), GetSize(), new TerminalState(GetState().Cursor, foreColor, backColor)); }
+            get { return new TerminalWriter(GetTerminal(), GetSize(), new TerminalState(mState.Cursor, foreColor, backColor)); }
         }
 
         public IWriter this[ColorPair color]
         {
-            get { return new TerminalWriter(GetTerminal(), GetSize(), new TerminalState(GetState().Cursor, color.Fore, color.Back)); }
+            get { return new TerminalWriter(GetTerminal(), GetSize(), new TerminalState(mState.Cursor, color.Fore, color.Back)); }
         }
 
         public IWriter this[Color foreColor]
         {
-            get { return this[foreColor, GetState().BackColor]; }
+            get { return this[foreColor, mState.BackColor]; }
         }
 
         #endregion
@@ -61,35 +68,32 @@ namespace Amaranth.Terminals
 
         public void Write(char ascii)
         {
-            ITerminalState state = GetState();
-            GetTerminal().Write(state.Cursor, new Character(ascii, state.ForeColor, state.BackColor));
+            GetTerminal().Write(mState.Cursor, new Character(ascii, mState.ForeColor, mState.BackColor));
         }
 
         public void Write(Glyph glyph)
         {
-            ITerminalState state = GetState();
-            GetTerminal().Write(state.Cursor, new Character(glyph, state.ForeColor, state.BackColor));
+            GetTerminal().Write(mState.Cursor, new Character(glyph, mState.ForeColor, mState.BackColor));
         }
 
         public void Write(Character character)
         {
-            GetTerminal().Write(GetState().Cursor, character);
+            GetTerminal().Write(mState.Cursor, character);
         }
 
         public void Write(string text)
         {
-            ITerminalState state = GetState();
-            GetTerminal().Write(new CharacterString(text, state.ForeColor, state.BackColor), state);
+            GetTerminal().Write(new CharacterString(text, mState.ForeColor, mState.BackColor), mState);
         }
 
         public void Write(CharacterString text)
         {
-            GetTerminal().Write(text, GetState());
+            GetTerminal().Write(text, mState);
         }
 
         public void Scroll(Vec offset, Func<Vec, Character> scrollOnCallback)
         {
-            GetTerminal().Scroll(GetState().Cursor, GetSize(), offset, scrollOnCallback);
+            GetTerminal().Scroll(mState.Cursor, GetSize(), offset, scrollOnCallback);
         }
 
         public void Scroll(int x, int y, Func<Vec, Character> scrollOnCallback)
@@ -104,18 +108,19 @@ namespace Amaranth.Terminals
 
         public void Fill(Glyph glyph)
         {
-            GetTerminal().Fill(GetState().Cursor, GetSize(), glyph, GetState().ForeColor, GetState().BackColor);
+            GetTerminal().Fill(mState.Cursor, GetSize(), glyph, mState.ForeColor, mState.BackColor);
         }
 
         public void DrawBox(bool isDouble, bool isContinue)
         {
-            GetTerminal().DrawBox(GetState().Cursor, GetSize(), GetState().ForeColor, GetState().BackColor, isDouble, isContinue);
+            GetTerminal().DrawBox(mState.Cursor, GetSize(), mState.ForeColor, mState.BackColor, isDouble, isContinue);
         }
 
         #endregion
 
         protected abstract TerminalBase GetTerminal();
         protected abstract Vec GetSize();
-        protected abstract ITerminalState GetState();
+
+        private ITerminalState mState;
     }
 }

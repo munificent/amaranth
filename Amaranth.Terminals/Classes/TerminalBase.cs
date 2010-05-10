@@ -9,25 +9,19 @@ namespace Amaranth.Terminals
 {
     public abstract class TerminalBase : TerminalWriterBase, ITerminal
     {
-        public TerminalBase(ITerminalState state)
+        public TerminalBase()
+            : base(new TerminalState())
         {
-            if (state != null)
-            {
-                mState = new TerminalState(state);
-            }
-            else
-            {
-                mState = new TerminalState();
-            }
+        }
+
+        public TerminalBase(ITerminalState state)
+            : base(new TerminalState(state))
+        {
         }
 
         public event EventHandler<CharacterEventArgs> CharacterChanged;
 
         public abstract Vec Size { get; }
-
-        public int Width { get { return Size.X; } }
-
-        public int Height { get { return Size.Y; } }
 
         public Character Get(Vec pos)
         {
@@ -66,7 +60,7 @@ namespace Amaranth.Terminals
 
         public ITerminal CreateWindow(Rect bounds)
         {
-            return new WindowTerminal(this, GetState(), bounds);
+            return new WindowTerminal(this, State, bounds);
         }
 
         public void Write(Vec pos, Character character)
@@ -86,7 +80,7 @@ namespace Amaranth.Terminals
                 pos += new Vec(1, 0);
 
                 // don't run past edge
-                if (pos.X >= Width) break;
+                if (pos.X >= Size.X) break;
             }
         }
 
@@ -237,24 +231,17 @@ namespace Amaranth.Terminals
             }
         }
 
-        public ITerminalState State { get { return mState; } }
-
         protected abstract Character GetValue(Vec pos);
         protected abstract bool SetValue(Vec pos, Character value);
 
         protected override TerminalBase GetTerminal() { return this; }
         protected override Vec GetSize() { return Size; }
 
-        protected override ITerminalState GetState()
-        {
-            return mState;
-        }
-
         private Vec FlipNegativePosition(Vec pos)
         {
             // negative coordinates mean from the right/bottom edge
-            if (pos.X < 0) pos.X = Width + pos.X;
-            if (pos.Y < 0) pos.Y = Height + pos.Y;
+            if (pos.X < 0) pos.X = Size.X + pos.X;
+            if (pos.Y < 0) pos.Y = Size.Y + pos.Y;
 
             return pos;
         }
@@ -354,32 +341,30 @@ namespace Amaranth.Terminals
 
         private void CheckBounds(int x, int y)
         {
-            if (x >= Width) throw new ArgumentOutOfRangeException("x");
-            if (y >= Height) throw new ArgumentOutOfRangeException("y");
+            if (x >= Size.X) throw new ArgumentOutOfRangeException("x");
+            if (y >= Size.Y) throw new ArgumentOutOfRangeException("y");
 
             // negative values are valid and mean "from the right or bottom", so apply and check range
-            if ((x < 0) && (Width + x >= Width)) throw new ArgumentOutOfRangeException("x");
-            if ((y < 0) && (Height + y >= Height)) throw new ArgumentOutOfRangeException("y");
+            if ((x < 0) && (Size.X + x >= Size.X)) throw new ArgumentOutOfRangeException("x");
+            if ((y < 0) && (Size.Y + y >= Size.Y)) throw new ArgumentOutOfRangeException("y");
         }
 
         private void CheckBounds(int x, int y, int width, int height)
         {
             //### bob: need to handle negative coords
             if (x < 0) throw new ArgumentOutOfRangeException("x");
-            if (x >= Width) throw new ArgumentOutOfRangeException("x");
+            if (x >= Size.X) throw new ArgumentOutOfRangeException("x");
             if (y < 0) throw new ArgumentOutOfRangeException("y");
-            if (y >= Height) throw new ArgumentOutOfRangeException("y");
+            if (y >= Size.Y) throw new ArgumentOutOfRangeException("y");
             if (width <= 0) throw new ArgumentException("width");
-            if (x + width > Width) throw new ArgumentOutOfRangeException("width");
+            if (x + width > Size.X) throw new ArgumentOutOfRangeException("width");
             if (height <= 0) throw new ArgumentException("height");
-            if (y + height > Height) throw new ArgumentOutOfRangeException("height");
+            if (y + height > Size.Y) throw new ArgumentOutOfRangeException("height");
         }
 
         private void CheckBounds(Vec pos, Vec size)
         {
             CheckBounds(pos.X, pos.Y, size.X, size.Y);
         }
-
-        private readonly ITerminalState mState;
     }
 }
