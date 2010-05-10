@@ -222,7 +222,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal.State.ForeColor = TerminalColors.DarkGray;
+            terminal = terminal[TerminalColors.DarkGray].CreateWindow();
 
             terminal[65, 0, 1, terminal.Size.Y].DrawBox(false, true);
             terminal[0, 31, 65, 1].DrawBox(false, true);
@@ -231,8 +231,6 @@ namespace Amaranth.TermApp
 
             terminal[14, 0, 1, 31].DrawBox(false, true);
             terminal[14, 31].Write(Glyph.BarUpLeftRight);
-
-            terminal.State.ForeColor = TerminalColors.White;
         }
 
         protected override void OnActivate()

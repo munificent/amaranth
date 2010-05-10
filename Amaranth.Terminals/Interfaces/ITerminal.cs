@@ -23,6 +23,9 @@ namespace Amaranth.Terminals
         void Fill(Glyph glyph);
 
         void DrawBox(bool isDouble, bool isContinue);
+
+        ITerminal CreateWindow();
+        ITerminal CreateWindow(Rect bounds);
     }
 
     public interface IWriterColor : IWriter
@@ -45,9 +48,5 @@ namespace Amaranth.Terminals
     {
         void Set(Vec pos, Character value);
         void Set(int x, int y, Character value);
-
-        ITerminal CreateWindow(Rect bounds);
-
-        ITerminalState State { get; }
     }
 }

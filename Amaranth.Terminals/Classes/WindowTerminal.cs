@@ -9,8 +9,8 @@ namespace Amaranth.Terminals
 {
     public class WindowTerminal : TerminalBase
     {
-        public WindowTerminal(TerminalBase parent, ITerminalState state, Rect bounds)
-            : base(state)
+        public WindowTerminal(TerminalBase parent, Color foreColor, Color backColor, Rect bounds)
+            : base(foreColor, backColor)
         {
             mParent = parent;
             mBounds = bounds;

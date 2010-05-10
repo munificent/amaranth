@@ -7,27 +7,31 @@ using Amaranth.Util;
 
 namespace Amaranth.Terminals
 {
-    public abstract class TerminalBase : TerminalWriterBase, ITerminal
+    public abstract class TerminalBase : ITerminal
     {
         public TerminalBase()
-            : base(new TerminalState())
+            : this(TerminalColors.White, TerminalColors.Black)
         {
         }
 
-        public TerminalBase(ITerminalState state)
-            : base(new TerminalState(state))
+        public TerminalBase(Color foreColor, Color backColor)
         {
+            ForeColor = foreColor;
+            BackColor = backColor;
         }
+
+        #region IReadableTerminal Members
 
         public event EventHandler<CharacterEventArgs> CharacterChanged;
 
         public abstract Vec Size { get; }
 
+        public Color ForeColor { get; private set; }
+        public Color BackColor { get; private set; }
+
         public Character Get(Vec pos)
         {
-            pos = FlipNegativePosition(pos);
-
-            return GetValue(pos);
+            return GetValue(FlipNegativePosition(pos));
         }
 
         public Character Get(int x, int y)
@@ -35,22 +39,13 @@ namespace Amaranth.Terminals
             return Get(new Vec(x, y));
         }
 
+        #endregion
+
+        #region ITerminal Members
+
         public void Set(Vec pos, Character value)
         {
-            pos = FlipNegativePosition(pos);
-
-            SetInternal(pos, value);
-        }
-
-        internal bool SetInternal(Vec pos, Character value)
-        {
-            if (SetValue(pos, value))
-            {
-                if (CharacterChanged != null) CharacterChanged(this, new CharacterEventArgs(value, pos));
-                return true;
-            }
-
-            return false;
+            SetInternal(FlipNegativePosition(pos), value);
         }
 
         public void Set(int x, int y, Character value)
@@ -58,25 +53,88 @@ namespace Amaranth.Terminals
             Set(new Vec(x, y), value);
         }
 
-        public ITerminal CreateWindow(Rect bounds)
+        #endregion
+
+        #region IWriterPosColor Members
+
+        public IWriterColor this[Vec pos]
         {
-            return new WindowTerminal(this, State, bounds);
+            // if we aren't given a size, go all the way to the bottom-right corner of the terminal
+            get { return this[pos, Size - pos]; }
         }
 
-        public void Write(Vec pos, Character character)
+        public IWriterColor this[int x, int y]
         {
-            Set(pos, character);
+            get { return this[new Vec(x, y)]; }
         }
 
-        public void Write(CharacterString text, ITerminalState state)
+        public IWriterColor this[Rect rect]
         {
-            Vec pos = state.Cursor;
+            get { return new WindowTerminal(this, ForeColor, BackColor, rect); }
+        }
+
+        public IWriterColor this[Vec pos, Vec size]
+        {
+            get { return this[new Rect(pos, size)]; }
+        }
+
+        public IWriterColor this[int x, int y, int width, int height]
+        {
+            get { return this[new Rect(x, y, width, height)]; }
+        }
+
+        #endregion
+
+        #region IWriterColor Members
+
+        public IWriter this[Color foreColor, Color backColor]
+        {
+            get { return new WindowTerminal(this, foreColor, backColor, new Rect(Size)); }
+        }
+
+        public IWriter this[ColorPair color]
+        {
+            get { return this[color.Fore, color.Back]; }
+        }
+
+        public IWriter this[Color foreColor]
+        {
+            get { return this[foreColor, BackColor]; }
+        }
+
+        #endregion
+
+        #region IWriter Members
+
+        public void Write(char ascii)
+        {
+            Write(new Character(ascii, ForeColor, BackColor));
+        }
+
+        public void Write(Glyph glyph)
+        {
+            Write(new Character(glyph, ForeColor, BackColor));
+        }
+
+        public void Write(Character character)
+        {
+            Set(Vec.Zero, character);
+        }
+
+        public void Write(string text)
+        {
+            Write(new CharacterString(text, ForeColor, BackColor));
+        }
+
+        public void Write(CharacterString text)
+        {
+            Vec pos = Vec.Zero;
 
             CheckBounds(pos.X, pos.Y);
 
             foreach (Character c in text)
             {
-                Write(pos, c);
+                Set(pos, c);
                 pos += new Vec(1, 0);
 
                 // don't run past edge
@@ -84,16 +142,14 @@ namespace Amaranth.Terminals
             }
         }
 
-        public void Scroll(Vec pos, Vec size, Vec offset, Func<Vec, Character> scrollOnCallback)
+        public void Scroll(Vec offset, Func<Vec, Character> scrollOnCallback)
         {
-            CheckBounds(pos, size);
-
-            int xStart = pos.X;
-            int xEnd = pos.X + size.X;
+            int xStart = 0;
+            int xEnd = Size.X;
             int xStep = 1;
 
-            int yStart = pos.Y;
-            int yEnd = pos.Y + size.Y;
+            int yStart = 0;
+            int yEnd = Size.Y;
             int yStep = 1;
 
             if (offset.X > 0)
@@ -128,7 +184,7 @@ namespace Amaranth.Terminals
                 yEnd--;
             }
 
-            Rect bounds = new Rect(pos, size);
+            Rect bounds = new Rect(Size);
 
             for (int y = yStart; y != yEnd; y += yStep)
             {
@@ -151,28 +207,36 @@ namespace Amaranth.Terminals
             }
         }
 
-        public void Fill(Vec pos, Vec size, Glyph glyph, Color foreColor, Color backColor)
+        public void Scroll(int x, int y, Func<Vec, Character> scrollOnCallback)
         {
-            CheckBounds(pos, size);
+            Scroll(new Vec(x, y), scrollOnCallback);
+        }
 
-            Character character = new Character(glyph, foreColor, backColor);
-            foreach (Vec iter in new Rect(pos, size))
+        public void Clear()
+        {
+            Fill(Glyph.Space);
+        }
+
+        public void Fill(Glyph glyph)
+        {
+            Character character = new Character(glyph, ForeColor, BackColor);
+            foreach (Vec pos in new Rect(Size))
             {
-                Write(iter, character);
+                Set(pos, character);
             }
         }
 
-        public void DrawBox(Vec pos, Vec size, Color foreColor, Color backColor, bool isDouble, bool isContinue)
+        public void DrawBox(bool isDouble, bool isContinue)
         {
-            CheckBounds(pos, size);
+            Vec pos = Vec.Zero;
 
-            if (size.X == 1)
+            if (Size.X == 1)
             {
-                DrawVerticalLine(pos, size.Y, foreColor, backColor, isDouble, isContinue);
+                DrawVerticalLine(pos, Size.Y, isDouble, isContinue);
             }
-            else if (size.Y == 1)
+            else if (Size.Y == 1)
             {
-                DrawHorizontalLine(pos, size.X, foreColor, backColor, isDouble, isContinue);
+                DrawHorizontalLine(pos, Size.X, isDouble, isContinue);
             }
             else
             {
@@ -204,38 +268,58 @@ namespace Amaranth.Terminals
                 }
 
                 // top left corner
-                WriteLineChar(pos, topLeft, foreColor, backColor);
+                WriteLineChar(pos, topLeft);
 
                 // top right corner
-                WriteLineChar(pos.OffsetX(size.X - 1), topRight, foreColor, backColor);
+                WriteLineChar(pos.OffsetX(Size.X - 1), topRight);
 
                 // bottom left corner
-                WriteLineChar(pos.OffsetY(size.Y - 1), bottomLeft, foreColor, backColor);
+                WriteLineChar(pos.OffsetY(Size.Y - 1), bottomLeft);
 
                 // bottom right corner
-                WriteLineChar(pos + size - 1, bottomRight, foreColor, backColor);
+                WriteLineChar(pos + Size - 1, bottomRight);
 
                 // top and bottom edges
-                foreach (Vec iter in Rect.Row(pos.X + 1, pos.Y, size.X - 2))
+                foreach (Vec iter in Rect.Row(pos.X + 1, pos.Y, Size.X - 2))
                 {
-                    WriteLineChar(iter, horizontal, foreColor, backColor);
-                    WriteLineChar(iter.OffsetY(size.Y - 1), horizontal, foreColor, backColor);
+                    WriteLineChar(iter, horizontal);
+                    WriteLineChar(iter.OffsetY(Size.Y - 1), horizontal);
                 }
 
                 // left and right edges
-                foreach (Vec iter in Rect.Column(pos.X, pos.Y + 1, size.Y - 2))
+                foreach (Vec iter in Rect.Column(pos.X, pos.Y + 1, Size.Y - 2))
                 {
-                    WriteLineChar(iter, vertical, foreColor, backColor);
-                    WriteLineChar(iter.OffsetX(size.X - 1), vertical, foreColor, backColor);
+                    WriteLineChar(iter, vertical);
+                    WriteLineChar(iter.OffsetX(Size.X - 1), vertical);
                 }
             }
         }
 
+        public ITerminal CreateWindow()
+        {
+            return new WindowTerminal(this, ForeColor, BackColor, new Rect(Size));
+        }
+
+        public ITerminal CreateWindow(Rect bounds)
+        {
+            return new WindowTerminal(this, ForeColor, BackColor, bounds);
+        }
+
+        #endregion
+
+        internal bool SetInternal(Vec pos, Character value)
+        {
+            if (SetValue(pos, value))
+            {
+                if (CharacterChanged != null) CharacterChanged(this, new CharacterEventArgs(value, pos));
+                return true;
+            }
+
+            return false;
+        }
+
         protected abstract Character GetValue(Vec pos);
         protected abstract bool SetValue(Vec pos, Character value);
-
-        protected override TerminalBase GetTerminal() { return this; }
-        protected override Vec GetSize() { return Size; }
 
         private Vec FlipNegativePosition(Vec pos)
         {
@@ -246,7 +330,7 @@ namespace Amaranth.Terminals
             return pos;
         }
 
-        private void DrawHorizontalLine(Vec pos, int length, Color foreColor, Color backColor, bool isDouble, bool isContinue)
+        private void DrawHorizontalLine(Vec pos, int length, bool isDouble, bool isContinue)
         {
             // figure out which glyphs to use
             Glyph left = Glyph.BarRight;
@@ -278,19 +362,19 @@ namespace Amaranth.Terminals
             }
 
             // left edge
-            WriteLineChar(pos, left, foreColor, backColor);
+            WriteLineChar(pos, left);
 
             // right edge
-            WriteLineChar(pos.OffsetX(length - 1), right, foreColor, backColor);
+            WriteLineChar(pos.OffsetX(length - 1), right);
 
             // middle
             foreach (Vec iter in Rect.Row(pos.X + 1, pos.Y, length - 2))
             {
-                WriteLineChar(iter, middle, foreColor, backColor);
+                WriteLineChar(iter, middle);
             }
         }
 
-        private void DrawVerticalLine(Vec pos, int length, Color foreColor, Color backColor, bool isDouble, bool isContinue)
+        private void DrawVerticalLine(Vec pos, int length, bool isDouble, bool isContinue)
         {
             // figure out which glyphs to use
             Glyph top = Glyph.BarDown;
@@ -322,21 +406,21 @@ namespace Amaranth.Terminals
             }
 
             // top edge
-            WriteLineChar(pos, top, foreColor, backColor);
+            WriteLineChar(pos, top);
 
             // bottom edge
-            WriteLineChar(pos.OffsetY(length - 1), bottom, foreColor, backColor);
+            WriteLineChar(pos.OffsetY(length - 1), bottom);
 
             // middle
             foreach (Vec iter in Rect.Column(pos.X, pos.Y + 1, length - 2))
             {
-                WriteLineChar(iter, middle, foreColor, backColor);
+                WriteLineChar(iter, middle);
             }
         }
 
-        private void WriteLineChar(Vec pos, Glyph glyph, Color foreColor, Color backColor)
+        private void WriteLineChar(Vec pos, Glyph glyph)
         {
-            this[pos][foreColor, backColor].Write(glyph);
+            this[pos][ForeColor, BackColor].Write(glyph);
         }
 
         private void CheckBounds(int x, int y)

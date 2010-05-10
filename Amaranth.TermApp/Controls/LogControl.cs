@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -34,22 +35,23 @@ namespace Amaranth.TermApp
 
         private void WriteLog(ITerminal terminal, LogEntry entry)
         {
-            terminal = terminal.CreateWindow(new Rect(terminal.Size));
-
+            Color color = terminal.ForeColor;
             switch (entry.Type)
             {
-                case LogType.Good:          terminal.State.ForeColor = TerminalColors.Green; break;
-                case LogType.Bad:           terminal.State.ForeColor = TerminalColors.Red; break;
-                case LogType.PermanentGood: terminal.State.ForeColor = TerminalColors.Gold; break;
-                case LogType.TemporaryGood: terminal.State.ForeColor = TerminalColors.Blue; break;
-                case LogType.WearOff:       terminal.State.ForeColor = TerminalColors.DarkCyan; break;
-                case LogType.Resist:        terminal.State.ForeColor = TerminalColors.Cyan; break;
-                case LogType.BadState:      terminal.State.ForeColor = TerminalColors.Orange; break;
-                case LogType.DidNotWork:    terminal.State.ForeColor = TerminalColors.Yellow; break;
-                case LogType.Fail:          terminal.State.ForeColor = TerminalColors.Gray; break;
-                case LogType.Special:       terminal.State.ForeColor = TerminalColors.Purple; break;
-                default:                    terminal.State.ForeColor = TerminalColors.White; break;
+                case LogType.Good:          color = TerminalColors.Green; break;
+                case LogType.Bad:           color = TerminalColors.Red; break;
+                case LogType.PermanentGood: color = TerminalColors.Gold; break;
+                case LogType.TemporaryGood: color = TerminalColors.Blue; break;
+                case LogType.WearOff:       color = TerminalColors.DarkCyan; break;
+                case LogType.Resist:        color = TerminalColors.Cyan; break;
+                case LogType.BadState:      color = TerminalColors.Orange; break;
+                case LogType.DidNotWork:    color = TerminalColors.Yellow; break;
+                case LogType.Fail:          color = TerminalColors.Gray; break;
+                case LogType.Special:       color = TerminalColors.Purple; break;
+                default:                    color = TerminalColors.White; break;
             }
+
+            terminal = terminal[color].CreateWindow();
 
             string text = entry.Text;
 

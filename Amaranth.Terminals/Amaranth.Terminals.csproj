@@ -66,15 +66,12 @@
     <Compile Include="Classes\CharacterString.cs" />
     <Compile Include="Classes\ColorPair.cs" />
     <Compile Include="Classes\TerminalBase.cs" />
-    <Compile Include="Classes\TerminalWriter.cs" />
-    <Compile Include="Classes\TerminalWriterBase.cs" />
     <Compile Include="Classes\WindowTerminal.cs" />
     <Compile Include="EventArgs\CharacterEventArgs.cs" />
     <Compile Include="Enums\Glyph.cs" />
     <Compile Include="Classes\GlyphSheet.cs" />
     <Compile Include="Interfaces\IReadableTerminal.cs" />
     <Compile Include="Interfaces\ITerminal.cs" />
-    <Compile Include="Interfaces\ITerminalState.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
