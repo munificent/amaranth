@@ -64,7 +64,7 @@ namespace Amaranth.Reports
                 }
                 */
 
-                x = Math2.Clamp(0, x, points.Length - 1);
+                x = x.Clamp(0, points.Length - 1);
                 points[x] += 0.01f;
             }
 
@@ -73,8 +73,8 @@ namespace Amaranth.Reports
 
         private Point GraphToPixel(int x, float y)
         {
-            x = (int)Math2.Remap(0, x, 100.0f, 0, ClientSize.Width);
-            y = Math2.Remap(0, y, 100.0f, ClientSize.Height, 0);
+            x = x.Remap(0, 100, 0, ClientSize.Width);
+            y = y.Remap(0, 100.0f, ClientSize.Height, 0);
 
             return new Point(x, (int)y);
         }

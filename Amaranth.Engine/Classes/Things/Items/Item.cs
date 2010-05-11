@@ -316,7 +316,7 @@ namespace Amaranth.Engine
             if (!CanStack(item)) return 0;
 
             // quantity is limited by quantity being stacked and max stack size
-            quantity = Math2.Min(item.mQuantity, quantity, MaxQuantity - mQuantity);
+            quantity = new int[] { item.mQuantity, quantity, MaxQuantity - mQuantity }.Min();
 
             // match
             mQuantity += quantity;

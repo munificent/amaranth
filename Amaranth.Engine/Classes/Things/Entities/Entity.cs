@@ -117,7 +117,7 @@ namespace Amaranth.Engine
                 strike -= hit.Attack.StrikeBonus;
 
                 // keep it in bounds
-                strike = Math2.Clamp(5, strike, 95);
+                strike = strike.Clamp(5, 95);
 
                 int strikeRoll = Rng.IntInclusive(1, 100);
 

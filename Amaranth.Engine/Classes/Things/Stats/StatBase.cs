@@ -33,7 +33,7 @@ namespace Amaranth.Engine
             set
             {
                 // keep it in bounds
-                value = Math2.Clamp(GetBaseMin(), value, GetBaseMax());
+                value = value.Clamp(GetBaseMin(), GetBaseMax());
 
                 if (mBase != value)
                 {
@@ -81,7 +81,7 @@ namespace Amaranth.Engine
         /// <param name="baseValue">The Base Stat value.</param>
         public StatBase(int baseValue)
         {
-            mBase = Math2.Clamp(GetBaseMin(), baseValue, GetBaseMax());
+            mBase = baseValue.Clamp(GetBaseMin(), GetBaseMax());
         }
 
         /// <summary>

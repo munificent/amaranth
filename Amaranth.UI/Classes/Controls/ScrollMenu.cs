@@ -24,7 +24,7 @@ namespace Amaranth.UI
             get { return mSelected; }
             set
             {
-                value = Math2.Clamp(0, value, Items.Count - 1);
+                value = value.Clamp(0, Items.Count - 1);
 
                 if (mSelected != value)
                 {

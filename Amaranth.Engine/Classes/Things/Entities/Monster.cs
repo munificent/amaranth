@@ -158,7 +158,7 @@ namespace Amaranth.Engine
                 case RaceResist.None: return 1.0f;
                 case RaceResist.Weak: return 2.0f;
                 case RaceResist.VeryWeak: return 4.0f;
-                default: throw new UnknownEnumException(Race.GetResistance(element));
+                default: throw new UnexpectedEnumValueException(Race.GetResistance(element));
             }
         }
 

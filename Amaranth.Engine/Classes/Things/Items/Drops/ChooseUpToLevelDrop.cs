@@ -24,7 +24,7 @@ namespace Amaranth.Engine
         public IEnumerable<T> Create(int level)
         {
             // modify the level randomly
-            int walkedLevel = Math2.Clamp(1, Rng.WalkLevel(level), 100);
+            int walkedLevel = Rng.WalkLevel(level).Clamp(1, 100);
 
             // choose up to it (best of two tries)
             int choiceValue = Math.Max(Rng.IntInclusive(walkedLevel),

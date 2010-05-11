@@ -91,7 +91,7 @@ namespace Amaranth.UI
                 }
 
                 // keep in bounds
-                value = Math2.Clamp(min, value, max);
+                value = value.Clamp(min, max);
 
                 mText = value.ToString();
                 Repaint();

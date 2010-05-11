@@ -100,7 +100,7 @@ namespace Amaranth.Reports
                     for (int i = 0; i < 5000; i++)
                     {
                         // let the level wander
-                        int monsterLevel = Math2.Clamp(1, Rng.WalkLevel(level), 100);
+                        int monsterLevel = Rng.WalkLevel(level).Clamp(1, 100);
 
                         // pick a race
                         Race race = mContent.Races.RandomSoft(monsterLevel);

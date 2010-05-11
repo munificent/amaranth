@@ -156,7 +156,7 @@ namespace Amaranth.Terminals
             {
                 xStep = -1;
 
-                Math2.Swap(ref xStart, ref xEnd);
+                Obj.Swap(ref xStart, ref xEnd);
 
                 // shift the bounds back. the loops below
                 // are half-inclusive, so when we flip the
@@ -172,7 +172,7 @@ namespace Amaranth.Terminals
             {
                 yStep = -1;
 
-                Math2.Swap(ref yStart, ref yEnd);
+                Obj.Swap(ref yStart, ref yEnd);
 
                 // shift the bounds back. the loops below
                 // are half-inclusive, so when we flip the

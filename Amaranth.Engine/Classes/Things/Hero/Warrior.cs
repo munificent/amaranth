@@ -94,10 +94,10 @@ namespace Amaranth.Engine
             level = Math.Min(level, MaxLevel);
 
             // can multiply the damage by up to 5x
-            attack.DamageBonus *= Math2.Remap(0, level, MaxLevel, 1.0f, 5.0f);
+            attack.DamageBonus *= level.Remap(0, MaxLevel, 1.0f, 5.0f);
 
             // can give up to +5 to strike
-            attack.StrikeBonus += Math2.Remap(0, level, MaxLevel, 0, 5);
+            attack.StrikeBonus += level.Remap(0, MaxLevel, 0, 5);
         }
 
         private int GetLevel(int count)

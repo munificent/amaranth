@@ -33,7 +33,7 @@ namespace Amaranth.TermApp
                 case Element.Light:     return TerminalColors.LightYellow;
                 case Element.Anima:     return TerminalColors.Gold;
                 case Element.Death:     return TerminalColors.DarkRed;
-                default: throw new UnknownEnumException(element);
+                default: throw new UnexpectedEnumValueException(element);
             }
         }
 
@@ -55,7 +55,7 @@ namespace Amaranth.TermApp
                 case Element.Light:     return "Li";
                 case Element.Anima:     return "An";
                 case Element.Death:     return "De";
-                default: throw new UnknownEnumException(element);
+                default: throw new UnexpectedEnumValueException(element);
             }
         }
         
@@ -77,7 +77,7 @@ namespace Amaranth.TermApp
                 case Element.Light:     return "Lite";
                 case Element.Anima:     return "Anim";
                 case Element.Death:     return "Deth";
-                default: throw new UnknownEnumException(element);
+                default: throw new UnexpectedEnumValueException(element);
             }
         }
 

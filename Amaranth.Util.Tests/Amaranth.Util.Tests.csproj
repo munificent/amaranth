@@ -71,12 +71,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Math2Fixture.cs" />
+    <Compile Include="Int32ExtensionsFixture.cs" />
     <Compile Include="NotNullFixture.cs" />
     <Compile Include="PropSet\IndentationTreeFixture.cs" />
     <Compile Include="PropSet\PropSetFixture.cs" />
     <Compile Include="PropSet\PropSetParserFixture.cs" />
     <Compile Include="RectFixture.cs" />
+    <Compile Include="SingleExtensionsFixture.cs" />
     <Compile Include="VecFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Amaranth.Util
 {
+    /// <summary>
+    /// Extension methods on <c>string</c>.
+    /// </summary>
     public static class StringExtensions
     {
         public static string FormatNames(this string format, IDictionary<string, object> properties)

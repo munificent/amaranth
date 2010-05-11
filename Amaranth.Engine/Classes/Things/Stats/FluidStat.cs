@@ -41,7 +41,7 @@ namespace Amaranth.Engine
             set
             {
                 // keep it in bounds
-                value = Math2.Clamp(Min, value, Max);
+                value = value.Clamp(Min, Max);
 
                 if (mCurrent != value)
                 {
@@ -104,7 +104,7 @@ namespace Amaranth.Engine
 
         private void KeepCurrentInBounds()
         {
-            mCurrent = Math2.Clamp(Min, mCurrent, Max);
+            mCurrent = mCurrent.Clamp(Min, Max);
         }
 
         private int mCurrent;

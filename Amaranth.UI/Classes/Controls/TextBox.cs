@@ -67,7 +67,7 @@ namespace Amaranth.UI
             get { return mCursor; }
             set
             {
-                value = Math2.Clamp(0, value, Math.Min(mText.Length, mWidth - 1));
+                value = value.Clamp(0, Math.Min(mText.Length, mWidth - 1));
 
                 if (mCursor != value)
                 {

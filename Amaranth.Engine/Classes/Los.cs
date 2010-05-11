@@ -76,8 +76,8 @@ namespace Amaranth.Engine
             // swap the order if the y magnitude is greater
             if (delta.Y > delta.X)
             {
-                Math2.Swap(ref primary, ref secondary);
-                Math2.Swap(ref primaryIncrement, ref secondaryIncrement);
+                Obj.Swap(ref primary, ref secondary);
+                Obj.Swap(ref primaryIncrement, ref secondaryIncrement);
             }
 
             Vec pos = mStart;

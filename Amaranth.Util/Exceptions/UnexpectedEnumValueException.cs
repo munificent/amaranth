@@ -6,14 +6,15 @@ using System.Text;
 namespace Amaranth.Util
 {
     //### bob: refactor code to use this
+    //### bob: need to implement other ctors
     /// <summary>
     /// <see cref="Exception"/> class for receiving an unknown enum value. Throw this, for example,
     /// from the <c>default</c> case of a <c>switch</c> that expects to cover all enum values.
     /// </summary>
-    public class UnknownEnumException : Exception
+    public class UnexpectedEnumValueException : Exception
     {
-        public UnknownEnumException(object value)
-            : base("The enum value \"" + value.ToString() + "\" is not known.")
+        public UnexpectedEnumValueException(object value)
+            : base("The enum value \"" + value.ToString() + "\" in type \"" + value.GetType().Name + "\" was not expected.")
         {
         }
     }

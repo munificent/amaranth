@@ -71,7 +71,7 @@ namespace Amaranth.Engine
                 // don't always try the same order
                 if (Rng.OneIn(2))
                 {
-                    Math2.Swap(ref firstTry, ref secondTry);
+                    Obj.Swap(ref firstTry, ref secondTry);
                 }
 
                 if (monster.CanMove(firstTry) && !monster.IsOccupiedByOtherMonster(firstTry.Offset, target))

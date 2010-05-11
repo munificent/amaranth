@@ -78,6 +78,18 @@ namespace Amaranth.Util
         }
 
         /// <summary>
+        /// Fills all of the elements in the array with the given value.
+        /// </summary>
+        /// <param name="value">The value to fill the array with.</param>
+        public void Fill(T value)
+        {
+            foreach (Vec pos in new Rect(Size))
+            {
+                this[pos] = value;
+            }
+        }
+
+        /// <summary>
         /// Fills all of the elements in the array with values returned by the given callback.
         /// </summary>
         /// <param name="callback">The function to call for each element in the array.</param>

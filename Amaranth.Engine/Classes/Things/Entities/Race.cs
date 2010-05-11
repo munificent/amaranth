@@ -15,7 +15,7 @@ namespace Amaranth.Engine
         public static Race Random(Dungeon dungeon, int level, bool allowUniques)
         {
             // let the level wander
-            level = Math2.Clamp(1, Rng.WalkLevel(level), 100);
+            level = Rng.WalkLevel(level).Clamp(1, 100);
 
             // pick a race
             Race race = null;
@@ -79,7 +79,7 @@ namespace Amaranth.Engine
                     case GroupSize.Pack: return 12;
                     case GroupSize.Swarm: return 18;
                     case GroupSize.Horde: return 30;
-                    default: throw new UnknownEnumException(mGroupSize);
+                    default: throw new UnexpectedEnumValueException(mGroupSize);
                 }
             }
         }
@@ -192,7 +192,7 @@ namespace Amaranth.Engine
                 case GroupSize.Pack:   builder.Append(" It travels in ^ogroups^-."); break;
                 case GroupSize.Swarm:  builder.Append(" It travels in ^olarge groups^-."); break;
                 case GroupSize.Horde:  builder.Append(" It travels in ^ohuge groups^-."); break;
-                default: throw new UnknownEnumException(mGroupSize);
+                default: throw new UnexpectedEnumValueException(mGroupSize);
             }
 
             // light
@@ -342,7 +342,7 @@ namespace Amaranth.Engine
                     case GroupSize.Pack:    exp *= 1.8f; break;
                     case GroupSize.Swarm:   exp *= 2.3f; break;
                     case GroupSize.Horde:   exp *= 3.0f; break;
-                    default: throw new UnknownEnumException(mGroupSize);
+                    default: throw new UnexpectedEnumValueException(mGroupSize);
                 }
 
                 return exp;
@@ -476,7 +476,7 @@ namespace Amaranth.Engine
                 case RaceResist.None:        return 1.0f;
                 case RaceResist.Weak:        return 1.0f - 0.1f * scale;
                 case RaceResist.VeryWeak:    return 1.0f - 0.3f * scale;
-                default: throw new UnknownEnumException(GetResistance(element));
+                default: throw new UnexpectedEnumValueException(GetResistance(element));
             }
         }
 

@@ -91,7 +91,7 @@ namespace Amaranth.Reports
                         float normal = 0.0f;
                         if (max > 0)
                         {
-                            normal = Math2.Normal(0.0f, Math2.Clamp(0, cell * mGain, max), max);
+                            normal = (cell * mGain).Clamp(0, max).Normalize(0, max);
                         }
 
                         if (row.IsTall)

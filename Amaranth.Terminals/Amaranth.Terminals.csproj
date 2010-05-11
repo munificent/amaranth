@@ -92,7 +92,6 @@
     <Compile Include="Controls\TerminalForm.Designer.cs">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\TerminalState.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\TerminalControl.resx">

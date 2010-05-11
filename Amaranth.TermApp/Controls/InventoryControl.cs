@@ -68,7 +68,7 @@ namespace Amaranth.TermApp
                 case Viewing.Ground:    terminal[titleColor].Write("On Ground"); break;
                 case Viewing.Store:     terminal[titleColor].Write(mStore.Name); break;
 
-                default: throw new UnknownEnumException(mViewing);
+                default: throw new UnexpectedEnumValueException(mViewing);
             }
 
             // draw the price title
@@ -108,7 +108,7 @@ namespace Amaranth.TermApp
                     case Viewing.Equipment: return mGame.Hero.Equipment;
                     case Viewing.Ground:    return new ItemsOnGroundCollection(mGame.Dungeon, mGame.Hero.Position);
                     case Viewing.Store:     return mStore.Items;
-                    default: throw new UnknownEnumException(mViewing);
+                    default: throw new UnexpectedEnumValueException(mViewing);
                 }
             }
         }
@@ -266,7 +266,7 @@ namespace Amaranth.TermApp
                     SetView(Viewing.Inventory);*/
                     break;
 
-                default: throw new UnknownEnumException(mViewing);
+                default: throw new UnexpectedEnumValueException(mViewing);
             }
         }
 
@@ -382,7 +382,7 @@ namespace Amaranth.TermApp
                     mPlayGameScreen.Sell(item, mStore);
                     break;
 
-                default: throw new UnknownEnumException(item);
+                default: throw new UnexpectedEnumValueException(item);
             }
 
             // done
@@ -594,7 +594,7 @@ namespace Amaranth.TermApp
                     case Choosing.Dropping: return "Choose an item to drop";
                     case Choosing.Buying: return "Choose an item to buy";
                     case Choosing.Selling: return "Choose an item to sell";
-                    default: throw new UnknownEnumException(mChoosing);
+                    default: throw new UnexpectedEnumValueException(mChoosing);
                 }
             }
         }

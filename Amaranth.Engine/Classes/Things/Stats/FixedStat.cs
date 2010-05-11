@@ -25,7 +25,7 @@ namespace Amaranth.Engine
             {
                 int current = Base + BonusTotal;
 
-                current = Math2.Clamp(GetTotalMin(), current, GetTotalMax());
+                current = current.Clamp(GetTotalMin(), GetTotalMax());
 
                 return current;
             }

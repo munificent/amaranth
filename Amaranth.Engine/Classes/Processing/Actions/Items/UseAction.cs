@@ -24,7 +24,7 @@ namespace Amaranth.Engine
                 case ChargeType.Single: return new UseSingleAction(Entity, Item, mTarget);
                 case ChargeType.Light: return new UseLightAction(Entity, Item);
                 case ChargeType.Multi: return new UseMultiAction(Entity, Item, mTarget);
-                default: throw new UnknownEnumException(Item.Type.ChargeType);
+                default: throw new UnexpectedEnumValueException(Item.Type.ChargeType);
             }
         }
 

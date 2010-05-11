@@ -20,7 +20,7 @@ namespace Amaranth.Engine
         public IEnumerable<T> Create(int level)
         {
             // modify the level randomly
-            float choiceValue = Math2.Clamp(1, Rng.WalkLevel(level), 100);
+            float choiceValue = Rng.WalkLevel(level).Clamp(1, 100);
 
             IDrop<T> dropped = null;
 
