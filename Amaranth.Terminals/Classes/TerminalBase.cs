@@ -70,7 +70,7 @@ namespace Amaranth.Terminals
 
         public IWriterColor this[Rect rect]
         {
-            get { return new WindowTerminal(this, ForeColor, BackColor, rect); }
+            get { return new WindowTerminal(this, ForeColor, BackColor, new Rect(FlipNegativePosition(rect.Position), rect.Size)); }
         }
 
         public IWriterColor this[Vec pos, Vec size]
