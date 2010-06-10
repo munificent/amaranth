@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 
 namespace Amaranth.Terminals

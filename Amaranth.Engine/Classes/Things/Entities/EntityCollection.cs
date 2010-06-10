@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 
 namespace Amaranth.Engine

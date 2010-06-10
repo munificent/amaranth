@@ -6,6 +6,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 
 namespace Amaranth.Terminals

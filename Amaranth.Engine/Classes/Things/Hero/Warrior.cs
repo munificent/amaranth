@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 
 namespace Amaranth.Engine

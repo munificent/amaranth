@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Bramble.Core;
+
 using Amaranth.Engine;
 using Amaranth.Util;
 

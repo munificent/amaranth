@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 using Amaranth.Terminals;
 

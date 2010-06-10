@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
+using Bramble.Core;
+
 using Amaranth.Util;
 using Amaranth.Terminals;
 using Amaranth.UI;
