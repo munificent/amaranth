@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Malison.Core;
+
 using Amaranth.Util;
 using Amaranth.Data;
 using Amaranth.Engine;
-using Amaranth.Terminals;
 
 namespace Amaranth.Reports
 {

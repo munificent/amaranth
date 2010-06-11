@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -24,7 +24,7 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            terminal = terminal[TerminalColors.Gray, TerminalColors.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.Gray, TermColor.DarkGray].CreateWindow();
 
             terminal.Clear();
 

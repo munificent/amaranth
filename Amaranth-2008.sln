@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Engine", "Amaranth.Engine\Amaranth.Engine.csproj", "{3C656971-FFAD-46EE-A964-FB9CF7F468DC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Terminals", "Amaranth.Terminals\Amaranth.Terminals.csproj", "{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Tools.Dungeons", "Amaranth.Tools.Dungeon\Amaranth.Tools.Dungeons.csproj", "{6A2A02DE-930E-4638-B86A-DC8FF06E5BC0}"
 EndProject
@@ -16,8 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Engine.Tests", "Amaranth.Engine.Tests\Amaranth.Engine.Tests.csproj", "{E276229A-66E3-4649-A75D-7933DAA77CF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.TermApp", "Amaranth.TermApp\Amaranth.TermApp.csproj", "{34C3758D-7282-45F3-9396-6D9925A0B180}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Terminals.Test", "Amaranth.Terminals.Test\Amaranth.Terminals.Test.csproj", "{7BB433C1-51D2-4E33-91D6-CAE3568CD1E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amaranth.Util.Tests", "Amaranth.Util.Tests\Amaranth.Util.Tests.csproj", "{2C4463D7-553B-4D5B-9A21-2ADBDCFF7FF2}"
 EndProject
@@ -33,10 +29,6 @@ Global
 		{3C656971-FFAD-46EE-A964-FB9CF7F468DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C656971-FFAD-46EE-A964-FB9CF7F468DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C656971-FFAD-46EE-A964-FB9CF7F468DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A2A02DE-930E-4638-B86A-DC8FF06E5BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A2A02DE-930E-4638-B86A-DC8FF06E5BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2A02DE-930E-4638-B86A-DC8FF06E5BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,10 +53,6 @@ Global
 		{34C3758D-7282-45F3-9396-6D9925A0B180}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C3758D-7282-45F3-9396-6D9925A0B180}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C3758D-7282-45F3-9396-6D9925A0B180}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BB433C1-51D2-4E33-91D6-CAE3568CD1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BB433C1-51D2-4E33-91D6-CAE3568CD1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BB433C1-51D2-4E33-91D6-CAE3568CD1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BB433C1-51D2-4E33-91D6-CAE3568CD1E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C4463D7-553B-4D5B-9A21-2ADBDCFF7FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C4463D7-553B-4D5B-9A21-2ADBDCFF7FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4463D7-553B-4D5B-9A21-2ADBDCFF7FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU

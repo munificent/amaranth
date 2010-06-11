@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BBFE0209-6E76-4183-BC44-F2007B804D2C}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -53,6 +53,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Malison.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Malison.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -341,10 +345,6 @@
     <ProjectReference Include="..\Amaranth.Engine\Amaranth.Engine.csproj">
       <Project>{3C656971-FFAD-46EE-A964-FB9CF7F468DC}</Project>
       <Name>Amaranth.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Amaranth.Terminals\Amaranth.Terminals.csproj">
-      <Project>{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}</Project>
-      <Name>Amaranth.Terminals</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amaranth.Util\Amaranth.Util.csproj">
       <Project>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</Project>

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -75,7 +75,7 @@ namespace Amaranth.UI
             int titleY = Items.Count - 1;
             terminal[0, titleY][TitleColor].Write(Title);
 
-            terminal[Title.Length + 1, titleY][TerminalColors.Yellow].Write(Glyph.TriangleRight);
+            terminal[Title.Length + 1, titleY][TermColor.Yellow].Write(Glyph.TriangleRight);
 
             int x = Title.Length + 3;
 

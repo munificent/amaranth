@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -27,7 +27,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal[0, 0, 50, 1][TerminalColors.DarkGray].DrawBox(false, true);
+            terminal[0, 0, 50, 1][TermColor.DarkGray].DrawBox(false, true);
 
             // write the conditions
             int x = 1;
@@ -35,35 +35,35 @@ namespace Amaranth.TermApp
             // disease
             if (mGame.Hero.Health.HasBonus(BonusType.Disease))
             {
-                terminal[x, 0][TerminalColors.Purple].Write("Disease");
+                terminal[x, 0][TermColor.Purple].Write("Disease");
                 x += "Disease ".Length;
             }
 
             // poison
             if (mGame.Hero.Conditions.Poison.IsActive)
             {
-                terminal[x, 0][TerminalColors.DarkGreen].Write("Poison");
+                terminal[x, 0][TermColor.DarkGreen].Write("Poison");
                 x += "Poison ".Length;
             }
 
             // slow
             if (mGame.Hero.Conditions.Slow.IsActive)
             {
-                terminal[x, 0][TerminalColors.Brown].Write("Slow");
+                terminal[x, 0][TermColor.Brown].Write("Slow");
                 x += "Slow ".Length;
             }
 
             // freeze
             if (mGame.Hero.Conditions.Freeze.IsActive)
             {
-                terminal[x, 0][TerminalColors.LightBlue].Write("Freeze");
+                terminal[x, 0][TermColor.LightBlue].Write("Freeze");
                 x += "Freeze ".Length;
             }
 
             // haste
             if (mGame.Hero.Conditions.Haste.IsActive)
             {
-                terminal[x, 0][TerminalColors.Orange].Write("Haste");
+                terminal[x, 0][TermColor.Orange].Write("Haste");
                 x += "Haste ".Length;
             }
 
@@ -92,19 +92,19 @@ namespace Amaranth.TermApp
 
                 if (speed > Energy.NormalSpeed)
                 {
-                    terminal[x, 0][TerminalColors.Green].Write(speedText);
+                    terminal[x, 0][TermColor.Green].Write(speedText);
                     x += speedText.Length + 1;
                 }
                 else
                 {
-                    terminal[x, 0][TerminalColors.Orange].Write(speedText);
+                    terminal[x, 0][TermColor.Orange].Write(speedText);
                     x += speedText.Length + 1;
                 }
             }
 
             // write the floor
-            terminal[41, 0][TerminalColors.Gray].Write("Depth:");
-            terminal[47, 0][TerminalColors.Cyan].Write(mGame.Depth.ToString());
+            terminal[41, 0][TermColor.Gray].Write("Depth:");
+            terminal[47, 0][TermColor.Cyan].Write(mGame.Depth.ToString());
         }
 
         private readonly Game mGame;

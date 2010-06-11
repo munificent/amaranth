@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Malison.Core;
+
 using Amaranth.Engine;
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 
 namespace Amaranth.TermApp

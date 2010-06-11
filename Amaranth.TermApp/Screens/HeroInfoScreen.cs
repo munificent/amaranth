@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
+using Malison.Core;
+
 using Amaranth.Engine;
-using Amaranth.Terminals;
 using Amaranth.UI;
 
 namespace Amaranth.TermApp
@@ -37,19 +38,19 @@ namespace Amaranth.TermApp
             const int LabelX = 80;
 
             // draw the table
-            terminal[0, 0, 80, 28][TerminalColors.DarkGray].DrawBox(false, false);
-            terminal[31, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
-            terminal[50, 0, 1, 28][TerminalColors.DarkGray].DrawBox(true, false);
+            terminal[0, 0, 80, 28][TermColor.DarkGray].DrawBox(false, false);
+            terminal[31, 0, 1, 28][TermColor.DarkGray].DrawBox(true, false);
+            terminal[50, 0, 1, 28][TermColor.DarkGray].DrawBox(true, false);
 
-            terminal[31, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
-            terminal[50, 0][TerminalColors.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
-            terminal[31, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
-            terminal[50, 27][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
+            terminal[31, 0][TermColor.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
+            terminal[50, 0][TermColor.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
+            terminal[31, 27][TermColor.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
+            terminal[50, 27][TermColor.DarkGray].Write(Glyph.BarDoubleUpSingleLeftRight);
 
             // write the header
-            terminal[14, 0][TerminalColors.Gray].Write("Melee");
-            terminal[39, 0][TerminalColors.Gray].Write("Stats");
-            terminal[60, 0][TerminalColors.Gray].Write("Resistances");
+            terminal[14, 0][TermColor.Gray].Write("Melee");
+            terminal[39, 0][TermColor.Gray].Write("Stats");
+            terminal[60, 0][TermColor.Gray].Write("Resistances");
 
             terminal[1, 1].Write("Strike Damage Dodge Armor Elem");
             terminal[StatX, 1].Write("StrAgiStaWilIntCha");
@@ -102,7 +103,7 @@ namespace Amaranth.TermApp
                 }
                 else
                 {
-                    terminal[LabelX, y][TerminalColors.DarkGray].Write(mHero.Equipment.GetCategory(i));
+                    terminal[LabelX, y][TermColor.DarkGray].Write(mHero.Equipment.GetCategory(i));
                 }
 
                 // melee stats
@@ -115,33 +116,33 @@ namespace Amaranth.TermApp
                     float bonus = item.DamageBonus;
                     if (bonus < 1.0f)
                     {
-                        terminal[DamageX, y][TerminalColors.Red].Write("x" + bonus.ToString("F2"));
+                        terminal[DamageX, y][TermColor.Red].Write("x" + bonus.ToString("F2"));
                     }
                     else if (bonus == 1.0f)
                     {
-                        terminal[DamageX, y][TerminalColors.DarkGray].Write("  -  ");
+                        terminal[DamageX, y][TermColor.DarkGray].Write("  -  ");
                     }
                     else
                     {
-                        terminal[DamageX, y][TerminalColors.Green].Write("x" + bonus.ToString("F2"));
+                        terminal[DamageX, y][TermColor.Green].Write("x" + bonus.ToString("F2"));
                     }
 
                     // dodge
-                    terminal[DodgeX + 1, y][TerminalColors.DarkGray].Write(Glyph.Dash);
+                    terminal[DodgeX + 1, y][TermColor.DarkGray].Write(Glyph.Dash);
 
                     // armor
-                    Color color = TerminalColors.White;
+                    TermColor color = TermColor.White;
                     if (item.ArmorBonus < 0)
                     {
-                        color = TerminalColors.Red;
+                        color = TermColor.Red;
                     }
                     else if (item.ArmorBonus > 0)
                     {
-                        color = TerminalColors.Green;
+                        color = TermColor.Green;
                     }
                     else if (item.TotalArmor == 0)
                     {
-                        color = TerminalColors.DarkGray;
+                        color = TermColor.DarkGray;
                     }
 
                     if (item.TotalArmor < 0)
@@ -186,11 +187,11 @@ namespace Amaranth.TermApp
                     {
                         if (item.Resists(element))
                         {
-                            terminal[x, y][TerminalColors.Green].Write(Glyph.ArrowUp);
+                            terminal[x, y][TermColor.Green].Write(Glyph.ArrowUp);
                         }
                         else
                         {
-                            terminal[x, y][TerminalColors.DarkGray].Write(Glyph.Dash);
+                            terminal[x, y][TermColor.DarkGray].Write(Glyph.Dash);
                         }
                     }
                     x += 2;
@@ -220,15 +221,15 @@ namespace Amaranth.TermApp
                     float bonus = mHero.Stats.Strength.DamageBonus;
                     if (bonus < 1.0f)
                     {
-                        terminal[DamageX, y][TerminalColors.Red].Write("x" + bonus.ToString("F1"));
+                        terminal[DamageX, y][TermColor.Red].Write("x" + bonus.ToString("F1"));
                     }
                     else if (bonus == 1.0f)
                     {
-                        terminal[DamageX, y][TerminalColors.DarkGray].Write("  -  ");
+                        terminal[DamageX, y][TermColor.DarkGray].Write("  -  ");
                     }
                     else
                     {
-                        terminal[DamageX, y][TerminalColors.Green].Write("x" + bonus.ToString("F1"));
+                        terminal[DamageX, y][TermColor.Green].Write("x" + bonus.ToString("F1"));
                     }
                 }
 
@@ -250,36 +251,36 @@ namespace Amaranth.TermApp
             // melee totals
             if (mHero.MeleeStrikeBonus < 0)
             {
-                terminal[StrikeX, y][TerminalColors.Red].Write(mHero.MeleeStrikeBonus.ToString());
+                terminal[StrikeX, y][TermColor.Red].Write(mHero.MeleeStrikeBonus.ToString());
             }
             else if (mHero.MeleeStrikeBonus == 0)
             {
-                terminal[StrikeX + 1, y][TerminalColors.DarkGray].Write(Glyph.Digit0);
+                terminal[StrikeX + 1, y][TermColor.DarkGray].Write(Glyph.Digit0);
             }
             else
             {
-                terminal[StrikeX, y][TerminalColors.Green].Write(Glyph.Plus);
-                terminal[StrikeX + 1, y][TerminalColors.Green].Write(mHero.MeleeStrikeBonus.ToString());
+                terminal[StrikeX, y][TermColor.Green].Write(Glyph.Plus);
+                terminal[StrikeX + 1, y][TermColor.Green].Write(mHero.MeleeStrikeBonus.ToString());
             }
 
             // damage
             if (mHero.MeleeDamageBonus < 1.0f)
             {
-                terminal[DamageX, y][TerminalColors.Red].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
+                terminal[DamageX, y][TermColor.Red].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
             }
             else if (mHero.MeleeDamageBonus == 1.0f)
             {
-                terminal[DamageX, y][TerminalColors.DarkGray].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
+                terminal[DamageX, y][TermColor.DarkGray].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
             }
             else
             {
-                terminal[DamageX, y][TerminalColors.Green].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
+                terminal[DamageX, y][TermColor.Green].Write("x" + mHero.MeleeDamageBonus.ToString("F1"));
             }
 
             // dodge
             if (mHero.GetDodge() < Hero.DodgeBase)
             {
-                terminal[DodgeX, y][TerminalColors.Red].Write(mHero.GetDodge().ToString());
+                terminal[DodgeX, y][TermColor.Red].Write(mHero.GetDodge().ToString());
             }
             else
             {
@@ -289,15 +290,15 @@ namespace Amaranth.TermApp
             // armor
             if (mHero.Armor < 0)
             {
-                terminal[ArmorX, y][TerminalColors.Red].Write(mHero.Armor.ToString());
+                terminal[ArmorX, y][TermColor.Red].Write(mHero.Armor.ToString());
             }
             else if (mHero.Armor == 0)
             {
-                terminal[ArmorX + 1, y][TerminalColors.DarkGray].Write("0");
+                terminal[ArmorX + 1, y][TermColor.DarkGray].Write("0");
             }
             else
             {
-                terminal[ArmorX + 1, y][TerminalColors.Green].Write(mHero.Armor.ToString());
+                terminal[ArmorX + 1, y][TermColor.Green].Write(mHero.Armor.ToString());
             }
 
             // stat totals
@@ -306,11 +307,11 @@ namespace Amaranth.TermApp
             {
                 if (stat.IsLowered)
                 {
-                    terminal[x, y][TerminalColors.Red].Write(stat.Current.ToString().PadLeft(2));
+                    terminal[x, y][TermColor.Red].Write(stat.Current.ToString().PadLeft(2));
                 }
                 else if (stat.IsRaised)
                 {
-                    terminal[x, y][TerminalColors.Green].Write(stat.Current.ToString().PadLeft(2));
+                    terminal[x, y][TermColor.Green].Write(stat.Current.ToString().PadLeft(2));
                 }
                 else
                 {
@@ -331,7 +332,7 @@ namespace Amaranth.TermApp
                 }
                 else
                 {
-                    terminal[x, y][TerminalColors.Green].Write(resists.ToString());
+                    terminal[x, y][TermColor.Green].Write(resists.ToString());
                 }
                 x += 2;
             }
@@ -390,27 +391,27 @@ namespace Amaranth.TermApp
         {
             if (bonus < 0)
             {
-                terminal[x, y][TerminalColors.Red].Write(Glyph.ArrowDown);
-                terminal[x + 1, y][TerminalColors.Red].Write(Math.Abs(bonus).ToString());
+                terminal[x, y][TermColor.Red].Write(Glyph.ArrowDown);
+                terminal[x + 1, y][TermColor.Red].Write(Math.Abs(bonus).ToString());
             }
             else if (bonus == 0)
             {
-                terminal[x + 1, y][TerminalColors.DarkGray].Write(Glyph.Dash);
+                terminal[x + 1, y][TermColor.DarkGray].Write(Glyph.Dash);
             }
             else
             {
-                terminal[x, y][TerminalColors.Green].Write(Glyph.ArrowUp);
-                terminal[x + 1, y][TerminalColors.Green].Write(bonus.ToString());
+                terminal[x, y][TermColor.Green].Write(Glyph.ArrowUp);
+                terminal[x + 1, y][TermColor.Green].Write(bonus.ToString());
             }
         }
 
         private void DrawRowLine(ITerminal terminal, int y)
         {
-            terminal[1, y, 79, 1][TerminalColors.DarkGray].DrawBox(false, true);
-            terminal[0, y][TerminalColors.DarkGray].Write(Glyph.BarUpDownRight);
-            terminal[31, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
-            terminal[50, y][TerminalColors.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
-            terminal[79, y][TerminalColors.DarkGray].Write(Glyph.BarUpDownLeft);
+            terminal[1, y, 79, 1][TermColor.DarkGray].DrawBox(false, true);
+            terminal[0, y][TermColor.DarkGray].Write(Glyph.BarUpDownRight);
+            terminal[31, y][TermColor.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
+            terminal[50, y][TermColor.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
+            terminal[79, y][TermColor.DarkGray].Write(Glyph.BarUpDownLeft);
         }
 
         private Hero mHero;

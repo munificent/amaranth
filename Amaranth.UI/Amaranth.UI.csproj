@@ -57,6 +57,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Bramble.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Malison.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Malison.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Malison.WinForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Malison.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -99,10 +107,6 @@
     <Compile Include="Classes\UserInterface.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Amaranth.Terminals\Amaranth.Terminals.csproj">
-      <Project>{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}</Project>
-      <Name>Amaranth.Terminals</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Amaranth.Util\Amaranth.Util.csproj">
       <Project>{7C040CBB-A1BF-46AB-8A59-8C73FBDFFB99}</Project>
       <Name>Amaranth.Util</Name>

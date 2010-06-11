@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Bramble.Core;
+using Malison.WinForms;
 
 using Amaranth.Util;
 
@@ -105,7 +106,7 @@ namespace Amaranth.Reports
                         else
                         {
                             // pick the color of the value
-                            Color color = Color.FromArgb((int)(normal * 255.0f), row.Color);
+                            Color color = Color.FromArgb((int)(normal * 255.0f), row.Color.ToSystemColor());
                             Brush brush = new SolidBrush(color);
 
                             e.Graphics.FillRectangle(brush, x, y, CellWidth - 1, height - 1);

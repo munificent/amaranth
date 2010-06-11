@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -102,7 +102,7 @@ namespace Amaranth.UI
             terminal[0, 0][TitleColor].Write(Title);
 
             // draw the separator
-            terminal[Title.Length + 1, 0][TerminalColors.Yellow].Write(Glyph.TriangleRight);
+            terminal[Title.Length + 1, 0][TermColor.Yellow].Write(Glyph.TriangleRight);
 
             if (HasFocus)
             {

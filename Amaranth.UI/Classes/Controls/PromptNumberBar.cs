@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -107,20 +107,20 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            terminal = terminal[TerminalColors.White, TerminalColors.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.White, TermColor.DarkGray].CreateWindow();
 
             terminal.Clear();
 
             // write the instruction
-            terminal[0, 0][TerminalColors.LightGray].Write("Enter a number:");
+            terminal[0, 0][TermColor.LightGray].Write("Enter a number:");
             if (mReplacing)
             {
-                terminal[16, 0][TerminalColors.Black, TerminalColors.Yellow].Write(mText);
+                terminal[16, 0][TermColor.Black, TermColor.Yellow].Write(mText);
             }
             else
             {
-                terminal[16, 0][TerminalColors.Yellow].Write(mText);
-                terminal[16 + mText.Length, 0][TerminalColors.Black, TerminalColors.Yellow].Write(" ");
+                terminal[16, 0][TermColor.Yellow].Write(mText);
+                terminal[16 + mText.Length, 0][TermColor.Black, TermColor.Yellow].Write(" ");
             }
 
             Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
@@ -151,7 +151,7 @@ namespace Amaranth.UI
                     for (int i = glyphs.Length - 1; i >= 0; i--)
                     {
                         x--;
-                        terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
+                        terminal[x, 0][TermColor.Yellow].Write(glyphs[i]);
                     }
                 }
 

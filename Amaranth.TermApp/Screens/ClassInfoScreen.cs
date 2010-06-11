@@ -3,8 +3,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
+using Malison.Core;
+
 using Amaranth.Engine;
-using Amaranth.Terminals;
 using Amaranth.UI;
 
 namespace Amaranth.TermApp

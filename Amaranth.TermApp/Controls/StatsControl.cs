@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -27,13 +27,13 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal[0, 0][TerminalColors.Cyan].Write(mHero.Name);
-            terminal[0, 1][TerminalColors.DarkCyan].Write(mHero.Race);
-            terminal[0, 2][TerminalColors.DarkCyan].Write("Adventurer");
+            terminal[0, 0][TermColor.Cyan].Write(mHero.Name);
+            terminal[0, 1][TermColor.DarkCyan].Write(mHero.Race);
+            terminal[0, 2][TermColor.DarkCyan].Write("Adventurer");
 
             WriteStat(terminal, 4, "Level", mHero.Level);
             WriteMaxStat(terminal, 5, "Exp", mHero.Experience, (max) => (max / 100).ToString());
-            WriteStat(terminal, 6, "Next", mHero.NextExperience, TerminalColors.Gray);
+            WriteStat(terminal, 6, "Next", mHero.NextExperience, TermColor.Gray);
 
             WriteStat(terminal, 8, "Health", mHero.Health);
             WriteMaxStat(terminal, 9, "Max", mHero.Health);
@@ -46,7 +46,7 @@ namespace Amaranth.TermApp
             WriteStat(terminal, 16, "Charisma", mHero.Stats.Charisma);
 
             WriteStat(terminal, 18, "Armor", mHero.Armor);
-            terminal[0, 19][TerminalColors.Gray].Write("Resistances");
+            terminal[0, 19][TermColor.Gray].Write("Resistances");
 
             Vec pos = new Vec(0, 20);
             foreach (object value in Enum.GetValues(typeof(Element)))
@@ -56,37 +56,37 @@ namespace Amaranth.TermApp
                 pos = pos.OffsetX(1);
             }
 
-            terminal[0, 22][TerminalColors.Gray].Write("Currency");
-            terminal[0, 23][TerminalColors.Gold].Write(mHero.Currency.ToString("n0").PadLeft(13));
+            terminal[0, 22][TermColor.Gray].Write("Currency");
+            terminal[0, 23][TermColor.Gold].Write(mHero.Currency.ToString("n0").PadLeft(13));
         }
 
-        private void WriteStat(ITerminal terminal, int y, string name, int value, Color color)
+        private void WriteStat(ITerminal terminal, int y, string name, int value, TermColor color)
         {
             terminal[0, y][color].Write(value.ToString().PadLeft(13));
-            terminal[0, y][TerminalColors.Gray].Write(name);
+            terminal[0, y][TermColor.Gray].Write(name);
         }
 
         private void WriteStat(ITerminal terminal, int y, string name, int value)
         {
-            WriteStat(terminal, y, name, value, TerminalColors.White);
+            WriteStat(terminal, y, name, value, TermColor.White);
         }
 
         private void WriteMaxStat(ITerminal terminal, int y, string name, FluidStat value, Func<int, string> formatter)
         {
-            Color color = TerminalColors.Gray;
-            Color textColor = TerminalColors.Gray;
+            TermColor color = TermColor.Gray;
+            TermColor textColor = TermColor.Gray;
 
             // highlight stats that are below the base value
             if (value.IsLowered)
             {
-                color = TerminalColors.Purple;
-                terminal[-1, y][TerminalColors.DarkPurple].Write(Glyph.ArrowDown);
-                textColor = TerminalColors.DarkPurple;
+                color = TermColor.Purple;
+                terminal[-1, y][TermColor.DarkPurple].Write(Glyph.ArrowDown);
+                textColor = TermColor.DarkPurple;
             }
             else if (value.IsRaised)
             {
-                color = TerminalColors.Blue;
-                terminal[-1, y][TerminalColors.DarkBlue].Write(Glyph.ArrowUp);
+                color = TermColor.Blue;
+                terminal[-1, y][TermColor.DarkBlue].Write(Glyph.ArrowUp);
             }
 
             terminal[0, y][color].Write(formatter(value.Max).PadLeft(terminal.Size.X - 1));
@@ -100,15 +100,15 @@ namespace Amaranth.TermApp
 
         private void WriteStat(ITerminal terminal, int y, string name, FluidStat value)
         {
-            Color color = TerminalColors.Green;
-            Color textColor = TerminalColors.Gray;
+            TermColor color = TermColor.Green;
+            TermColor textColor = TermColor.Gray;
 
             // highlight stats that are below the base value
             if (value.Current < value.Max)
             {
-                color = TerminalColors.Red;
-                terminal[-1, y][TerminalColors.DarkRed].Write(Glyph.ExclamationMark);
-                textColor = TerminalColors.DarkRed;
+                color = TermColor.Red;
+                terminal[-1, y][TermColor.DarkRed].Write(Glyph.ExclamationMark);
+                textColor = TermColor.DarkRed;
             }
 
             terminal[0, y][color].Write(value.Current.ToString().PadLeft(terminal.Size.X - 1));
@@ -121,27 +121,27 @@ namespace Amaranth.TermApp
             // normal   white
             // max      green
 
-            Color color = TerminalColors.White;
-            Color textColor = TerminalColors.Gray;
+            TermColor color = TermColor.White;
+            TermColor textColor = TermColor.Gray;
 
             // highlight stats that have negative bonuses
             if (stat.IsLowered)
             {
                 // drained
-                color = TerminalColors.Purple;
-                terminal[-1, y][TerminalColors.DarkPurple].Write(Glyph.ArrowDown);
-                textColor = TerminalColors.DarkPurple;
+                color = TermColor.Purple;
+                terminal[-1, y][TermColor.DarkPurple].Write(Glyph.ArrowDown);
+                textColor = TermColor.DarkPurple;
             }
             else if (stat.Base == Stat.BaseMax)
             {
                 // maxed
-                color = TerminalColors.Green;
-                terminal[-1, y][TerminalColors.Green].Write(Glyph.Mountains);
+                color = TermColor.Green;
+                terminal[-1, y][TermColor.Green].Write(Glyph.Mountains);
             }
             else if (stat.IsRaised)
             {
                 // raised
-                terminal[-1, y][TerminalColors.DarkGreen].Write(Glyph.ArrowUp);
+                terminal[-1, y][TermColor.DarkGreen].Write(Glyph.ArrowUp);
             }
 
             terminal[0, y][color].Write(stat.Current.ToString().PadLeft(terminal.Size.X - 1));
@@ -152,12 +152,12 @@ namespace Amaranth.TermApp
         {
             int numResists = mHero.GetNumResists(element);
 
-            Color color = GameArt.GetColor(element);
+            TermColor color = GameArt.GetColor(element);
             string letter = element.ToString().Substring(0, 1);
 
             switch (numResists)
             {
-                case 0: terminal[pos][TerminalColors.DarkGray].Write("-"); break;
+                case 0: terminal[pos][TermColor.DarkGray].Write("-"); break;
                 case 1: terminal[pos][color].Write(letter.ToLower()); break;
                 default: terminal[pos][color].Write(letter); break;
             }

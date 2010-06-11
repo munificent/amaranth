@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -150,32 +150,32 @@ namespace Amaranth.TermApp
                 switch (mMode)
                 {
                     case TargetMode.Direction:
-                        if (dungeonTile == target + Direction.N) character = new Character(Glyph.ArrowUp, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.NE) character = new Character(Glyph.Slash, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.E) character = new Character(Glyph.ArrowRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.Backslash, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.S) character = new Character(Glyph.ArrowDown, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.Slash, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.W) character = new Character(Glyph.ArrowLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.Backslash, TerminalColors.Yellow, TerminalColors.Black);
+                        if (dungeonTile == target + Direction.N) character = new Character(Glyph.ArrowUp, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.NE) character = new Character(Glyph.Slash, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.E) character = new Character(Glyph.ArrowRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.Backslash, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.S) character = new Character(Glyph.ArrowDown, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.Slash, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.W) character = new Character(Glyph.ArrowLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.Backslash, TermColor.Yellow, TermColor.Black);
                         break;
 
                     case TargetMode.Absolute:
-                        if (dungeonTile == target + Direction.NE) character = new Character(Glyph.BarDownLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.BarUpLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.BarUpRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.BarDownRight, TerminalColors.Yellow, TerminalColors.Black);
+                        if (dungeonTile == target + Direction.NE) character = new Character(Glyph.BarDownLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.BarUpLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.BarUpRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.BarDownRight, TermColor.Yellow, TermColor.Black);
                         break;
 
                     case TargetMode.Entity:
-                        if (dungeonTile == target + Direction.N) character = new Character(Glyph.BarUpLeftRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.NE) character = new Character(Glyph.BarDownLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.E) character = new Character(Glyph.BarUpDownRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.BarUpLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.S) character = new Character(Glyph.BarDownLeftRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.BarUpRight, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.W) character = new Character(Glyph.BarUpDownLeft, TerminalColors.Yellow, TerminalColors.Black);
-                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.BarDownRight, TerminalColors.Yellow, TerminalColors.Black);
+                        if (dungeonTile == target + Direction.N) character = new Character(Glyph.BarUpLeftRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.NE) character = new Character(Glyph.BarDownLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.E) character = new Character(Glyph.BarUpDownRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SE) character = new Character(Glyph.BarUpLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.S) character = new Character(Glyph.BarDownLeftRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.SW) character = new Character(Glyph.BarUpRight, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.W) character = new Character(Glyph.BarUpDownLeft, TermColor.Yellow, TermColor.Black);
+                        else if (dungeonTile == target + Direction.NW) character = new Character(Glyph.BarDownRight, TermColor.Yellow, TermColor.Black);
                         break;
                 }
             }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -37,20 +37,20 @@ namespace Amaranth.TermApp
 
         private void WriteLog(ITerminal terminal, LogEntry entry)
         {
-            Color color = terminal.ForeColor;
+            TermColor color = terminal.ForeColor;
             switch (entry.Type)
             {
-                case LogType.Good:          color = TerminalColors.Green; break;
-                case LogType.Bad:           color = TerminalColors.Red; break;
-                case LogType.PermanentGood: color = TerminalColors.Gold; break;
-                case LogType.TemporaryGood: color = TerminalColors.Blue; break;
-                case LogType.WearOff:       color = TerminalColors.DarkCyan; break;
-                case LogType.Resist:        color = TerminalColors.Cyan; break;
-                case LogType.BadState:      color = TerminalColors.Orange; break;
-                case LogType.DidNotWork:    color = TerminalColors.Yellow; break;
-                case LogType.Fail:          color = TerminalColors.Gray; break;
-                case LogType.Special:       color = TerminalColors.Purple; break;
-                default:                    color = TerminalColors.White; break;
+                case LogType.Good:          color = TermColor.Green; break;
+                case LogType.Bad:           color = TermColor.Red; break;
+                case LogType.PermanentGood: color = TermColor.Gold; break;
+                case LogType.TemporaryGood: color = TermColor.Blue; break;
+                case LogType.WearOff:       color = TermColor.DarkCyan; break;
+                case LogType.Resist:        color = TermColor.Cyan; break;
+                case LogType.BadState:      color = TermColor.Orange; break;
+                case LogType.DidNotWork:    color = TermColor.Yellow; break;
+                case LogType.Fail:          color = TermColor.Gray; break;
+                case LogType.Special:       color = TermColor.Purple; break;
+                default:                    color = TermColor.White; break;
             }
 
             terminal = terminal[color].CreateWindow();

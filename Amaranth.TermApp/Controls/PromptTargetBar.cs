@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Engine;
 using Amaranth.UI;
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.TermApp
 {

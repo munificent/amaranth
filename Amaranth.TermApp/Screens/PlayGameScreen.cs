@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
 using Amaranth.UI;
 using Amaranth.Engine;
-using Amaranth.Terminals;
 
 namespace Amaranth.TermApp
 {
@@ -224,7 +224,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal = terminal[TerminalColors.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.DarkGray].CreateWindow();
 
             terminal[65, 0, 1, terminal.Size.Y].DrawBox(false, true);
             terminal[0, 31, 65, 1].DrawBox(false, true);

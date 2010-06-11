@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -60,7 +60,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            Color titleColor = HasFocus ? TerminalColors.White : TerminalColors.Gray;
+            var titleColor = HasFocus ? TermColor.White : TermColor.Gray;
 
             // draw the title
             switch (mViewing)
@@ -96,7 +96,7 @@ namespace Amaranth.TermApp
             {
                 Vec pos = new Vec(0, index) + 1;
 
-                terminal[pos][TerminalColors.DarkGray].Write(GetKey(index));
+                terminal[pos][TermColor.DarkGray].Write(GetKey(index));
             }
         }
 
@@ -124,17 +124,17 @@ namespace Amaranth.TermApp
             if (IsChoosable(item))
             {
                 // hilight the item since it is choosable
-                terminal[pos][TerminalColors.White].Write(GetKey(index));
-                terminal[pos.OffsetX(1)][TerminalColors.Yellow].Write(Glyph.TriangleRight);
+                terminal[pos][TermColor.White].Write(GetKey(index));
+                terminal[pos.OffsetX(1)][TermColor.Yellow].Write(Glyph.TriangleRight);
             }
             else
             {
                 // don't hilight the item since it can't be chosen
-                terminal[pos][TerminalColors.DarkGray].Write(GetKey(index));
+                terminal[pos][TermColor.DarkGray].Write(GetKey(index));
 
                 if (item != null)
                 {
-                    terminal[pos.OffsetX(1)][TerminalColors.DarkGray].Write(Glyph.TriangleRight);
+                    terminal[pos.OffsetX(1)][TermColor.DarkGray].Write(Glyph.TriangleRight);
                 }
             }
 
@@ -143,25 +143,25 @@ namespace Amaranth.TermApp
                 // show the item in the slot
                 terminal[pos.OffsetX(2)].Write(GameArt.Get(item));
 
-                Color itemColor;
-                Color priceColor;
+                TermColor itemColor;
+                TermColor priceColor;
 
                 if (!HasFocus || IsChoosable(item))
                 {
-                    itemColor = TerminalColors.White;
+                    itemColor = TermColor.White;
                 }
                 else
                 {
-                    itemColor = TerminalColors.DarkGray;
+                    itemColor = TermColor.DarkGray;
                 }
 
                 if (IsChoosable(item))
                 {
-                    priceColor = (mViewing == Viewing.Store) ? TerminalColors.Green : TerminalColors.Gold;
+                    priceColor = (mViewing == Viewing.Store) ? TermColor.Green : TermColor.Gold;
                 }
                 else
                 {
-                    priceColor = (mViewing == Viewing.Store) ? TerminalColors.DarkGreen : TerminalColors.DarkGold;
+                    priceColor = (mViewing == Viewing.Store) ? TermColor.DarkGreen : TermColor.DarkGold;
                 }
 
                 terminal[pos.OffsetX(4)][itemColor].Write(item.ToString());
@@ -185,7 +185,7 @@ namespace Amaranth.TermApp
             else
             {
                 // no item in the slot, so show the category of item that can go there
-                terminal[pos.OffsetX(4)][TerminalColors.DarkGray].Write(Items.GetCategory(index));
+                terminal[pos.OffsetX(4)][TermColor.DarkGray].Write(Items.GetCategory(index));
             }
         }
 

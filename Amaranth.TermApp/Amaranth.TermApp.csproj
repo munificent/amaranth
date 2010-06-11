@@ -57,6 +57,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External\Bramble.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Malison.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\Malison.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -127,10 +131,6 @@
     <ProjectReference Include="..\Amaranth.Engine\Amaranth.Engine.csproj">
       <Project>{3C656971-FFAD-46EE-A964-FB9CF7F468DC}</Project>
       <Name>Amaranth.Engine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Amaranth.Terminals\Amaranth.Terminals.csproj">
-      <Project>{E91B77CB-4EC8-458E-82F9-CF5D7285BCD4}</Project>
-      <Name>Amaranth.Terminals</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amaranth.UI\Amaranth.UI.csproj">
       <Project>{6692B9FB-5FA0-4C3B-A15E-87C7723A7720}</Project>

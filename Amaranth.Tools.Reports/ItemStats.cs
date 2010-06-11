@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Data;
 using Amaranth.Engine;
-using Amaranth.Terminals;
 using Amaranth.Util;
 
 namespace Amaranth.Reports
@@ -246,7 +246,7 @@ namespace Amaranth.Reports
 
         public abstract string Name { get; }
 
-        public abstract Color Color { get; }
+        public abstract TermColor Color { get; }
 
         public abstract int Max(int x);
 
@@ -276,7 +276,7 @@ namespace Amaranth.Reports
 
         public override int Max(int x) { return mStats.MaxPerLevel ? mStats.MaxRaceCounts[x] : mStats.MaxRaceCount; }
 
-        public override Color Color
+        public override TermColor Color
         {
             get
             {
@@ -300,7 +300,7 @@ namespace Amaranth.Reports
 
         public override int Max(int x) { return mStats.MaxPerLevel ? mStats.MaxItemCounts[x] : mStats.MaxItemCount; }
 
-        public override Color Color
+        public override TermColor Color
         {
             get
             {
@@ -324,16 +324,16 @@ namespace Amaranth.Reports
 
         public override int Max(int x) { return mStats.MaxPerLevel ? mStats.MaxPowerCounts[x] : mStats.MaxPowerCount; }
 
-        public override Color Color
+        public override TermColor Color
         {
             get
             {
                 if (mType.Appearance != null)
                 {
-                    return (Color)mType.Appearance;
+                    return (TermColor)mType.Appearance;
                 }
 
-                return Color.White;
+                return TermColor.White;
             }
         }
 
@@ -356,7 +356,7 @@ namespace Amaranth.Reports
 
         public int Max(int x) { return mValues.Max(); }
 
-        public Color Color { get { return Color.White; } }
+        public TermColor Color { get { return TermColor.White; } }
 
         public void Add(int level, int amount)
         {

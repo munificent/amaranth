@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -80,11 +80,11 @@ namespace Amaranth.UI
             {
                 if (HasFocus)
                 {
-                    return new ColorPair(TerminalColors.Yellow, TerminalColors.Black);
+                    return new ColorPair(TermColor.Yellow, TermColor.Black);
                 }
                 else
                 {
-                    return new ColorPair(TerminalColors.Gray, TerminalColors.Black);
+                    return new ColorPair(TermColor.Gray, TermColor.Black);
                 }
             }
         }
@@ -95,11 +95,11 @@ namespace Amaranth.UI
             {
                 if (HasFocus)
                 {
-                    return new ColorPair(TerminalColors.White, TerminalColors.Black);
+                    return new ColorPair(TermColor.White, TermColor.Black);
                 }
                 else
                 {
-                    return new ColorPair(TerminalColors.DarkGray, TerminalColors.Black);
+                    return new ColorPair(TermColor.DarkGray, TermColor.Black);
                 }
             }
         }
@@ -110,11 +110,11 @@ namespace Amaranth.UI
             {
                 if (HasFocus)
                 {
-                    return new ColorPair(TerminalColors.Black, TerminalColors.Yellow);
+                    return new ColorPair(TermColor.Black, TermColor.Yellow);
                 }
                 else
                 {
-                    return new ColorPair(TerminalColors.White, TerminalColors.Black);
+                    return new ColorPair(TermColor.White, TermColor.Black);
                 }
             }
         }

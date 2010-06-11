@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Amaranth.Terminals;
-
 namespace Amaranth.UI
 {
     public class KeyInstruction

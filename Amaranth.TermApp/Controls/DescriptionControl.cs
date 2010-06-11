@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Engine;
 
@@ -43,17 +43,17 @@ namespace Amaranth.TermApp
                     {
                         if (monster.Health.Current * 10 / monster.Health.Max >= i)
                         {
-                            terminal[-10 + i, 0][TerminalColors.DarkRed].Write(Glyph.Solid);
+                            terminal[-10 + i, 0][TermColor.DarkRed].Write(Glyph.Solid);
                         }
                         else
                         {
-                            terminal[-10 + i, 0][TerminalColors.DarkGray].Write(Glyph.Gray);
+                            terminal[-10 + i, 0][TermColor.DarkGray].Write(Glyph.Gray);
                         }
                     }
                 }
 
                 // draw its description
-                CharacterString text = new CharacterString(monster.GetDescription(mHero), TerminalColors.LightGray, TerminalColors.Black);
+                CharacterString text = new CharacterString(monster.GetDescription(mHero), TermColor.LightGray, TermColor.Black);
 
                 int y = 1;
                 foreach (CharacterString line in text.WordWrap(terminal.Size.X))

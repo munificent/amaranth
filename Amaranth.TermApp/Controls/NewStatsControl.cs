@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Engine;
-using Amaranth.Terminals;
 using Amaranth.UI;
 using Amaranth.Util;
 
@@ -62,7 +62,7 @@ namespace Amaranth.TermApp
             if (!String.IsNullOrEmpty(Title))
             {
                 terminal[0, 0][TitleColor].Write(Title);
-                terminal[Title.Length + 1, 0][TerminalColors.Yellow].Write(Glyph.TriangleRight);
+                terminal[Title.Length + 1, 0][TermColor.Yellow].Write(Glyph.TriangleRight);
 
                 x += Title.Length + 3;
             }
@@ -76,20 +76,20 @@ namespace Amaranth.TermApp
 
                 // raw value
                 int raw = mStats[i].Current;
-                terminal[x + nameWidth + 1, i][TerminalColors.Gray].Write(raw.ToString().PadLeft(2));
+                terminal[x + nameWidth + 1, i][TermColor.Gray].Write(raw.ToString().PadLeft(2));
 
                 // race bonus
                 terminal[x + nameWidth + 4, i].Write(mRace.StatBonuses[i].ToString("^g+##;^r-##;^m 0"));
 
                 // final value
                 int final = mStats[i].Current + mRace.StatBonuses[i];
-                terminal[x + nameWidth + 7, i][TerminalColors.White].Write(final.ToString().PadLeft(2));
+                terminal[x + nameWidth + 7, i][TermColor.White].Write(final.ToString().PadLeft(2));
 
                 // stat bar
                 for (int j = 1; j <= Math.Max(final, raw); j++)
                 {
                     Glyph glyph = Glyph.BarDoubleLeftRight;
-                    Color color = TerminalColors.Gray;
+                    TermColor color = TermColor.Gray;
 
                     if (j == 1)
                     {
@@ -108,16 +108,16 @@ namespace Amaranth.TermApp
                     {
                         if (j <= final)
                         {
-                            color = TerminalColors.Gray;
+                            color = TermColor.Gray;
                         }
                         else
                         {
-                            color = TerminalColors.DarkRed;
+                            color = TermColor.DarkRed;
                         }
                     }
                     else
                     {
-                        color = TerminalColors.Green;
+                        color = TermColor.Green;
                     }
 
                     terminal[x + nameWidth + 9 + j, i][color].Write(glyph);
@@ -125,8 +125,8 @@ namespace Amaranth.TermApp
             }
 
             // draw the average line
-            terminal[x + nameWidth + 9 + 15, 6][TerminalColors.DarkGray].Write(Glyph.TriangleUp);
-            terminal[x + nameWidth + 9 + 12, 7][TerminalColors.DarkGray].Write("Average");
+            terminal[x + nameWidth + 9 + 15, 6][TermColor.DarkGray].Write(Glyph.TriangleUp);
+            terminal[x + nameWidth + 9 + 12, 7][TermColor.DarkGray].Write("Average");
         }
 
         protected override Rect GetBounds()

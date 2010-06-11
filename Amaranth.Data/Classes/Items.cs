@@ -4,9 +4,10 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using Amaranth.Util;
+using Malison.Core;
+
 using Amaranth.Engine;
-using Amaranth.Terminals;
+using Amaranth.Util;
 
 namespace Amaranth.Data
 {
@@ -28,7 +29,7 @@ namespace Amaranth.Data
                 string name = itemProp.Name;
 
                 // art
-                Character character = new Character('*', TerminalColors.Purple);
+                Character character = new Character('*', TermColor.Purple);
 
                 if (itemProp.Contains("art"))
                 {

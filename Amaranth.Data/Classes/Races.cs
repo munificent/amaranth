@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using Malison.Core;
+
 using Amaranth.Util;
-using Amaranth.Terminals;
 using Amaranth.Engine;
 
 namespace Amaranth.Data
@@ -27,7 +28,7 @@ namespace Amaranth.Data
         private static Race LoadRace(PropSet raceProp, DropMacroCollection<Item> dropMacros, Content content,
             out int depth, out int rarity)
         {
-            Character character = new Character('*', TerminalColors.Purple);
+            Character character = new Character('*', TermColor.Purple);
             
             if (raceProp.Contains("art"))
             {

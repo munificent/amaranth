@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {
@@ -31,7 +31,7 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            terminal = terminal[TerminalColors.White, TerminalColors.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.White, TermColor.DarkGray].CreateWindow();
 
             terminal.Clear();
 
@@ -46,7 +46,7 @@ namespace Amaranth.UI
             {
                 instruction = Screen.UI.CurrentScreen.Title;
             }
-            terminal[0, 0][TerminalColors.LightGray].Write(instruction);
+            terminal[0, 0][TermColor.LightGray].Write(instruction);
 
             Stack<KeyInstruction> instructions = new Stack<KeyInstruction>();
 
@@ -105,7 +105,7 @@ namespace Amaranth.UI
                     for (int i = glyphs.Length - 1; i >= 0; i--)
                     {
                         x--;
-                        terminal[x, 0][TerminalColors.Yellow].Write(glyphs[i]);
+                        terminal[x, 0][TermColor.Yellow].Write(glyphs[i]);
                     }
                 }
 

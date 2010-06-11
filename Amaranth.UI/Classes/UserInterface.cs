@@ -6,9 +6,10 @@ using System.Threading;
 using System.Windows.Forms;
 
 using Bramble.Core;
+using Malison.Core;
+using Malison.WinForms;
 
 using Amaranth.Util;
-using Amaranth.Terminals;
 
 namespace Amaranth.UI
 {

@@ -4,8 +4,8 @@ using System.Drawing;
 using System.Text;
 
 using Bramble.Core;
+using Malison.Core;
 
-using Amaranth.Terminals;
 using Amaranth.Engine;
 using Amaranth.Util;
 
@@ -17,24 +17,24 @@ namespace Amaranth.TermApp
     /// </summary>
     public static class GameArt
     {
-        public static Color GetColor(Element element)
+        public static TermColor GetColor(Element element)
         {
             switch (element)
             {
-                case Element.Air:       return TerminalColors.Cyan;
-                case Element.Earth:     return TerminalColors.LightBrown;
-                case Element.Fire:      return TerminalColors.Red;
-                case Element.Water:     return TerminalColors.Blue;
-                case Element.Metal:     return TerminalColors.LightGray;
-                case Element.Wood:      return TerminalColors.Brown;
-                case Element.Acid:      return TerminalColors.Green;
-                case Element.Cold:      return TerminalColors.White;
-                case Element.Lightning: return TerminalColors.Purple;
-                case Element.Poison:    return TerminalColors.DarkGreen;
-                case Element.Dark:      return TerminalColors.DarkGray;
-                case Element.Light:     return TerminalColors.LightYellow;
-                case Element.Anima:     return TerminalColors.Gold;
-                case Element.Death:     return TerminalColors.DarkRed;
+                case Element.Air:       return TermColor.Cyan;
+                case Element.Earth:     return TermColor.LightBrown;
+                case Element.Fire:      return TermColor.Red;
+                case Element.Water:     return TermColor.Blue;
+                case Element.Metal:     return TermColor.LightGray;
+                case Element.Wood:      return TermColor.Brown;
+                case Element.Acid:      return TermColor.Green;
+                case Element.Cold:      return TermColor.White;
+                case Element.Lightning: return TermColor.Purple;
+                case Element.Poison:    return TermColor.DarkGreen;
+                case Element.Dark:      return TermColor.DarkGray;
+                case Element.Light:     return TermColor.LightYellow;
+                case Element.Anima:     return TermColor.Gold;
+                case Element.Death:     return TermColor.DarkRed;
                 default: throw new UnexpectedEnumValueException(element);
             }
         }
@@ -85,56 +85,56 @@ namespace Amaranth.TermApp
 
         public static Character Get(Effect effect)
         {
-            Glyph glyph = Glyph.Asterisk;
-            Color backColor = TerminalColors.Black;
-            Color foreColor = GetColor(effect.Element);
+            var glyph = Glyph.Asterisk;
+            var backColor = TermColor.Black;
+            var foreColor = GetColor(effect.Element);
 
             // for colored backgrounds
             /*
             switch (effect.Element)
             {
                 case Element.Air:
-                    backColor = TerminalColors.DarkCyan;
-                    foreColor = TerminalColors.LightCyan; break;
+                    backColor = TermColor.DarkCyan;
+                    foreColor = TermColor.LightCyan; break;
                 case Element.Earth:
-                    backColor = TerminalColors.DarkBrown;
-                    foreColor = TerminalColors.LightBrown; break;
+                    backColor = TermColor.DarkBrown;
+                    foreColor = TermColor.LightBrown; break;
                 case Element.Fire:
-                    backColor = TerminalColors.DarkRed;
-                    foreColor = TerminalColors.Red; break;
+                    backColor = TermColor.DarkRed;
+                    foreColor = TermColor.Red; break;
                 case Element.Water:
-                    backColor = TerminalColors.DarkBlue;
-                    foreColor = TerminalColors.LightBlue; break;
+                    backColor = TermColor.DarkBlue;
+                    foreColor = TermColor.LightBlue; break;
                 case Element.Metal:
-                    backColor = TerminalColors.DarkGray;
-                    foreColor = TerminalColors.LightGray; break;
+                    backColor = TermColor.DarkGray;
+                    foreColor = TermColor.LightGray; break;
                 case Element.Wood:
-                    backColor = TerminalColors.DarkBrown;
-                    foreColor = TerminalColors.Brown; break;
+                    backColor = TermColor.DarkBrown;
+                    foreColor = TermColor.Brown; break;
                 case Element.Acid:
-                    backColor = TerminalColors.DarkPurple;
-                    foreColor = TerminalColors.Green; break;
+                    backColor = TermColor.DarkPurple;
+                    foreColor = TermColor.Green; break;
                 case Element.Cold:
-                    backColor = TerminalColors.DarkCyan;
-                    foreColor = TerminalColors.White; break;
+                    backColor = TermColor.DarkCyan;
+                    foreColor = TermColor.White; break;
                 case Element.Lightning:
-                    backColor = TerminalColors.Purple;
-                    foreColor = TerminalColors.White; break;
+                    backColor = TermColor.Purple;
+                    foreColor = TermColor.White; break;
                 case Element.Poison:
-                    backColor = TerminalColors.DarkGreen;
-                    foreColor = TerminalColors.Green; break;
+                    backColor = TermColor.DarkGreen;
+                    foreColor = TermColor.Green; break;
                 case Element.Dark:
-                    backColor = TerminalColors.DarkGray;
-                    foreColor = TerminalColors.Black; break;
+                    backColor = TermColor.DarkGray;
+                    foreColor = TermColor.Black; break;
                 case Element.Light:
-                    backColor = TerminalColors.White;
-                    foreColor = TerminalColors.Gray; break;
+                    backColor = TermColor.White;
+                    foreColor = TermColor.Gray; break;
                 case Element.Anima:
-                    backColor = TerminalColors.DarkBrown;
-                    foreColor = TerminalColors.Orange; break;
+                    backColor = TermColor.DarkBrown;
+                    foreColor = TermColor.Orange; break;
                 case Element.Death:
-                    backColor = TerminalColors.Purple;
-                    foreColor = TerminalColors.Black; break;
+                    backColor = TermColor.Purple;
+                    foreColor = TermColor.Black; break;
             }
             */
 
@@ -208,63 +208,63 @@ namespace Amaranth.TermApp
                         // hilight "temporary" lighting
                         if (tile.IsLitByThing)
                         {
-                            return new Character(Glyph.Period, TerminalColors.Yellow);
+                            return new Character(Glyph.Period, TermColor.Yellow);
                         }
                         else
                         {
-                            return new Character(Glyph.Period, TerminalColors.Gray);
+                            return new Character(Glyph.Period, TermColor.Gray);
                         }
-                    case TileType.Wall: return new Character(Glyph.GrayFill, TerminalColors.Gray);
-                    case TileType.LowWall: return new Character(Glyph.LightFill, TerminalColors.Gray);
-                    case TileType.StairsUp: return new Character(Glyph.ArrowUp, TerminalColors.White);
-                    case TileType.StairsDown: return new Character(Glyph.ArrowDown, TerminalColors.White);
+                    case TileType.Wall: return new Character(Glyph.GrayFill, TermColor.Gray);
+                    case TileType.LowWall: return new Character(Glyph.LightFill, TermColor.Gray);
+                    case TileType.StairsUp: return new Character(Glyph.ArrowUp, TermColor.White);
+                    case TileType.StairsDown: return new Character(Glyph.ArrowDown, TermColor.White);
                     case TileType.DoorOpen:
                         // hilight "temporary" lighting
                         if (tile.IsLitByThing)
                         {
-                            return new Character(Glyph.Box, TerminalColors.LightBrown);
+                            return new Character(Glyph.Box, TermColor.LightBrown);
                         }
                         else
                         {
-                            return new Character(Glyph.Box, TerminalColors.Brown);
+                            return new Character(Glyph.Box, TermColor.Brown);
                         }
-                    case TileType.DoorClosed: return new Character(Glyph.Door, TerminalColors.LightBrown);
-                    case TileType.TownPortal: return new Character(Glyph.Caret, TerminalColors.Green);
-                    case TileType.RoofLight: return new Character(Glyph.HorizontalBarsFill, TerminalColors.Brown);
-                    case TileType.RoofDark: return new Character(Glyph.HorizontalBarsFill, TerminalColors.DarkBrown);
-                    case TileType.DoorStore1: return new Character(Glyph.Digit1, TerminalColors.Orange);
-                    case TileType.DoorStore2: return new Character(Glyph.Digit2, TerminalColors.Red);
-                    case TileType.DoorStore3: return new Character(Glyph.Digit3, TerminalColors.Cyan);
-                    case TileType.DoorStore4: return new Character(Glyph.Digit4, TerminalColors.Purple);
-                    case TileType.DoorStore5: return new Character(Glyph.Digit5, TerminalColors.Blue);
-                    case TileType.DoorStore6: return new Character(Glyph.Digit6, TerminalColors.Green);
+                    case TileType.DoorClosed: return new Character(Glyph.Door, TermColor.LightBrown);
+                    case TileType.TownPortal: return new Character(Glyph.Caret, TermColor.Green);
+                    case TileType.RoofLight: return new Character(Glyph.HorizontalBarsFill, TermColor.Brown);
+                    case TileType.RoofDark: return new Character(Glyph.HorizontalBarsFill, TermColor.DarkBrown);
+                    case TileType.DoorStore1: return new Character(Glyph.Digit1, TermColor.Orange);
+                    case TileType.DoorStore2: return new Character(Glyph.Digit2, TermColor.Red);
+                    case TileType.DoorStore3: return new Character(Glyph.Digit3, TermColor.Cyan);
+                    case TileType.DoorStore4: return new Character(Glyph.Digit4, TermColor.Purple);
+                    case TileType.DoorStore5: return new Character(Glyph.Digit5, TermColor.Blue);
+                    case TileType.DoorStore6: return new Character(Glyph.Digit6, TermColor.Green);
                 }
             }
             else
             {
                 switch (tile.Type)
                 {
-                    case TileType.Floor: return new Character(Glyph.Period, TerminalColors.DarkGray);
-                    case TileType.Wall: return new Character(Glyph.GrayFill, TerminalColors.DarkGray);
-                    case TileType.LowWall: return new Character(Glyph.LightFill, TerminalColors.DarkGray);
-                    case TileType.StairsUp: return new Character(Glyph.ArrowUp, TerminalColors.Gray);
-                    case TileType.StairsDown: return new Character(Glyph.ArrowDown, TerminalColors.Gray);
-                    case TileType.DoorOpen: return new Character(Glyph.Box, TerminalColors.DarkBrown);
-                    case TileType.DoorClosed: return new Character(Glyph.Door, TerminalColors.DarkBrown);
-                    case TileType.TownPortal: return new Character(Glyph.Caret, TerminalColors.DarkGreen);
-                    case TileType.RoofLight: return new Character(Glyph.HorizontalBarsFill, TerminalColors.Brown);
-                    case TileType.RoofDark: return new Character(Glyph.HorizontalBarsFill, TerminalColors.DarkBrown);
-                    case TileType.DoorStore1: return new Character(Glyph.Digit1, TerminalColors.Orange);
-                    case TileType.DoorStore2: return new Character(Glyph.Digit2, TerminalColors.Red);
-                    case TileType.DoorStore3: return new Character(Glyph.Digit3, TerminalColors.Cyan);
-                    case TileType.DoorStore4: return new Character(Glyph.Digit4, TerminalColors.Purple);
-                    case TileType.DoorStore5: return new Character(Glyph.Digit5, TerminalColors.Blue);
-                    case TileType.DoorStore6: return new Character(Glyph.Digit6, TerminalColors.Green);
+                    case TileType.Floor: return new Character(Glyph.Period, TermColor.DarkGray);
+                    case TileType.Wall: return new Character(Glyph.GrayFill, TermColor.DarkGray);
+                    case TileType.LowWall: return new Character(Glyph.LightFill, TermColor.DarkGray);
+                    case TileType.StairsUp: return new Character(Glyph.ArrowUp, TermColor.Gray);
+                    case TileType.StairsDown: return new Character(Glyph.ArrowDown, TermColor.Gray);
+                    case TileType.DoorOpen: return new Character(Glyph.Box, TermColor.DarkBrown);
+                    case TileType.DoorClosed: return new Character(Glyph.Door, TermColor.DarkBrown);
+                    case TileType.TownPortal: return new Character(Glyph.Caret, TermColor.DarkGreen);
+                    case TileType.RoofLight: return new Character(Glyph.HorizontalBarsFill, TermColor.Brown);
+                    case TileType.RoofDark: return new Character(Glyph.HorizontalBarsFill, TermColor.DarkBrown);
+                    case TileType.DoorStore1: return new Character(Glyph.Digit1, TermColor.Orange);
+                    case TileType.DoorStore2: return new Character(Glyph.Digit2, TermColor.Red);
+                    case TileType.DoorStore3: return new Character(Glyph.Digit3, TermColor.Cyan);
+                    case TileType.DoorStore4: return new Character(Glyph.Digit4, TermColor.Purple);
+                    case TileType.DoorStore5: return new Character(Glyph.Digit5, TermColor.Blue);
+                    case TileType.DoorStore6: return new Character(Glyph.Digit6, TermColor.Green);
                 }
             }
 
             // unknown tile type
-            return new Character(Glyph.QuestionMark, TerminalColors.Purple);
+            return new Character(Glyph.QuestionMark, TermColor.Purple);
         }
 
         public static Character Get(Entity entity)
@@ -273,26 +273,26 @@ namespace Amaranth.TermApp
 
             if (hero != null)
             {
-                Color color = TerminalColors.Flesh;
+                TermColor color = TermColor.Flesh;
 
                 // choose a color based on condition
 
                 // disease
                 if (hero.Health.HasBonus(BonusType.Disease))
                 {
-                    color = TerminalColors.Purple;
+                    color = TermColor.Purple;
                 }
 
                 // poison
                 if (hero.Conditions.Poison.IsActive)
                 {
-                    color = TerminalColors.DarkGreen;
+                    color = TermColor.DarkGreen;
                 }
 
                 // near death
                 if (hero.Health.Current < (hero.Health.Max / 5))
                 {
-                    color = TerminalColors.Red;
+                    color = TermColor.Red;
                 }
 
                 return new Character(Glyph.Face, color);
@@ -310,7 +310,7 @@ namespace Amaranth.TermApp
             // if the power provides a color, use it
             if ((item.Power != null) && (item.Power.Appearance != null))
             {
-                c = new Character(c.Glyph, (Color)item.Power.Appearance, c.BackColor);
+                c = new Character(c.Glyph, (TermColor)item.Power.Appearance, c.BackColor);
             }
 
             return c;

@@ -4,9 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using Malison.Core;
+
 using Amaranth.Util;
 using Amaranth.Engine;
-using Amaranth.Terminals;
 
 namespace Amaranth.Data
 {
