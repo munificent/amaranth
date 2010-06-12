@@ -21,7 +21,7 @@ namespace Amaranth.Data
                 string[] categories = powerProp["categories"].Value.Split('|');
 
                 // appearance
-                object appearance = powerProp.GetOrDefault<object>("appearance", value => TerminalColors.FromName(value), null);
+                object appearance = powerProp.GetOrDefault<object>("appearance", value => TermColors.FromName(value), null);
 
                 // level
                 int minLevel = 1;

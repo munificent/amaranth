@@ -224,7 +224,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal = terminal[TermColor.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.DarkGray];
 
             terminal[65, 0, 1, terminal.Size.Y].DrawBox(false, true);
             terminal[0, 31, 65, 1].DrawBox(false, true);

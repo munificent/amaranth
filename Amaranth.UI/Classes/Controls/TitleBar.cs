@@ -24,7 +24,7 @@ namespace Amaranth.UI
 
         protected override void OnPaint(ITerminal terminal)
         {
-            terminal = terminal[TermColor.Gray, TermColor.DarkGray].CreateWindow();
+            terminal = terminal[TermColor.Gray, TermColor.DarkGray];
 
             terminal.Clear();
 

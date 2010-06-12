@@ -149,6 +149,15 @@ namespace Amaranth.TermApp
                         break;
 
                     case Key.F6:
+                        Profiler.Init();
+                        using (Profiler.Block())
+                        {
+                            for (int i = 0; i < 100; i++)
+                            {
+                                Screen.UI.Repaint();
+                            }
+                        }
+                        Profiler.Shutdown();
                         break;
 
                     case Key.F7:

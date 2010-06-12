@@ -40,7 +40,7 @@ namespace Amaranth.Data
                 // separate glyph and color
                 character = new Character(
                     Character.ParseGlyph(raceProp["glyph"].Value),
-                    TerminalColors.FromName(raceProp["color"].Value));
+                    TermColors.FromName(raceProp["color"].Value));
             }
 
             // depth

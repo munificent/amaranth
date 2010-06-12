@@ -123,7 +123,7 @@ namespace Amaranth.UI
         {
             get
             {
-                return Parent.Terminal.CreateWindow(Bounds);
+                return Parent.Terminal[Bounds];
             }
         }
 
@@ -166,7 +166,7 @@ namespace Amaranth.UI
             {
                 if (mVisible && (Bounds.Area > 0))
                 {
-                    ITerminal localTerminal = parentTerminal.CreateWindow(Bounds);
+                    ITerminal localTerminal = parentTerminal[Bounds];
 
                     // paint this control
                     OnPaint(localTerminal);

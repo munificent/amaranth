@@ -53,7 +53,7 @@ namespace Amaranth.TermApp
                 default:                    color = TermColor.White; break;
             }
 
-            terminal = terminal[color].CreateWindow();
+            terminal = terminal[color];
 
             string text = entry.Text;
 

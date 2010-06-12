@@ -41,7 +41,7 @@ namespace Amaranth.Data
                     // separate glyph and color
                     character = new Character(
                         Character.ParseGlyph(itemProp["glyph"].Value),
-                        TerminalColors.FromName(itemProp["color"].Value));
+                        TermColors.FromName(itemProp["color"].Value));
                 }
 
                 // amount
