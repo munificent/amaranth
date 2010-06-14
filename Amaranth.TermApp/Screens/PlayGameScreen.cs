@@ -226,12 +226,12 @@ namespace Amaranth.TermApp
 
             terminal = terminal[TermColor.DarkGray];
 
-            terminal[65, 0, 1, terminal.Size.Y].DrawBox(false, true);
-            terminal[0, 31, 65, 1].DrawBox(false, true);
-            terminal[66, 31, 54, 1].DrawBox(false, true);
+            terminal[65, 0, 1, terminal.Size.Y].DrawBox();
+            terminal[0, 31, 65, 1].DrawBox();
+            terminal[66, 31, 54, 1].DrawBox();
             terminal[65, 31].Write(Glyph.BarUpDownLeftRight);
 
-            terminal[14, 0, 1, 31].DrawBox(false, true);
+            terminal[14, 0, 1, 31].DrawBox();
             terminal[14, 31].Write(Glyph.BarUpLeftRight);
         }
 

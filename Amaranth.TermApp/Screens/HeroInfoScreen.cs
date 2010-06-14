@@ -38,9 +38,9 @@ namespace Amaranth.TermApp
             const int LabelX = 80;
 
             // draw the table
-            terminal[0, 0, 80, 28][TermColor.DarkGray].DrawBox(false, false);
-            terminal[31, 0, 1, 28][TermColor.DarkGray].DrawBox(true, false);
-            terminal[50, 0, 1, 28][TermColor.DarkGray].DrawBox(true, false);
+            terminal[0, 0, 80, 28][TermColor.DarkGray].DrawBox();
+            terminal[31, 0, 1, 28][TermColor.DarkGray].DrawBox(DrawBoxOptions.DoubleLines);
+            terminal[50, 0, 1, 28][TermColor.DarkGray].DrawBox(DrawBoxOptions.DoubleLines);
 
             terminal[31, 0][TermColor.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
             terminal[50, 0][TermColor.DarkGray].Write(Glyph.BarDoubleDownSingleLeftRight);
@@ -407,7 +407,7 @@ namespace Amaranth.TermApp
 
         private void DrawRowLine(ITerminal terminal, int y)
         {
-            terminal[1, y, 79, 1][TermColor.DarkGray].DrawBox(false, true);
+            terminal[1, y, 79, 1][TermColor.DarkGray].DrawBox();
             terminal[0, y][TermColor.DarkGray].Write(Glyph.BarUpDownRight);
             terminal[31, y][TermColor.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);
             terminal[50, y][TermColor.DarkGray].Write(Glyph.BarDoubleUpDownSingleLeftRight);

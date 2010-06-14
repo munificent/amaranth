@@ -22,7 +22,7 @@ namespace Amaranth.TermApp
         protected override void OnPaint(ITerminal terminal)
         {
             terminal[WindowBounds].Clear();
-            terminal[WindowBounds][TermColor.Yellow].DrawBox(false, false);
+            terminal[WindowBounds][TermColor.Yellow].DrawBox();
             terminal[WindowBounds.TopLeft.Offset(2, 0)].Write("Amaranth Help");
 
             // walking

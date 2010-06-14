@@ -27,7 +27,7 @@ namespace Amaranth.TermApp
         {
             terminal.Clear();
 
-            terminal[0, 0, 50, 1][TermColor.DarkGray].DrawBox(false, true);
+            terminal[0, 0, 50, 1][TermColor.DarkGray].DrawBox();
 
             // write the conditions
             int x = 1;
