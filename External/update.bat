@@ -1,3 +1,4 @@
+@echo off
 rem Copies the external dependency .dlls into this directory.
 rem Assumes that the .dlls are already built and are in the same root directory
 rem as the Amaranth project.

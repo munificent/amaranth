@@ -56,14 +56,11 @@
     <Compile Include="Extension Classes\EnumerableExtensions.cs" />
     <Compile Include="EventArgs\CollectionItemEventArgs.cs" />
     <Compile Include="Profiler.cs" />
-    <Compile Include="PropSet\IndentationTree.cs" />
     <Compile Include="Interfaces\ICollectible.cs" />
     <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Interfaces\INamed.cs" />
     <Compile Include="NotNull.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropSet\PropSet.cs" />
-    <Compile Include="PropSet\PropSetParser.cs" />
     <Compile Include="Extension Classes\StringExtensions.cs" />
     <Compile Include="EventArgs\ValueChangeEventArgs.cs" />
   </ItemGroup>

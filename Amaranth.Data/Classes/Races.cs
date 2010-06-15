@@ -5,7 +5,8 @@ using System.Text;
 
 using Malison.Core;
 
-using Amaranth.Util;
+using Bramble.Core;
+
 using Amaranth.Engine;
 
 namespace Amaranth.Data

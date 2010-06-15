@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using Amaranth.Util;
+using Bramble.Core;
 
 namespace Amaranth.Data
 {

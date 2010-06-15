@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Bramble.Core;
+
 using Amaranth.Engine;
-using Amaranth.Util;
 
 namespace Amaranth.Data
 {

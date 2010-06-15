@@ -72,9 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotNullFixture.cs" />
-    <Compile Include="PropSet\IndentationTreeFixture.cs" />
-    <Compile Include="PropSet\PropSetFixture.cs" />
-    <Compile Include="PropSet\PropSetParserFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
