@@ -86,7 +86,7 @@
     <Compile Include="Classes\Items.cs" />
     <Compile Include="Classes\Macros.cs" />
     <Compile Include="Classes\Powers.cs" />
-    <Compile Include="Classes\PropSetExtensions.cs" />
+    <Compile Include="Classes\PropertyBagExtensions.cs" />
     <Compile Include="Classes\Races.cs" />
     <Compile Include="Classes\FlagMacro.cs" />
     <Compile Include="Classes\Stores.cs" />

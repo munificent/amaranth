@@ -8,9 +8,9 @@ using Bramble.Core;
 
 namespace Amaranth.Data
 {
-    public static class PropSetExtensions
+    public static class PropertyBagExtensions
     {
-        public static void ToRange(this PropSet property, out int min, out int max)
+        public static void ToRange(this PropertyBag property, out int min, out int max)
         {
             Match match = sRangeRegex.Match(property.Value);
 

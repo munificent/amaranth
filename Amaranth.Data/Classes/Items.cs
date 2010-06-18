@@ -15,7 +15,7 @@ namespace Amaranth.Data
     {
         public static void Load(string filePath, Content content)
         {
-            foreach (PropSet itemProp in PropSet.FromFile(filePath))
+            foreach (PropertyBag itemProp in PropertyBag.FromFile(filePath))
             {
                 string category = itemProp["category"].Value;
 
@@ -97,7 +97,7 @@ namespace Amaranth.Data
                     attack, armor, chargeType, useScript, price);
 
                 // flags
-                foreach (PropSet childProp in itemProp)
+                foreach (PropertyBag childProp in itemProp)
                 {
                     if (childProp.Name.StartsWith("+ "))
                     {

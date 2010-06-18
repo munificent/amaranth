@@ -23,9 +23,9 @@ namespace Amaranth.Data
         {
             FlagMacroCollection collection = new FlagMacroCollection();
 
-            PropSet root = PropSet.FromFile(filePath);
+            PropertyBag root = PropertyBag.FromFile(filePath);
 
-            foreach (PropSet macroProp in root)
+            foreach (PropertyBag macroProp in root)
             {
                 FlagMacro macro = new FlagMacro(macroProp.Name);
                 macro.Flags.AddRange(macroProp.Value.Split(' '));
@@ -58,7 +58,7 @@ namespace Amaranth.Data
             // load them
             foreach (string filePath in Directory.GetFiles(dirPath, "*.txt"))
             {
-                foreach (PropSet macroProp in PropSet.FromFile(filePath))
+                foreach (PropertyBag macroProp in PropertyBag.FromFile(filePath))
                 {
                     IDrop<T> drop = parser.ParseMacro(macroProp, collection);
                     collection.Add(macroProp.Name, drop);

@@ -15,7 +15,7 @@ namespace Amaranth.Data
     {
         public static void Load(string filePath, Content content, bool isPrefix)
         {
-            foreach (PropSet powerProp in PropSet.FromFile(filePath))
+            foreach (PropertyBag powerProp in PropertyBag.FromFile(filePath))
             {
                 // categories
                 string[] categories = powerProp["categories"].Value.Split('|');
@@ -48,7 +48,7 @@ namespace Amaranth.Data
                 power.SpeedBonus    = powerProp.GetOrDefault("speed",   value => Roller.Parse(value), power.SpeedBonus);
 
                 // flags
-                foreach (PropSet childProp in powerProp)
+                foreach (PropertyBag childProp in powerProp)
                 {
                     if (childProp.Name.StartsWith("+ "))
                     {

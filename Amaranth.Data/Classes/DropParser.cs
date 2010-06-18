@@ -11,13 +11,13 @@ namespace Amaranth.Data
 {
     public abstract class DropParser<T>
     {
-        public IDrop<T> ParseMacro(PropSet property, DropMacroCollection<T> macros)
+        public IDrop<T> ParseMacro(PropertyBag property, DropMacroCollection<T> macros)
         {
             float dummy;
             return Parse(property, macros, true, out dummy);
         }
 
-        public IDrop<T> ParseDefinition(PropSet property, DropMacroCollection<T> macros)
+        public IDrop<T> ParseDefinition(PropertyBag property, DropMacroCollection<T> macros)
         {
             float dummy;
             return Parse(property, macros, false, out dummy);
@@ -25,19 +25,19 @@ namespace Amaranth.Data
 
         protected abstract IDrop<T> ParseDrop(string text);
 
-        private IDrop<T> Parse(PropSet property, DropMacroCollection<T> macros)
+        private IDrop<T> Parse(PropertyBag property, DropMacroCollection<T> macros)
         {
             float dummy;
             return Parse(property, macros, false, out dummy);
         }
 
-        private IDrop<T> Parse(PropSet property, DropMacroCollection<T> macros,
+        private IDrop<T> Parse(PropertyBag property, DropMacroCollection<T> macros,
             out float odds)
         {
             return Parse(property, macros, false, out odds);
         }
 
-        private IDrop<T> Parse(PropSet property, DropMacroCollection<T> macros,
+        private IDrop<T> Parse(PropertyBag property, DropMacroCollection<T> macros,
             bool defining, out float odds)
         {
             // default
@@ -87,7 +87,7 @@ namespace Amaranth.Data
                 var allDrop = new AllDrop<T>();
 
                 // recurse into the children
-                foreach (PropSet child in property)
+                foreach (PropertyBag child in property)
                 {
                     float childOdds = 0;
                     IDrop<T> childDrop = Parse(child, macros, out childOdds);
@@ -102,7 +102,7 @@ namespace Amaranth.Data
                 var chooseDrop = new ChooseDrop<T>();
 
                 // recurse into the children
-                foreach (PropSet child in property)
+                foreach (PropertyBag child in property)
                 {
                     float childOdds = 0;
                     IDrop<T> childDrop = Parse(child, macros, out childOdds);
@@ -119,7 +119,7 @@ namespace Amaranth.Data
                 var chooseDrop = new ChooseByLevelDrop<T>();
 
                 // recurse into the children
-                foreach (PropSet child in property)
+                foreach (PropertyBag child in property)
                 {
                     float childOdds = 0;
                     IDrop<T> childDrop = Parse(child, macros, out childOdds);
@@ -134,7 +134,7 @@ namespace Amaranth.Data
                 var chooseDrop = new ChooseUpToLevelDrop<T>();
 
                 // recurse into the children
-                foreach (PropSet child in property)
+                foreach (PropertyBag child in property)
                 {
                     float childOdds = 0;
                     IDrop<T> childDrop = Parse(child, macros, out childOdds);
@@ -149,7 +149,7 @@ namespace Amaranth.Data
                 var chooseDrop = new ChooseNearLevelDrop<T>();
 
                 // recurse into the children
-                foreach (PropSet child in property)
+                foreach (PropertyBag child in property)
                 {
                     float childOdds = 0;
                     IDrop<T> childDrop = Parse(child, macros, out childOdds);

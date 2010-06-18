@@ -15,7 +15,7 @@ namespace Amaranth.Data
     {
         public static void Load(string filePath, DropMacroCollection<Item> dropMacros, Content content)
         {
-            foreach (PropSet raceProp in PropSet.FromFile(filePath))
+            foreach (PropertyBag raceProp in PropertyBag.FromFile(filePath))
             {
                 int depth;
                 int rarity;
@@ -26,7 +26,7 @@ namespace Amaranth.Data
             Console.WriteLine("Loaded " + content.Races.Count + " races");
         }
 
-        private static Race LoadRace(PropSet raceProp, DropMacroCollection<Item> dropMacros, Content content,
+        private static Race LoadRace(PropertyBag raceProp, DropMacroCollection<Item> dropMacros, Content content,
             out int depth, out int rarity)
         {
             Character character = new Character('*', TermColor.Purple);
@@ -62,7 +62,7 @@ namespace Amaranth.Data
             // attacks
             if (raceProp.Contains("attacks"))
             {
-                foreach (PropSet attackProp in raceProp["attacks"])
+                foreach (PropertyBag attackProp in raceProp["attacks"])
                 {
                     string[] attackParts = attackProp.Value.Split(' ');
 
@@ -97,7 +97,7 @@ namespace Amaranth.Data
             // moves
             if (raceProp.Contains("moves"))
             {
-                foreach (PropSet moveProp in raceProp["moves"])
+                foreach (PropertyBag moveProp in raceProp["moves"])
                 {
                     string moveName = moveProp.Name;
 
@@ -134,7 +134,7 @@ namespace Amaranth.Data
             }
 
             // flags
-            foreach (PropSet childProp in raceProp)
+            foreach (PropertyBag childProp in raceProp)
             {
                 if (childProp.Name.StartsWith("+ "))
                 {
@@ -195,7 +195,7 @@ namespace Amaranth.Data
             return race;
         }
 
-        private static MoveInfo ParseMove(PropSet property)
+        private static MoveInfo ParseMove(PropertyBag property)
         {
             MoveInfo info = new MoveInfo();
 

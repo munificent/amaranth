@@ -13,7 +13,7 @@ namespace Amaranth.Data
     {
         public static void Load(string filePath, Content content)
         {
-            foreach (PropSet raceProp in PropSet.FromFile(filePath))
+            foreach (PropertyBag raceProp in PropertyBag.FromFile(filePath))
             {
                 string name = raceProp.Name;
 

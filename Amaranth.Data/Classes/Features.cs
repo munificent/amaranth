@@ -13,7 +13,7 @@ namespace Amaranth.Data
     {
         public static void Load(string filePath, Content content)
         {
-            foreach (PropSet baseProp in PropSet.FromFile(filePath))
+            foreach (PropertyBag baseProp in PropertyBag.FromFile(filePath))
             {
                 var parser = new StringDropParser();
                 content.SetFeatures(parser.ParseDefinition(baseProp, null));
