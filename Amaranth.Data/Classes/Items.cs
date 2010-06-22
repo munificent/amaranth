@@ -18,12 +18,7 @@ namespace Amaranth.Data
             foreach (PropertyBag itemProp in PropertyBag.FromFile(filePath))
             {
                 string category = itemProp["category"].Value;
-
-                string subcategory = String.Empty;
-                if (itemProp.Contains("subcategory"))
-                {
-                    subcategory = itemProp["subcategory"].Value;
-                }
+                string subcategory = itemProp.GetOrDefault("subcategory", String.Empty);
 
                 // name
                 string name = itemProp.Name;
@@ -31,10 +26,11 @@ namespace Amaranth.Data
                 // art
                 Character character = new Character('*', TermColor.Purple);
 
-                if (itemProp.Contains("art"))
+                PropertyBag art;
+                if (itemProp.TryGetValue("art", out art))
                 {
                     //### bob: old style color and glyph combined
-                    character = Character.Parse(itemProp["art"].Value);
+                    character = Character.Parse(art.Value);
                 }
                 else
                 {
@@ -55,9 +51,10 @@ namespace Amaranth.Data
 
                 // attack
                 Attack attack = null;
-                if (itemProp.Contains("attack"))
+                PropertyBag attackProp;
+                if (itemProp.TryGetValue("attack", out attackProp))
                 {
-                    string attackText = itemProp["attack"].Value;
+                    string attackText = attackProp.Value;
 
                     if (attackText.Contains(" "))
                     {
@@ -107,23 +104,24 @@ namespace Amaranth.Data
                 }
 
                 // light
-                if (itemProp.Contains("light"))
+                PropertyBag light;
+                if (itemProp.TryGetValue("light", out light))
                 {
-                    int light = itemProp["light"].ToInt32();
-
-                    itemType.SetLightRadius(light);
+                    itemType.SetLightRadius(light.ToInt32());
                 }
 
                 // target
-                if (itemProp.Contains("target"))
+                PropertyBag target;
+                if (itemProp.TryGetValue("target", out target))
                 {
-                    itemType.SetTarget((ItemTarget)Enum.Parse(typeof(ItemTarget), itemProp["target"].Value, true));
+                    itemType.SetTarget((ItemTarget)Enum.Parse(typeof(ItemTarget), target.Value, true));
                 }
 
                 // ammunition
-                if (itemProp.Contains("ammunition"))
+                PropertyBag ammunition;
+                if (itemProp.TryGetValue("ammunition", out ammunition))
                 {
-                    itemType.SetAmmunition(itemProp["ammunition"].Value);
+                    itemType.SetAmmunition(ammunition.Value);
                 }
 
                 // hit scripts

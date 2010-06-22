@@ -30,11 +30,12 @@ namespace Amaranth.Data
             out int depth, out int rarity)
         {
             Character character = new Character('*', TermColor.Purple);
-            
-            if (raceProp.Contains("art"))
+
+            PropertyBag art;
+            if (raceProp.TryGetValue("art", out art))
             {
                 //### bob: old style color and glyph combined
-                character = Character.Parse(raceProp["art"].Value);
+                character = Character.Parse(art.Value);
             }
             else
             {
@@ -60,9 +61,10 @@ namespace Amaranth.Data
             Race race = new Race(content, raceProp.Name, depth, character, speed, health);
 
             // attacks
-            if (raceProp.Contains("attacks"))
+            PropertyBag attacks;
+            if (raceProp.TryGetValue("attacks", out attacks))
             {
-                foreach (PropertyBag attackProp in raceProp["attacks"])
+                foreach (PropertyBag attackProp in attacks)
                 {
                     string[] attackParts = attackProp.Value.Split(' ');
 
@@ -95,16 +97,18 @@ namespace Amaranth.Data
             }
 
             // moves
-            if (raceProp.Contains("moves"))
+            PropertyBag moves;
+            if (raceProp.TryGetValue("moves", out moves))
             {
-                foreach (PropertyBag moveProp in raceProp["moves"])
+                foreach (PropertyBag moveProp in moves)
                 {
                     string moveName = moveProp.Name;
 
                     // if an explicit move field is provided, then the prop name is not the name of the move itself
-                    if (moveProp.Contains("move"))
+                    PropertyBag explicitMove;
+                    if (moveProp.TryGetValue("move", out explicitMove))
                     {
-                        moveName = moveProp["move"].Value;
+                        moveName = explicitMove.Value;
                     }
 
                     // parse the specific move info
@@ -167,29 +171,33 @@ namespace Amaranth.Data
             }
 
             // resists
-            if (raceProp.Contains("resists"))
+            PropertyBag resists;
+            if (raceProp.TryGetValue("resists", out resists))
             {
-                ParseResists(raceProp["resists"].Value, race);
+                ParseResists(resists.Value, race);
             }
 
             // drops
-            if (raceProp.Contains("drops"))
+            PropertyBag drops;
+            if (raceProp.TryGetValue("drops", out drops))
             {
                 var parser = new ItemDropParser(content);
-                IDrop<Item> drop = parser.ParseDefinition(raceProp["drops"], dropMacros);
+                IDrop<Item> drop = parser.ParseDefinition(drops, dropMacros);
                 race.SetDrop(drop);
             }
 
             // description
-            if (raceProp.Contains("description"))
+            PropertyBag description;
+            if (raceProp.TryGetValue("description", out description))
             {
-                race.SetDescription(raceProp["description"].Value);
+                race.SetDescription(description.Value);
             }
 
             // groups
-            if (raceProp.Contains("groups"))
+            PropertyBag groups;
+            if (raceProp.TryGetValue("groups", out groups))
             {
-                race.SetGroups(raceProp["groups"].Value.Split(' '));
+                race.SetGroups(groups.Value.Split(' '));
             }
 
             return race;
@@ -200,10 +208,11 @@ namespace Amaranth.Data
             MoveInfo info = new MoveInfo();
 
             // odds
-            if (property.Contains("odds"))
+            PropertyBag odds;
+            if (property.TryGetValue("odds", out odds))
             {
                 // get the odds of performing the move (should be like "1 in 4")
-                string[] oddsParts = property["odds"].Value.Split(' ');
+                string[] oddsParts = odds.Value.Split(' ');
                 info.Chance = Int32.Parse(oddsParts[0]);
                 info.Range = Int32.Parse(oddsParts[2]);
             }

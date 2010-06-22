@@ -26,9 +26,10 @@ namespace Amaranth.Data
                 // level
                 int minLevel = 1;
                 int maxLevel = 1;
-                if (powerProp.Contains("level"))
+                PropertyBag level;
+                if (powerProp.TryGetValue("level", out level))
                 {
-                    powerProp["level"].ToRange(out minLevel, out maxLevel);
+                    level.ToRange(out minLevel, out maxLevel);
                 }
 
                 // rarity
