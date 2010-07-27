@@ -14,7 +14,7 @@ namespace Amaranth.Engine
     /// </summary>
     public class Fov
     {
-        public const int MaxDistance = 26;	// this will need to change if the overhead view size changes
+        public const int MaxDistance = 26;  // this will need to change if the overhead view size changes
 
         /// <summary>
         /// Gets the maximum bounds of a field-of-view centered on the given position.
@@ -28,17 +28,17 @@ namespace Amaranth.Engine
         /// <summary>
         /// Updates the visible flags in the dungeon given the hero position.
         /// </summary>
-	    public static void RefreshVisibility(Vec position, Dungeon dungeon)
-	    {
-		    // sweep through the octants
-		    for (int octant = 0; octant < 8; octant++)
-		    {
+        public static void RefreshVisibility(Vec position, Dungeon dungeon)
+        {
+            // sweep through the octants
+            for (int octant = 0; octant < 8; octant++)
+            {
                 RefreshOctant(position, octant, dungeon);
-		    }
-    		
-		    // the starting position is always visible
+            }
+            
+            // the starting position is always visible
             dungeon.SetTileVisible(position, true);
-	    }
+        }
 
         /// <summary>
         /// Updates the explored flag of any tiles newly visible based on an FOV centered
@@ -65,23 +65,23 @@ namespace Amaranth.Engine
         }
 
         private static void RefreshOctant(Vec start, int octant, Dungeon dungeon)
-	    {
+        {
             Vec rowInc = Vec.Zero;
             Vec colInc = Vec.Zero;
-    		
-		    // figure out which direction to increment based on the octant
-		    // octant 0 starts at 12 - 2 o'clock, and octants proceed clockwise from there
-		    switch (octant)
-		    {
-		        case 0: rowInc.Y = -1; colInc.X =  1; break;
-		        case 1: rowInc.X =  1; colInc.Y = -1; break;
-		        case 2: rowInc.X =  1; colInc.Y =  1; break;
-		        case 3: rowInc.Y =  1; colInc.X =  1; break;
-		        case 4: rowInc.Y =  1; colInc.X = -1; break;
-		        case 5: rowInc.X = -1; colInc.Y =  1; break;
-		        case 6: rowInc.X = -1; colInc.Y = -1; break;
-		        case 7: rowInc.Y = -1; colInc.X = -1; break;
-		    }
+            
+            // figure out which direction to increment based on the octant
+            // octant 0 starts at 12 - 2 o'clock, and octants proceed clockwise from there
+            switch (octant)
+            {
+                case 0: rowInc.Y = -1; colInc.X =  1; break;
+                case 1: rowInc.X =  1; colInc.Y = -1; break;
+                case 2: rowInc.X =  1; colInc.Y =  1; break;
+                case 3: rowInc.Y =  1; colInc.X =  1; break;
+                case 4: rowInc.Y =  1; colInc.X = -1; break;
+                case 5: rowInc.X = -1; colInc.Y =  1; break;
+                case 6: rowInc.X = -1; colInc.Y = -1; break;
+                case 7: rowInc.Y = -1; colInc.X = -1; break;
+            }
 
             sShadows.Clear();
 
@@ -89,10 +89,10 @@ namespace Amaranth.Engine
             Rect bounds = dungeon.Bounds;
             bool fullShadow = false;
 
-		    // sweep through the rows ('rows' may be vertical or horizontal based on the incrementors)
+            // sweep through the rows ('rows' may be vertical or horizontal based on the incrementors)
             // start at row 1 to skip the center position
-		    for (int row = 1; row < MaxDistance; row++)
-		    {
+            for (int row = 1; row < MaxDistance; row++)
+            {
                 Vec pos = start + (rowInc * row);
 
                 // if we've traversed out of bounds, bail
@@ -100,8 +100,8 @@ namespace Amaranth.Engine
                 // tile of the fov is in bounds
                 if (!bounds.Contains(pos)) break;
 
-			    for (int col = 0; col <= row; col++)
-			    {
+                for (int col = 0; col <= row; col++)
+                {
                     bool blocksLight = false;
                     bool isVisible = false;
                     Shadow projection = null;
@@ -114,16 +114,16 @@ namespace Amaranth.Engine
                         isVisible = !IsInShadow(projection);
                     }
 
-				    // set the visibility of this tile
+                    // set the visibility of this tile
                     dungeon.SetTileVisible(pos, isVisible);
-					
-				    // add any opaque tiles to the shadow map
+                    
+                    // add any opaque tiles to the shadow map
                     if (blocksLight)
-				    {
+                    {
                         fullShadow = AddShadow(projection);
-				    }
-				
-				    // move to the next column
+                    }
+                
+                    // move to the next column
                     pos += colInc;
 
                     // if we've traversed out of bounds, bail on this row
@@ -131,8 +131,8 @@ namespace Amaranth.Engine
                     // tile of the fov is in bounds
                     if (!bounds.Contains(pos)) break;
                 }
-		    }
-	    }
+            }
+        }
 
         /// <summary>
         /// Creates a <see cref="Shadow"/> that corresponds to the projected silhouette
@@ -169,65 +169,65 @@ namespace Amaranth.Engine
             return false;
         }
 
-	    private static bool AddShadow(Shadow shadow)
-	    {
-		    int index = 0;
-		    for (index = 0; index < sShadows.Count; index++)
-		    {
-			    // see if we are at the insertion point for this shadow
+        private static bool AddShadow(Shadow shadow)
+        {
+            int index = 0;
+            for (index = 0; index < sShadows.Count; index++)
+            {
+                // see if we are at the insertion point for this shadow
                 if (sShadows[index].Start > shadow.Start)
-			    {
-				    // break out and handle inserting below
-				    break;
-			    }
-		    }
+                {
+                    // break out and handle inserting below
+                    break;
+                }
+            }
 
-		    // the new shadow is going here. see if it overlaps the previous or next shadow
-		    bool overlapsPrev = false;
-		    bool overlapsNext = false;
-    		
-		    if ((index > 0) && (sShadows[index - 1].End > shadow.Start))
-		    {
-			    overlapsPrev = true;
-		    }
+            // the new shadow is going here. see if it overlaps the previous or next shadow
+            bool overlapsPrev = false;
+            bool overlapsNext = false;
+            
+            if ((index > 0) && (sShadows[index - 1].End > shadow.Start))
+            {
+                overlapsPrev = true;
+            }
 
             if ((index < sShadows.Count) && (sShadows[index].Start < shadow.End))
-		    {
-			    overlapsNext = true;
-		    }
-    		
-		    // insert and unify with overlapping shadows
-		    if (overlapsNext)
-		    {
-			    if (overlapsPrev)
-			    {
-				    // overlaps both, so unify one and delete the other
+            {
+                overlapsNext = true;
+            }
+            
+            // insert and unify with overlapping shadows
+            if (overlapsNext)
+            {
+                if (overlapsPrev)
+                {
+                    // overlaps both, so unify one and delete the other
                     sShadows[index - 1].Unify(shadow.Start, sShadows[index].End);
                     sShadows.RemoveAt(index);
-			    }
-			    else
-			    {
-				    // just overlaps the next shadow, so unify it with that
+                }
+                else
+                {
+                    // just overlaps the next shadow, so unify it with that
                     sShadows[index].Unify(shadow.Start, shadow.End);
-			    }
-		    }
-		    else
-		    {
-			    if (overlapsPrev)
-			    {
-				    // just overlaps the previous shadow, so unify it with that
+                }
+            }
+            else
+            {
+                if (overlapsPrev)
+                {
+                    // just overlaps the previous shadow, so unify it with that
                     sShadows[index - 1].Unify(shadow.Start, shadow.End);
-			    }
-			    else
-			    {
-				    // does not overlap anything, so insert
+                }
+                else
+                {
+                    // does not overlap anything, so insert
                     sShadows.Insert(index, shadow);
-			    }
-		    }
+                }
+            }
 
             // see if we are now shadowing everything
             return (sShadows.Count == 1) && (sShadows[0].Start == 0) && (sShadows[0].End == 1.0f);
-	    }
+        }
 
         static Fov()
         {
@@ -235,13 +235,13 @@ namespace Amaranth.Engine
         }
 
         private static List<Shadow> sShadows;
-    	
+        
         /// <summary>
         /// Represents the 1D projection of a 2D shadow onto a normalized line. In other words,
         /// a range from 0.0 to 1.0.
         /// </summary>
-	    private class Shadow
-	    {
+        private class Shadow
+        {
             public float Start { get { return mStart; } }
             public float End { get { return mEnd; } }
 
@@ -260,23 +260,23 @@ namespace Amaranth.Engine
             {
                 return (mStart <= projection.Start) && (mEnd >= projection.End);
             }
-    		
-		    public void Unify(float start, float end)
-		    {
-			    // see if the shadow overlaps to the right
-			    if (start <= mEnd)
-			    {
-				    mEnd = Math.Max(mEnd, end);
-			    }
-    			
-			    // see if the shadow overlaps to the left
-			    if (mStart <= end)
-			    {
-				    mStart = Math.Min(mStart, start);
-			    }
-		    }
+            
+            public void Unify(float start, float end)
+            {
+                // see if the shadow overlaps to the right
+                if (start <= mEnd)
+                {
+                    mEnd = Math.Max(mEnd, end);
+                }
+                
+                // see if the shadow overlaps to the left
+                if (mStart <= end)
+                {
+                    mStart = Math.Min(mStart, start);
+                }
+            }
 
-		    private float mStart;
+            private float mStart;
             private float mEnd;
         }
     }
